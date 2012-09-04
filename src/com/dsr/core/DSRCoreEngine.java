@@ -59,7 +59,8 @@ public class DSRCoreEngine {
 			docInfoVec = FileUtil.loadObjectFromFile("documentsInfoTrainingData.obj");
 		}
 
-		DocumentInstancesBuilder docInstanceB = new DocumentInstancesBuilder(docInfoVec, null);
+		DocumentInstancesBuilder docInstanceB = new DocumentInstancesBuilder(docInfoVec, classifier
+				.getDocInstancesInfo().getNGramType());
 		docInstanceB.buildInstances();
 		classifier.updateClassifier(docInstanceB.getDocumentInstances());
 		FileUtil.writeObjectToFile(classifier, Config.SERIALIZED_CLASSIFIER_OBJECT_PATH);

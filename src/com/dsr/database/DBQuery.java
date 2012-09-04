@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 import com.dsr.instances.DocumentInfo;
+import com.dsr.instances.DocumentInstance;
 import com.dsr.util.Trace;
 
 public class DBQuery {
@@ -69,4 +70,7 @@ public class DBQuery {
 		}
 	}
 
+	public static void storeTrainingDocumentInstaces(Vector<DocumentInstance> docInstanceVec) {
+
+	}
 }
