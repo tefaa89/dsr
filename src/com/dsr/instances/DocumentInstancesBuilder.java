@@ -13,20 +13,26 @@ public class DocumentInstancesBuilder {
 
 	private DocumentInstancesInfo docInstancesInfo;
 
-	public DocumentInstancesBuilder(Vector<DocumentInstance> docInstanceVec) {
-		docNGramVec = new Vector<DocumentNGrams>();
-		docInstancesInfo = new DocumentInstancesInfo();
-		docInstancesInfo.setNGramType(docInstanceVec.firstElement().getnGramType());
-		for (DocumentInstance docInstance : docInstanceVec) {
-			docNGramVec.add(new DocumentNGrams(docInstance.getnGramVec(), docInstance.getName(),
-					docInstance.getCategory(), docInstance.getnGramType()));
-		}
-	}
+	private boolean buildFeatures;
 
-	public DocumentInstancesBuilder(Vector<DocumentInfo> docInfoVec, NGramEnum ngramType) {
-		this.docInfoVec = docInfoVec;
-		docInstancesInfo = new DocumentInstancesInfo();
-		docInstancesInfo.setNGramType(ngramType);
+	@SuppressWarnings("unchecked")
+	public DocumentInstancesBuilder(Vector<?> docInstorDocInfoVec,
+			DocumentInstancesInfo docInstancesInfo, boolean isDocInfo) {
+		buildFeatures = false;
+		if (isDocInfo) {
+			this.docInfoVec = (Vector<DocumentInfo>) docInstorDocInfoVec;
+			this.docInstancesInfo = docInstancesInfo;
+		} else {
+			Vector<DocumentInstance> docInstanceVec = (Vector<DocumentInstance>) docInstorDocInfoVec;
+			docNGramVec = new Vector<DocumentNGrams>();
+			this.docInstancesInfo = docInstancesInfo;
+
+			for (DocumentInstance docInstance : docInstanceVec) {
+				docNGramVec.add(new DocumentNGrams(docInstance.getDocNGram().getnGramVec(),
+						docInstance.getDocNGram().getName(), docInstance.getDocNGram()
+								.getCategory(), docInstance.getDocNGram().getnGramType()));
+			}
+		}
 	}
 
 	public void buildInstances() {
@@ -48,9 +54,11 @@ public class DocumentInstancesBuilder {
 	}
 
 	private void buildFeatures() {
-		DocumentFeaturesBuilder dfb = new DocumentFeaturesBuilder(docNGramVec);
-		dfb.buildFeatures();
-		docInstancesInfo.setFeaturesVec(dfb.getFeaturesVec());
+		if (docInstancesInfo.getFeaturesVec() == null || buildFeatures) {
+			DocumentFeaturesBuilder dfb = new DocumentFeaturesBuilder(docNGramVec);
+			dfb.buildFeatures();
+			docInstancesInfo.setFeaturesVec(dfb.getFeaturesVec());
+		}
 	}
 
 	private void buildCategories() {
@@ -94,5 +102,13 @@ public class DocumentInstancesBuilder {
 
 	public DocumentInstancesInfo getDocInstancesInfo() {
 		return docInstancesInfo;
+	}
+
+	public boolean isBuildFeatures() {
+		return buildFeatures;
+	}
+
+	public void setBuildFeatures(boolean buildFeatures) {
+		this.buildFeatures = buildFeatures;
 	}
 }

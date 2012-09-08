@@ -19,7 +19,7 @@ public class DSRWekaUtil {
 		// Adding Class Names
 		for (String className : docInstances.getCategoriesVec())
 			classVal.add(className);
-		
+
 		// Adding Features Name
 		for (String feature : features)
 			atts.add(new Attribute(feature));
@@ -36,9 +36,9 @@ public class DSRWekaUtil {
 			else
 				instanceValues = convertVectorToDoubleArray(
 						docInstance.getFeaturesTFIDFValuesVec(), wekaInstances.numAttributes());
-			int classIndex = docInstances.getCategoriesVec().indexOf(docInstance.getCategory());
+			int classIndex = docInstances.getCategoriesVec().indexOf(docInstance.getDocNGram().getCategory());
 			instanceValues[wekaInstances.numAttributes() - 1] = classIndex;
-			
+
 			wekaInstances.add(new DenseInstance(1.0, instanceValues));
 		}
 		return wekaInstances;

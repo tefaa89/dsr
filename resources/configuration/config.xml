@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dsr>
+    <debug>true</debug>
+
+    <database>
+        <username>root</username>
+        <password>dsr</password>
+		<mysql_url>jdbc:mysql://localhost/document_system_recognition</mysql_url>
+
+        <tables>
+            <table id="training_data" name="training_instances"/>
+        </tables>
+    </database>
+
+    <services>
+        <service id="docToText" url="http://localhost:2289/OCRService.svc/">
+            <functions>
+                <function id="several_files" name="getOCRResult"/>
+            </functions>
+        </service>
+    </services>
+</dsr>

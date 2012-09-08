@@ -3,13 +3,14 @@
 import com.cybozu.labs.langdetect.Detector;
 import com.cybozu.labs.langdetect.DetectorFactory;
 import com.cybozu.labs.langdetect.LangDetectException;
+import com.dsr.configuration.Config;
 import com.dsr.util.enumu.LanguageEnum;
 
 public class LanguageDetector {
 	public LanguageDetector() {
 		try {
 			if(DetectorFactory.getLangList().size() <= 0)
-				DetectorFactory.loadProfile("profiles");
+				DetectorFactory.loadProfile(Config.LANGUAGE_DETECTOR_PROFILES);
 		} catch (LangDetectException e) {
 			e.printStackTrace();
 		}

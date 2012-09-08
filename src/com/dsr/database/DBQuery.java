@@ -1,10 +1,16 @@
 package com.dsr.database;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
+import com.dsr.configuration.DBConfig;
 import com.dsr.instances.DocumentInfo;
 import com.dsr.instances.DocumentInstance;
 import com.dsr.util.Trace;
@@ -70,7 +76,42 @@ public class DBQuery {
 		}
 	}
 
-	public static void storeTrainingDocumentInstaces(Vector<DocumentInstance> docInstanceVec) {
+	public static Vector<DocumentInstance> getTrainingDocumentInstaces(Connection conn) {
+		Vector<DocumentInstance> docInstanceVec = new Vector<DocumentInstance>();
+		try {
+			String queryString = DBConfig.QUERY_GET_TRAINING_DATA;
+			PreparedStatement ps = conn.prepareStatement(queryString);
+			ResultSet resultSet = ps.executeQuery();
+			while(resultSet.next())
+			{
+				InputStream is = resultSet.getBlob("instance").getBinaryStream();
+				ObjectInputStream ois = new ObjectInputStream(is);
+				docInstanceVec.add((DocumentInstance)ois.readObject());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return docInstanceVec;
+	}
 
+	public static void storeTrainingDocumentInstaces(Connection conn,
+			Vector<DocumentInstance> docInstanceVec) {
+		try {
+			String queryString = DBConfig.QUERY_INSERT_IN_TRAINING_DATA_TABLE;
+			PreparedStatement query = conn.prepareStatement(queryString);
+			for (DocumentInstance docInst : docInstanceVec) {
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				ObjectOutputStream oos = new ObjectOutputStream(baos);
+				oos.writeObject(docInst);
+				byte[] objectBytesArr = baos.toByteArray();
+				ByteArrayInputStream bais = new ByteArrayInputStream(objectBytesArr);
+				query.setString(1, docInst.getDocNGram().getName());
+				query.setString(2, docInst.getDocNGram().getCategory());
+				query.setBinaryStream(3, bais, objectBytesArr.length);
+				query.executeUpdate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

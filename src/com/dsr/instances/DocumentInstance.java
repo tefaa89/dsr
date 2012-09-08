@@ -1,18 +1,33 @@
 package com.dsr.instances;
 
+import java.io.Serializable;
 import java.util.Vector;
 
-public class DocumentInstance extends DocumentNGrams {
+public class DocumentInstance implements Serializable {
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
+	private DocumentNGrams docNGram;
 	private Vector<Integer> featuresFValues;
 	private Vector<Double> featuresTFValuesVec;
 	private Vector<Double> featuresTFIDFValuesVec;
 
+	public DocumentInstance() {
+
+	}
+
 	public DocumentInstance(DocumentNGrams docNGram) {
-		super(docNGram, docNGram.getnGramVec(), docNGram.getnGramType());
+		this.docNGram = docNGram;
+	}
+
+	public DocumentNGrams getDocNGram() {
+		return docNGram;
+	}
+
+	public void setDocNGram(DocumentNGrams docNGram) {
+		this.docNGram = docNGram;
 	}
 
 	public Vector<Integer> getFeaturesFValues() {
@@ -41,10 +56,11 @@ public class DocumentInstance extends DocumentNGrams {
 
 	@Override
 	public String toString() {
-		return "===> Name: " + getName() + "\n     Category: " + getCategory() + "\n     Content: "
-				+ getContent() + "\n     NGramType: " + getnGramType() + "\n     NGram: "
-				+ getnGramVec() + "\n     FValues: " + featuresFValues + "\n     TFValues: "
-				+ featuresTFValuesVec + "\n     TF-IDFValues: " + featuresTFIDFValuesVec
+		return "===> Name: " + docNGram.getName() + "\n     Category: " + docNGram.getCategory()
+				+ "\n     Content: " + docNGram.getContent() + "\n     NGramType: "
+				+ docNGram.getnGramType() + "\n     NGram: " + docNGram.getnGramVec()
+				+ "\n     FValues: " + featuresFValues + "\n     TFValues: " + featuresTFValuesVec
+				+ "\n     TF-IDFValues: " + featuresTFIDFValuesVec
 				+ "\n ========================================================\n";
 	}
 }

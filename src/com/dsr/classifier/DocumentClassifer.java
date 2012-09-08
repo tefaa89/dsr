@@ -3,7 +3,10 @@ package com.dsr.classifier;
 import java.io.Serializable;
 import java.util.Vector;
 import weka.classifiers.Classifier;
+import weka.classifiers.UpdateableClassifier;
+import weka.core.Instance;
 import weka.core.Instances;
+import com.dsr.database.DBConnection;
 import com.dsr.database.DBQuery;
 import com.dsr.instances.DocumentInstance;
 import com.dsr.instances.DocumentInstances;
@@ -62,23 +65,33 @@ public abstract class DocumentClassifer implements Serializable {
 			Vector<DocumentInstance> trainingDataVec = getOldTrainingData();
 			trainingDataVec.addAll(docInstances.getDocInstanceVec());
 			DocumentInstancesBuilder docInstancesBuilder = new DocumentInstancesBuilder(
-					trainingDataVec);
+					trainingDataVec,getDocInstancesInfo(),false);
+			docInstancesBuilder.setBuildFeatures(true);
 			docInstancesBuilder.buildInstances();
 			wekaInstances = DSRWekaUtil.convertDocInstancesToWekaInstances(
 					docInstancesBuilder.getDocumentInstances(), featuresType);
+			try {
+				classifier.buildClassifier(wekaInstances);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} else {
 			wekaInstances = DSRWekaUtil.convertDocInstancesToWekaInstances(docInstances,
 					featuresType);
-		}
-		try {
-			classifier.buildClassifier(wekaInstances);
-		} catch (Exception e) {
-			e.printStackTrace();
+			try {
+				UpdateableClassifier updateClassifier = (UpdateableClassifier) classifier;
+				for (Instance inst : wekaInstances)
+					updateClassifier.updateClassifier(inst);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		updateDatabase(docInstances.getDocInstanceVec());
 	}
 
 	protected boolean containsNewCategory(DocumentInstances docIntances) {
+		if (docInstancesInfo.getCategoriesVec() == null)
+			return true;
 		Vector<String> newCategories = docIntances.getCategoriesVec();
 		for (String category : newCategories) {
 			if (docInstancesInfo.getCategoriesVec().contains(category))
@@ -88,11 +101,13 @@ public abstract class DocumentClassifer implements Serializable {
 	}
 
 	protected Vector<DocumentInstance> getOldTrainingData() {
-		Vector<DocumentInstance> docInstances = new Vector<DocumentInstance>();
-		return docInstances;
+		Vector<DocumentInstance> docInstanceVec = DBQuery.getTrainingDocumentInstaces(DBConnection.connect());
+		if(docInstanceVec == null)
+			return new Vector<DocumentInstance>();
+		return docInstanceVec;
 	}
 
 	protected void updateDatabase(Vector<DocumentInstance> instanceVec) {
-		DBQuery.storeTrainingDocumentInstaces(instanceVec);
+		DBQuery.storeTrainingDocumentInstaces(DBConnection.connect(), instanceVec);
 	}
 }
