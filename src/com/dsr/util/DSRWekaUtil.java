@@ -10,12 +10,11 @@ import weka.core.DenseInstance;
 import weka.core.Instances;
 
 public class DSRWekaUtil {
-	public static Instances convertDocInstancesToWekaInstances(DocumentInstances docInstances,
-			FeatureValuesEnum valuesType) {
+	public static Instances convertDocInstancesToWekaInstances(DocumentInstances docInstances) {
 		Vector<String> features = docInstances.getFeatures();
 		ArrayList<Attribute> atts = new ArrayList<Attribute>();
 		ArrayList<String> classVal = new ArrayList<String>();
-
+		FeatureValuesEnum valuesType = docInstances.getDocInstancesInfo().getFeaturesType();
 		// Adding Class Names
 		for (String className : docInstances.getCategoriesVec())
 			classVal.add(className);
@@ -36,7 +35,8 @@ public class DSRWekaUtil {
 			else
 				instanceValues = convertVectorToDoubleArray(
 						docInstance.getFeaturesTFIDFValuesVec(), wekaInstances.numAttributes());
-			int classIndex = docInstances.getCategoriesVec().indexOf(docInstance.getDocNGram().getCategory());
+			int classIndex = docInstances.getCategoriesVec().indexOf(
+					docInstance.getDocNGram().getCategory());
 			instanceValues[wekaInstances.numAttributes() - 1] = classIndex;
 
 			wekaInstances.add(new DenseInstance(1.0, instanceValues));

@@ -1,9 +1,13 @@
 package com.dsr.classifier;
 
+import java.util.Vector;
 import weka.classifiers.lazy.IBk;
+import weka.core.Instance;
+import weka.core.Instances;
 import com.dsr.instances.DocumentInstance;
 import com.dsr.instances.DocumentInstances;
 import com.dsr.instances.DocumentInstancesInfo;
+import com.dsr.util.DSRWekaUtil;
 import com.dsr.util.enumu.FeatureValuesEnum;
 import com.dsr.util.enumu.NGramEnum;
 
@@ -23,6 +27,7 @@ public class IBKDocumentClassifier extends DocumentClassifer {
 		docInfo.setNGramType(nGramType);
 		docInfo.setFeaturesType(featuresType);
 		setDocInstancesInfo(docInfo);
+		setTrainedClassifierBool(false);
 	}
 
 	public IBKDocumentClassifier(DocumentInstancesInfo docInstancesInfo) {
@@ -37,9 +42,17 @@ public class IBKDocumentClassifier extends DocumentClassifer {
 	}
 
 	@Override
-	public int[] classifyDocumentInstances(DocumentInstances docInstances) {
-		// TODO Auto-generated method stub
-		return null;
+	public Vector<Integer> classifyDocumentInstances(DocumentInstances docInstances) {
+		Instances instances = DSRWekaUtil.convertDocInstancesToWekaInstances(docInstances);
+		Vector<Integer> res = new Vector<Integer>();
+		for (Instance inst : instances) {
+			try {
+				res.add((int) ibkClassifier.classifyInstance(inst));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return res;
 	}
 
 	@Override

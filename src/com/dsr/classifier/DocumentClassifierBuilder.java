@@ -10,12 +10,12 @@ public class DocumentClassifierBuilder {
 	private DocumentClassifer docClassifier;
 	private ClassifiersEnum classifierType;
 	private DocumentInstances docInstances;
-	
+
 	public DocumentClassifierBuilder(ClassifiersEnum classifierType, DocumentInstances docInstances) {
 		this.classifierType = classifierType;
 		this.docInstances = docInstances;
 	}
-	
+
 	private void initClassifier() {
 		if (classifierType == ClassifiersEnum.IBK)
 			docClassifier = new IBKDocumentClassifier();
@@ -23,15 +23,15 @@ public class DocumentClassifierBuilder {
 			docClassifier = new NaiveBayesDocumentClassifier();
 		docClassifier = null;
 	}
-	
+
 	public void build()
 	{
 		initClassifier();
 		trainClassifier();
 	}
-	
+
 	private void trainClassifier() {
-		Instances wekaInstances = DSRWekaUtil.convertDocInstancesToWekaInstances(docInstances, FeatureValuesEnum.TFIDF_VALUES);
+		Instances wekaInstances = DSRWekaUtil.convertDocInstancesToWekaInstances(docInstances);
 		try {
 		//	docClassifier.buildClassifier(wekaInstances);
 		} catch (Exception e) {

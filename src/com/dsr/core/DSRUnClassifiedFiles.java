@@ -17,6 +17,16 @@ public class DSRUnClassifiedFiles {
 		this.unClassifiedFiles = unClassifiedFiles;
 	}
 
+	public DSRUnClassifiedFiles(String directory)
+	{
+		buildUnclassifiedFilesVec(directory);
+	}
+
+	private void buildUnclassifiedFilesVec(String directory) {
+		File directoryFile = new File(directory);
+		unClassifiedFiles = convertFilesToVector(directoryFile.listFiles());
+	}
+
 	public Vector<DSRFile> getUnClassifiedFiles() {
 		return unClassifiedFiles;
 	}
@@ -31,6 +41,15 @@ public class DSRUnClassifiedFiles {
 
 	public void addFile(String fileName, byte[] bytes) {
 		unClassifiedFiles.add(new DSRFile(fileName, bytes));
+	}
+
+	private Vector<DSRFile> convertFilesToVector(File[] files) {
+		Vector<DSRFile> dsrFilesVec = new Vector<DSRFile>();
+		for (File file : files) {
+			if (!file.isDirectory())
+				dsrFilesVec.add(new DSRFile(file.getName(), FileUtil.getByteArrayForFile(file)));
+		}
+		return dsrFilesVec;
 	}
 
 	public Vector<OCRSendData> getPreprocessingVector() {

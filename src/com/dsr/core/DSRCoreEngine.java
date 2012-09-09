@@ -43,7 +43,7 @@ public class DSRCoreEngine {
 		}
 	}
 
-	public int[] classifyFiles(DSRUnClassifiedFiles files) {
+	public Vector<Integer> classifyFiles(DSRUnClassifiedFiles files) {
 		DocumentsProcessing docProcess = new DocumentsProcessing(files.getPreprocessingVector());
 		docProcess.process();
 		Vector<DocumentInfo> docInfoVec = docProcess.getDocumentInfoVec();
@@ -51,9 +51,9 @@ public class DSRCoreEngine {
 				classifier.getDocInstancesInfo(), true);
 		docInstancesB.setBuildFeatures(false);
 		docInstancesB.buildInstances();
-		int[] classificationArray = classifier.classifyDocumentInstances(docInstancesB
+		Vector<Integer> classificationVec = classifier.classifyDocumentInstances(docInstancesB
 				.getDocumentInstances());
-		return classificationArray;
+		return classificationVec;
 	}
 
 	public void updateClassifier(DSRTrainingFiles newTrainingFiles,
@@ -76,10 +76,7 @@ public class DSRCoreEngine {
 	}
 
 	private void backupCurrentTrainedClassifier() {
-		/*
-		 * 1- Check old backups naming 2- Rename
-		 * Config.SERIALIZED_CLASSIFIER_OBJECT_PATH
-		 */
+
 	}
 
 	private boolean isClassifierObjectExists() {

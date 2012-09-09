@@ -11,10 +11,9 @@ import com.dsr.database.DBQuery;
 import com.dsr.instances.DocumentInstance;
 import com.dsr.instances.DocumentInstances;
 import com.dsr.instances.DocumentInstancesBuilder;
+import com.dsr.instances.DocumentInstancesInfo;
 import com.dsr.util.DSRWekaUtil;
 import com.dsr.util.enumu.ClassifiersEnum;
-import com.dsr.util.enumu.FeatureValuesEnum;
-import com.dsr.instances.DocumentInstancesInfo;
 
 public abstract class DocumentClassifer implements Serializable {
 
@@ -26,15 +25,13 @@ public abstract class DocumentClassifer implements Serializable {
 	private DocumentInstancesInfo docInstancesInfo;
 	private ClassifiersEnum classifierType;
 
+	private boolean trainedClassifierBool;
+
 	public abstract int classifyDocumentInstance(DocumentInstance docInstance);
 
-	public abstract int[] classifyDocumentInstances(DocumentInstances docInstances);
+	public abstract Vector<Integer> classifyDocumentInstances(DocumentInstances docInstances);
 
 	public abstract void updateClassifier(DocumentInstances docInstances);
-
-	public boolean isClassifierTrainined() {
-		return docInstancesInfo == null ? false : true;
-	}
 
 	public ClassifiersEnum getClassifierType() {
 		return classifierType;
@@ -59,29 +56,29 @@ public abstract class DocumentClassifer implements Serializable {
 		 * DB) 4- Add old training data to new training data 5- Build training
 		 * instances 6- Train Classifier 7- Update DocumentInstancesInfo
 		 */
-		FeatureValuesEnum featuresType = getDocInstancesInfo().getFeaturesType();
 		Instances wekaInstances;
 		if (containsNewCategory(docInstances)) {
 			Vector<DocumentInstance> trainingDataVec = getOldTrainingData();
 			trainingDataVec.addAll(docInstances.getDocInstanceVec());
 			DocumentInstancesBuilder docInstancesBuilder = new DocumentInstancesBuilder(
-					trainingDataVec,getDocInstancesInfo(),false);
+					trainingDataVec, getDocInstancesInfo(), false);
 			docInstancesBuilder.setBuildFeatures(true);
 			docInstancesBuilder.buildInstances();
-			wekaInstances = DSRWekaUtil.convertDocInstancesToWekaInstances(
-					docInstancesBuilder.getDocumentInstances(), featuresType);
+			wekaInstances = DSRWekaUtil.convertDocInstancesToWekaInstances(docInstancesBuilder
+					.getDocumentInstances());
 			try {
 				classifier.buildClassifier(wekaInstances);
+				setTrainedClassifierBool(true);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else {
-			wekaInstances = DSRWekaUtil.convertDocInstancesToWekaInstances(docInstances,
-					featuresType);
+			wekaInstances = DSRWekaUtil.convertDocInstancesToWekaInstances(docInstances);
 			try {
 				UpdateableClassifier updateClassifier = (UpdateableClassifier) classifier;
 				for (Instance inst : wekaInstances)
 					updateClassifier.updateClassifier(inst);
+				setTrainedClassifierBool(true);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -101,13 +98,22 @@ public abstract class DocumentClassifer implements Serializable {
 	}
 
 	protected Vector<DocumentInstance> getOldTrainingData() {
-		Vector<DocumentInstance> docInstanceVec = DBQuery.getTrainingDocumentInstaces(DBConnection.connect());
-		if(docInstanceVec == null)
+		Vector<DocumentInstance> docInstanceVec = DBQuery.getTrainingDocumentInstaces(DBConnection
+				.connect());
+		if (docInstanceVec == null)
 			return new Vector<DocumentInstance>();
 		return docInstanceVec;
 	}
 
 	protected void updateDatabase(Vector<DocumentInstance> instanceVec) {
 		DBQuery.storeTrainingDocumentInstaces(DBConnection.connect(), instanceVec);
+	}
+
+	public boolean isTrainedClassifierBool() {
+		return trainedClassifierBool;
+	}
+
+	public void setTrainedClassifierBool(boolean trainedClassifierBool) {
+		this.trainedClassifierBool = trainedClassifierBool;
 	}
 }
