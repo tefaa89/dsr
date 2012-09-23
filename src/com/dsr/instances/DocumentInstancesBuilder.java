@@ -54,7 +54,7 @@ public class DocumentInstancesBuilder {
 	}
 
 	private void buildFeatures() {
-		if (docInstancesInfo.getFeaturesVec() == null || buildFeatures) {
+		if (buildFeatures) {
 			DocumentFeaturesBuilder dfb = new DocumentFeaturesBuilder(docNGramVec);
 			dfb.buildFeatures();
 			docInstancesInfo.setFeaturesVec(dfb.getFeaturesVec());
@@ -62,6 +62,8 @@ public class DocumentInstancesBuilder {
 	}
 
 	private void buildCategories() {
+		if (!buildFeatures)
+			return;
 		Vector<String> categoriesVec = new Vector<String>();
 		for (DocumentNGrams doc : docNGramVec) {
 			if (!categoriesVec.contains(doc.getCategory()))
@@ -71,12 +73,13 @@ public class DocumentInstancesBuilder {
 	}
 
 	private void buildFeaturesValues() {
+		if (docInstancesInfo.getFeaturesVec() == null)
+			return;
 		DocumentValuesBuilder dvb = new DocumentValuesBuilder(docInstancesInfo.getFeaturesVec(),
-				docNGramVec);
+				docInstancesInfo.getFeaturesType(), docNGramVec);
 		dvb.build();
 		docInstances = new DocumentInstances(dvb.getDocumentInstances());
-		docInstances.setCategoriesVec(docInstancesInfo.getCategoriesVec());
-		docInstances.setFeatures(docInstancesInfo.getFeaturesVec());
+		docInstances.setDocInstancesInfo(docInstancesInfo);
 		docInstances.setFeaturesIDFVec(dvb.getFeaturesIDFValues());
 	}
 

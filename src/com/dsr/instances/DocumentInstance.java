@@ -10,9 +10,7 @@ public class DocumentInstance implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private DocumentNGrams docNGram;
-	private Vector<Integer> featuresFValues;
-	private Vector<Double> featuresTFValuesVec;
-	private Vector<Double> featuresTFIDFValuesVec;
+	private Vector<Double> featuresValuesVec;
 
 	public DocumentInstance() {
 
@@ -30,28 +28,12 @@ public class DocumentInstance implements Serializable {
 		this.docNGram = docNGram;
 	}
 
-	public Vector<Integer> getFeaturesFValues() {
-		return featuresFValues;
+	public Vector<Double> getFeaturesValues() {
+		return featuresValuesVec;
 	}
 
-	public void setFeaturesFValues(Vector<Integer> featuresFValues) {
-		this.featuresFValues = featuresFValues;
-	}
-
-	public Vector<Double> getFeaturesTFValues() {
-		return featuresTFValuesVec;
-	}
-
-	public void setFeaturesTFValues(Vector<Double> featuresTFValuesVec) {
-		this.featuresTFValuesVec = featuresTFValuesVec;
-	}
-
-	public Vector<Double> getFeaturesTFIDFValuesVec() {
-		return featuresTFIDFValuesVec;
-	}
-
-	public void setFeaturesTFIDFValuesVec(Vector<Double> featuresTFIDFValuesVec) {
-		this.featuresTFIDFValuesVec = featuresTFIDFValuesVec;
+	public void setFeaturesValues(Vector<Double> featuresValuesVec) {
+		this.featuresValuesVec = featuresValuesVec;
 	}
 
 	@Override
@@ -59,8 +41,7 @@ public class DocumentInstance implements Serializable {
 		return "===> Name: " + docNGram.getName() + "\n     Category: " + docNGram.getCategory()
 				+ "\n     Content: " + docNGram.getContent() + "\n     NGramType: "
 				+ docNGram.getnGramType() + "\n     NGram: " + docNGram.getnGramVec()
-				+ "\n     FValues: " + featuresFValues + "\n     TFValues: " + featuresTFValuesVec
-				+ "\n     TF-IDFValues: " + featuresTFIDFValuesVec
+				+ "\n     FValues: " + featuresValuesVec
 				+ "\n ========================================================\n";
 	}
 }

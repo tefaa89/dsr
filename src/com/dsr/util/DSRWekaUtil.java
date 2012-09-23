@@ -2,19 +2,17 @@ package com.dsr.util;
 
 import java.util.ArrayList;
 import java.util.Vector;
-import com.dsr.instances.DocumentInstance;
-import com.dsr.instances.DocumentInstances;
-import com.dsr.util.enumu.FeatureValuesEnum;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instances;
+import com.dsr.instances.DocumentInstance;
+import com.dsr.instances.DocumentInstances;
 
 public class DSRWekaUtil {
 	public static Instances convertDocInstancesToWekaInstances(DocumentInstances docInstances) {
 		Vector<String> features = docInstances.getFeatures();
 		ArrayList<Attribute> atts = new ArrayList<Attribute>();
 		ArrayList<String> classVal = new ArrayList<String>();
-		FeatureValuesEnum valuesType = docInstances.getDocInstancesInfo().getFeaturesType();
 		// Adding Class Names
 		for (String className : docInstances.getCategoriesVec())
 			classVal.add(className);
@@ -29,16 +27,15 @@ public class DSRWekaUtil {
 		wekaInstances.setClassIndex(wekaInstances.numAttributes() - 1);
 		for (DocumentInstance docInstance : docInstances) {
 			double[] instanceValues;
-			if (valuesType == FeatureValuesEnum.TF_VALUES)
-				instanceValues = convertVectorToDoubleArray(docInstance.getFeaturesTFValues(),
-						wekaInstances.numAttributes());
-			else
-				instanceValues = convertVectorToDoubleArray(
-						docInstance.getFeaturesTFIDFValuesVec(), wekaInstances.numAttributes());
+			instanceValues = convertVectorToDoubleArray(docInstance.getFeaturesValues(),
+					wekaInstances.numAttributes());
 			int classIndex = docInstances.getCategoriesVec().indexOf(
 					docInstance.getDocNGram().getCategory());
-			instanceValues[wekaInstances.numAttributes() - 1] = classIndex;
-
+			/*
+			 * TODO Try to find a way to indicate that an instance is
+			 * uncategorized instead of giving a random class to it.
+			 */
+			instanceValues[wekaInstances.numAttributes() - 1] = classIndex < 0 ? 0 : classIndex;
 			wekaInstances.add(new DenseInstance(1.0, instanceValues));
 		}
 		return wekaInstances;

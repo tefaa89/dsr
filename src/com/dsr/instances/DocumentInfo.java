@@ -2,19 +2,28 @@ package com.dsr.instances;
 
 import java.io.Serializable;
 
-public class DocumentInfo implements Serializable{
+public class DocumentInfo implements Serializable {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
+	private int id;
 	private String name;
 	private String category;
 	private String content;
 
-	public DocumentInfo(String name, String category, String content){
+	public DocumentInfo(String name, String category, String content) {
 		this.name = name;
 		this.category = category;
 		this.content = content;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public String getName() {
@@ -31,7 +40,12 @@ public class DocumentInfo implements Serializable{
 
 	@Override
 	public String toString() {
-		return "===> Name: " + name + "\n     Category: " + category + "\n     Content: " + content
-				+ "\n ========================================================\n";
+		String res = "";
+		res += "===>";
+		res += "\tID: " + id + "\n";
+		res += "\tName: " + name + "\n";
+		res += "\tCategory: " + category + "\n";
+		res += "\tContent: " + content + "\n\n";
+		return res;
 	}
 }

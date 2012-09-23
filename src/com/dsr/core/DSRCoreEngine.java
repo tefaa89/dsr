@@ -6,8 +6,13 @@ import weka.classifiers.lazy.IBk;
 import com.dsr.classifier.DocumentClassifer;
 import com.dsr.classifier.IBKDocumentClassifier;
 import com.dsr.configuration.Config;
+import com.dsr.database.DBConnection;
+import com.dsr.database.DBQuery;
 import com.dsr.instances.DocumentInfo;
+import com.dsr.instances.DocumentInstance;
+import com.dsr.instances.DocumentInstances;
 import com.dsr.instances.DocumentInstancesBuilder;
+import com.dsr.instances.DocumentInstancesInfo;
 import com.dsr.preprocessing.DocumentsProcessing;
 import com.dsr.util.FileUtil;
 import com.dsr.util.enumu.FeatureValuesEnum;
@@ -43,36 +48,46 @@ public class DSRCoreEngine {
 		}
 	}
 
-	public Vector<Integer> classifyFiles(DSRUnClassifiedFiles files) {
+	public Vector<String> classifyFiles(DSRUnClassifiedFiles files) {
 		DocumentsProcessing docProcess = new DocumentsProcessing(files.getPreprocessingVector());
 		docProcess.process();
 		Vector<DocumentInfo> docInfoVec = docProcess.getDocumentInfoVec();
+		DocumentInstancesInfo docInstancesInfo = classifier.getDocInstancesInfo();
 		DocumentInstancesBuilder docInstancesB = new DocumentInstancesBuilder(docInfoVec,
-				classifier.getDocInstancesInfo(), true);
+				docInstancesInfo, true);
 		docInstancesB.setBuildFeatures(false);
 		docInstancesB.buildInstances();
-		Vector<Integer> classificationVec = classifier.classifyDocumentInstances(docInstancesB
+		Vector<String> classificationVec = classifier.classifyDocumentInstances(docInstancesB
 				.getDocumentInstances());
 		return classificationVec;
 	}
 
-	public void updateClassifier(DSRTrainingFiles newTrainingFiles,
-			Vector<DocumentInfo> tempDocInfoVec) {
+	public void updateClassifier(DSRTrainingFiles newTrainingFiles) {
 		Vector<DocumentInfo> docInfoVec;
 		backupCurrentTrainedClassifier();
-		/*
-		 * DocumentsProcessing docProcess = new DocumentsProcessing(
-		 * newTrainingFiles.getPreprocessingVector()); docProcess.process();
-		 * docInfoVec = docProcess.getDocumentInfoVec();
-		 */
-		docInfoVec = tempDocInfoVec;
+
+		DocumentsProcessing docProcess = new DocumentsProcessing(
+				newTrainingFiles.getPreprocessingVector());
+		docProcess.process();
+		docInfoVec = docProcess.getDocumentInfoVec();
+
+		// docInfoVec = tempDocInfoVec;
 
 		DocumentInstancesBuilder docInstanceB = new DocumentInstancesBuilder(docInfoVec,
-				classifier.getDocInstancesInfo(),true);
-		docInstanceB.setBuildFeatures(false);
+				classifier.getDocInstancesInfo(), true);
+		if(classifier.isTrainedClassifierBool())
+			docInstanceB.setBuildFeatures(false);
+		else
+			docInstanceB.setBuildFeatures(true);
 		docInstanceB.buildInstances();
 		classifier.updateClassifier(docInstanceB.getDocumentInstances());
-		//FileUtil.writeObjectToFile(classifier, Config.SERIALIZED_CLASSIFIER_OBJECT_PATH);
+	}
+
+	public void trainClassifierFromDB() {
+		Vector<DocumentInstance> trainingInstancesVec = DBQuery
+				.getTrainingDocumentInstaces(DBConnection.connect());
+		DocumentInstancesBuilder docInstancesBuilder = new DocumentInstancesBuilder(
+				trainingInstancesVec);
 	}
 
 	private void backupCurrentTrainedClassifier() {
@@ -80,8 +95,8 @@ public class DSRCoreEngine {
 	}
 
 	private boolean isClassifierObjectExists() {
-		File file = new File(Config.SERIALIZED_CLASSIFIER_OBJECT_PATH);
-		return file.exists();
+		// TODO Check Database
+		return false;
 	}
 
 	private boolean isClassifierModelExists() {

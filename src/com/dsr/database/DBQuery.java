@@ -14,6 +14,7 @@ import com.dsr.configuration.DBConfig;
 import com.dsr.instances.DocumentInfo;
 import com.dsr.instances.DocumentInstance;
 import com.dsr.util.Trace;
+import com.mysql.jdbc.Statement;
 
 public class DBQuery {
 	public static DocumentInfo[] getAllDocuments(Connection conn) {
@@ -53,23 +54,31 @@ public class DBQuery {
 	}
 
 	public static void storeDocumentInfo(Connection conn, DocumentInfo docInfo) {
-		DBQuery.storeMultipleDocumentsInfo(conn, new DocumentInfo[] { docInfo });
+		Vector<DocumentInfo> docInfoVec = new Vector<DocumentInfo>();
+		docInfoVec.add(docInfo);
+		DBQuery.storeMultipleDocumentsInfo(conn, docInfoVec);
 	}
 
-	public static void storeMultipleDocumentsInfo(Connection conn, DocumentInfo[] docInfoArray) {
+	public static void storeMultipleDocumentsInfo(Connection conn,
+			Vector<DocumentInfo> docInfoVec) {
 		try {
 			String queryString = "INSERT INTO `document_system_recognition`.`documents_info`(`NAME` ,`CATEGORY` ,`CONTENT`) VALUES(?,?,?);";
-			PreparedStatement query = conn.prepareStatement(queryString);
-			for (int i = 0; i < docInfoArray.length; i++) {
-				String name = docInfoArray[i].getName();
-				String category = docInfoArray[i].getCategory();
-				String content = docInfoArray[i].getContent();
+			PreparedStatement query = conn.prepareStatement(queryString,
+					Statement.RETURN_GENERATED_KEYS);
+			int counter = 0;
+			for (DocumentInfo docInfo : docInfoVec) {
+				String name = docInfo.getName();
+				String category = docInfo.getCategory();
+				String content = docInfo.getContent();
 				query.setString(1, name);
 				query.setString(2, category);
 				query.setString(3, content);
-				query.addBatch();
-				Trace.trace("Adding Entry " + i + " to DB");
-				query.executeBatch();
+				Trace.trace("Adding Entry " + counter + " to DB");
+				query.executeUpdate();
+				ResultSet idsSet = query.getGeneratedKeys();
+				idsSet.next();
+				docInfo.setId(idsSet.getInt(1));
+				counter++;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -77,28 +86,26 @@ public class DBQuery {
 	}
 
 	public static Vector<DocumentInstance> getTrainingDocumentInstaces(Connection conn) {
-		Vector<DocumentInstance> docInstanceVec = new Vector<DocumentInstance>();
-		try {
-			String queryString = DBConfig.QUERY_GET_TRAINING_DATA;
-			PreparedStatement ps = conn.prepareStatement(queryString);
-			ResultSet resultSet = ps.executeQuery();
-			while(resultSet.next())
-			{
-				InputStream is = resultSet.getBlob("instance").getBinaryStream();
-				ObjectInputStream ois = new ObjectInputStream(is);
-				docInstanceVec.add((DocumentInstance)ois.readObject());
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return docInstanceVec;
+		return new Vector<DocumentInstance>();
+		/*
+		 * Vector<DocumentInstance> docInstanceVec = new
+		 * Vector<DocumentInstance>(); try { String queryString =
+		 * DBConfig.QUERY_GET_TRAINING_DATA; PreparedStatement ps =
+		 * conn.prepareStatement(queryString); ResultSet resultSet =
+		 * ps.executeQuery(); while(resultSet.next()) { InputStream is =
+		 * resultSet.getBlob("instance").getBinaryStream(); ObjectInputStream
+		 * ois = new ObjectInputStream(is);
+		 * docInstanceVec.add((DocumentInstance)ois.readObject()); } } catch
+		 * (Exception e) { e.printStackTrace(); } return docInstanceVec;
+		 */
 	}
 
 	public static void storeTrainingDocumentInstaces(Connection conn,
 			Vector<DocumentInstance> docInstanceVec) {
 		try {
 			String queryString = DBConfig.QUERY_INSERT_IN_TRAINING_DATA_TABLE;
-			PreparedStatement query = conn.prepareStatement(queryString);
+			PreparedStatement query = conn.prepareStatement(queryString,
+					Statement.RETURN_GENERATED_KEYS);
 			for (DocumentInstance docInst : docInstanceVec) {
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				ObjectOutputStream oos = new ObjectOutputStream(baos);

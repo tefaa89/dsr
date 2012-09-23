@@ -27,47 +27,88 @@ public abstract class DocumentClassifer implements Serializable {
 
 	private boolean trainedClassifierBool;
 
-	public abstract int classifyDocumentInstance(DocumentInstance docInstance);
+	/**
+	 *
+	 * @param docInstances
+	 * @return Vector<String>
+	 */
+	public abstract Vector<String> classifyDocumentInstances(DocumentInstances docInstances);
 
-	public abstract Vector<Integer> classifyDocumentInstances(DocumentInstances docInstances);
-
+	/**
+	 *
+	 * @param docInstances
+	 * @return Void
+	 */
 	public abstract void updateClassifier(DocumentInstances docInstances);
 
+	/**
+	 *
+	 * @return The classifier type (ex, IBK, NB)
+	 */
 	public ClassifiersEnum getClassifierType() {
 		return classifierType;
 	}
 
+	/**
+	 *
+	 * @param classifierType
+	 * @return Void
+	 */
 	public void setClassifiersEnum(ClassifiersEnum classifierType) {
 		this.classifierType = classifierType;
 	}
 
+	/**
+	 *
+	 * @return Document Instances Information Object
+	 */
 	public DocumentInstancesInfo getDocInstancesInfo() {
 		return docInstancesInfo;
 	}
 
+	/**
+	 *
+	 * @param docInstancesInfo
+	 */
 	public void setDocInstancesInfo(DocumentInstancesInfo docInstancesInfo) {
 		this.docInstancesInfo = docInstancesInfo;
 	}
 
+	/**
+	 * 1- Check for new category 2- If new category found continue, else go to
+	 * step 3- Load old training data (All Document Instance entries in DB) 4-
+	 * Add old training data to new training data 5- Build training instances 6-
+	 * Train Classifier 7- Update DocumentInstancesInfo
+	 *
+	 * @param docInstances
+	 *            The new classified instances
+	 * @param classifier
+	 *            The classifier that is going to be trained
+	 * @return Nothing
+	 */
 	protected void updateClassifier(DocumentInstances docInstances, Classifier classifier) {
-		/*
-		 * 1- Check for new category 2- If new category found continue, else go
-		 * to step 3- Load old training data (All Document Instance entries in
-		 * DB) 4- Add old training data to new training data 5- Build training
-		 * instances 6- Train Classifier 7- Update DocumentInstancesInfo
-		 */
 		Instances wekaInstances;
 		if (containsNewCategory(docInstances)) {
 			Vector<DocumentInstance> trainingDataVec = getOldTrainingData();
+			boolean oldTrainingDataExists = trainingDataVec.size() > 0;
 			trainingDataVec.addAll(docInstances.getDocInstanceVec());
-			DocumentInstancesBuilder docInstancesBuilder = new DocumentInstancesBuilder(
-					trainingDataVec, getDocInstancesInfo(), false);
-			docInstancesBuilder.setBuildFeatures(true);
-			docInstancesBuilder.buildInstances();
-			wekaInstances = DSRWekaUtil.convertDocInstancesToWekaInstances(docInstancesBuilder
-					.getDocumentInstances());
+			DocumentInstances newDocInstances = docInstances;
+			if (oldTrainingDataExists) {
+				DocumentInstancesBuilder docInstancesBuilder = new DocumentInstancesBuilder(
+						trainingDataVec, getDocInstancesInfo(), false);
+				docInstancesBuilder.setBuildFeatures(true);
+				docInstancesBuilder.buildInstances();
+				newDocInstances = docInstancesBuilder.getDocumentInstances();
+			}
+			setDocInstancesInfo(newDocInstances.getDocInstancesInfo());
 			try {
-				classifier.buildClassifier(wekaInstances);
+				// If there is only one category then don't build the
+				// classifier just update the DB
+				if (getDocInstancesInfo().getCategoriesVec().size() > 1) {
+					wekaInstances = DSRWekaUtil.convertDocInstancesToWekaInstances(newDocInstances);
+					classifier.buildClassifier(wekaInstances);
+				}
+				// TODO Should I set the trainedClassifierBool to true or not
 				setTrainedClassifierBool(true);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -83,9 +124,42 @@ public abstract class DocumentClassifer implements Serializable {
 				e.printStackTrace();
 			}
 		}
-		updateDatabase(docInstances.getDocInstanceVec());
+		// updateDatabase(docInstances.getDocInstanceVec());
 	}
 
+	/**
+	 *
+	 * @param docInstances
+	 * @param classifier
+	 * @return Vector<String> that contains the classification strings for each
+	 *         instance
+	 */
+	protected Vector<String> classifyDocumentInstances(DocumentInstances docInstances,
+			Classifier classifier) {
+		if (!isTrainedClassifierBool())
+			return null;
+		Instances instances = DSRWekaUtil.convertDocInstancesToWekaInstances(docInstances);
+		Vector<String> res = new Vector<String>();
+		for (Instance inst : instances) {
+			try {
+				if (docInstances.getCategoriesVec().size() == 1)
+					res.add(docInstances.getCategoriesVec().firstElement());
+				else {
+					double classificationIndex = classifier.classifyInstance(inst);
+					res.add(instances.classAttribute().value((int) classificationIndex));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return res;
+	}
+
+	/**
+	 *
+	 * @param docIntances
+	 * @return
+	 */
 	protected boolean containsNewCategory(DocumentInstances docIntances) {
 		if (docInstancesInfo.getCategoriesVec() == null)
 			return true;
@@ -97,6 +171,10 @@ public abstract class DocumentClassifer implements Serializable {
 		return false;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	protected Vector<DocumentInstance> getOldTrainingData() {
 		Vector<DocumentInstance> docInstanceVec = DBQuery.getTrainingDocumentInstaces(DBConnection
 				.connect());
@@ -105,14 +183,26 @@ public abstract class DocumentClassifer implements Serializable {
 		return docInstanceVec;
 	}
 
+	/**
+	 *
+	 * @param instanceVec
+	 */
 	protected void updateDatabase(Vector<DocumentInstance> instanceVec) {
 		DBQuery.storeTrainingDocumentInstaces(DBConnection.connect(), instanceVec);
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public boolean isTrainedClassifierBool() {
 		return trainedClassifierBool;
 	}
 
+	/**
+	 *
+	 * @param trainedClassifierBool
+	 */
 	public void setTrainedClassifierBool(boolean trainedClassifierBool) {
 		this.trainedClassifierBool = trainedClassifierBool;
 	}
