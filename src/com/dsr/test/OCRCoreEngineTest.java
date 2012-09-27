@@ -47,10 +47,10 @@ public class OCRCoreEngineTest {
 	public static void testRealData() {
 		DSRCoreEngine engine = new DSRCoreEngine();
 
-/*		String s = "C:\\Users\\TeFa\\Desktop\\Data\\UID\\Classified";
+		String s = "C:\\Users\\TeFa\\Desktop\\Data\\UID\\Classified";
 		DSRTrainingFiles trainingFiles = new DSRTrainingFiles(s);
 		engine.updateClassifier(trainingFiles);
-*/
+
 		String ss = "C:\\Users\\TeFa\\Desktop\\Data\\UID\\UnClassified";
 		DSRUnClassifiedFiles unclassFiles = new DSRUnClassifiedFiles(ss);
 		Vector<String> classes = engine.classifyFiles(unclassFiles);

@@ -26,7 +26,7 @@ public class DSRCoreEngine {
 		if (classifier == null)
 		{
 			classifier = new IBKDocumentClassifier(new IBk(), NGramEnum.WORD_UNIGRAM,
-					FeatureValuesEnum.TFIDF_VALUES);
+					FeatureValuesEnum.TF_VALUES);
 			backupCurrentTrainedClassifier();
 		}
 	}
