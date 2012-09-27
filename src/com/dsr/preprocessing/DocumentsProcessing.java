@@ -39,7 +39,7 @@ public class DocumentsProcessing {
 		for (OCRSendData dataToSend : ocrSendDataVec) {
 			OCRReceivedData receivedData = ocrService.sendRequest(dataToSend);
 			ocrReceivedDataVec.add(receivedData);
-			Trace.trace("\n\n" + receivedData);
+			Trace.trace("Preprocessing: " + receivedData);
 		}
 	}
 

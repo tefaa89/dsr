@@ -4,6 +4,7 @@ import java.util.Vector;
 import weka.classifiers.lazy.IBk;
 import com.dsr.instances.DocumentInstances;
 import com.dsr.instances.DocumentInstancesInfo;
+import com.dsr.util.enumu.ClassifiersEnum;
 import com.dsr.util.enumu.FeatureValuesEnum;
 import com.dsr.util.enumu.NGramEnum;
 
@@ -23,6 +24,7 @@ public class IBKDocumentClassifier extends DocumentClassifer {
 		DocumentInstancesInfo docInfo = new DocumentInstancesInfo();
 		docInfo.setNGramType(nGramType);
 		docInfo.setFeaturesType(featuresType);
+		setClassifiersEnum(ClassifiersEnum.IBK);
 		setDocInstancesInfo(docInfo);
 		setTrainedClassifierBool(false);
 	}

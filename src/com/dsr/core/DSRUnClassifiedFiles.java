@@ -15,11 +15,13 @@ public class DSRUnClassifiedFiles {
 
 	public DSRUnClassifiedFiles(Vector<DSRFile> unClassifiedFiles) {
 		this.unClassifiedFiles = unClassifiedFiles;
+		buildPreprocessingVector();
 	}
 
 	public DSRUnClassifiedFiles(String directory)
 	{
 		buildUnclassifiedFilesVec(directory);
+		buildPreprocessingVector();
 	}
 
 	private void buildUnclassifiedFilesVec(String directory) {
@@ -52,10 +54,14 @@ public class DSRUnClassifiedFiles {
 		return dsrFilesVec;
 	}
 
-	public Vector<OCRSendData> getPreprocessingVector() {
+	private void buildPreprocessingVector()
+	{
 		ocrSendDataVec = new Vector<OCRSendData>();
 		for (DSRFile dsrFile : unClassifiedFiles)
 			ocrSendDataVec.add(new OCRSendData(dsrFile.getFileName(), dsrFile.getBytes()));
+	}
+
+	public Vector<OCRSendData> getPreprocessingVector() {
 		return ocrSendDataVec;
 	}
 }

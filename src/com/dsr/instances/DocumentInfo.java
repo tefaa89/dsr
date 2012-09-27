@@ -18,11 +18,11 @@ public class DocumentInfo implements Serializable {
 		this.content = content;
 	}
 
-	public void setId(int id) {
+	public void setDocID(int id) {
 		this.id = id;
 	}
 
-	public int getId() {
+	public int getDocID() {
 		return id;
 	}
 
@@ -38,6 +38,18 @@ public class DocumentInfo implements Serializable {
 		return content;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	@Override
 	public String toString() {
 		String res = "";
@@ -45,7 +57,7 @@ public class DocumentInfo implements Serializable {
 		res += "\tID: " + id + "\n";
 		res += "\tName: " + name + "\n";
 		res += "\tCategory: " + category + "\n";
-		res += "\tContent: " + content + "\n\n";
+		res += "\tContent Size: " + content.length() + "\n\n";
 		return res;
 	}
 }

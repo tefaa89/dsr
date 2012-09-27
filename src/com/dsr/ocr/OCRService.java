@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import com.google.gson.Gson;
 
 public class OCRService {
@@ -13,36 +15,46 @@ public class OCRService {
 	public OCRService(String jsonServiceURL) {
 		this.jsonServiceURL = jsonServiceURL;
 	}
-	
+
 	public OCRReceivedData sendRequest(Object objToSend) {
 		Gson gson = new Gson();
-		String json = gson.toJson(objToSend);
+		OCRReceivedData receivedData = null;
 		String jsonResponse = "";
-	//	System.out.println(json);
 		try {
+			OCRSendData ocrSendDataRaw = (OCRSendData) objToSend;
+			if(ocrSendDataRaw.getFileName() != null)
+				ocrSendDataRaw.setFileName(URLEncoder.encode(ocrSendDataRaw.getFileName(),"UTF-8"));
+			if(ocrSendDataRaw.getCategory() != null)
+				ocrSendDataRaw.setCategory(URLEncoder.encode(ocrSendDataRaw.getCategory(),"UTF-8"));
+
+			String json = gson.toJson(ocrSendDataRaw);
 			URL url = new URL(jsonServiceURL);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setDoOutput(true);
 			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Content-Type", "application/json");
-			
+			conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+
 			OutputStream os = conn.getOutputStream();
 			os.write(json.getBytes());
 			os.flush();
-			
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF8"));
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
 			String output;
 			while ((output = br.readLine()) != null) {
 				jsonResponse += output;
 			}
-			
-			conn.disconnect();
 
+			conn.disconnect();
+			receivedData = gson.fromJson(jsonResponse, OCRReceivedData.class);
+			if(receivedData.getFileName() != null)
+				receivedData.setFileName(URLDecoder.decode(receivedData.getFileName(), "UTF-8"));
+			if(receivedData.getCategory() != null)
+				receivedData.setCategory(URLDecoder.decode(receivedData.getCategory(), "UTF-8"));
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
-		OCRReceivedData receivedData = gson.fromJson(jsonResponse, OCRReceivedData.class);
+
 		return receivedData;
 	}
 }

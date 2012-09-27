@@ -15,10 +15,13 @@ public class DocumentInstancesBuilder {
 
 	private boolean buildFeatures;
 
+	private boolean effictiveInstances;
+
 	@SuppressWarnings("unchecked")
 	public DocumentInstancesBuilder(Vector<?> docInstorDocInfoVec,
 			DocumentInstancesInfo docInstancesInfo, boolean isDocInfo) {
 		buildFeatures = false;
+		effictiveInstances = false;
 		if (isDocInfo) {
 			this.docInfoVec = (Vector<DocumentInfo>) docInstorDocInfoVec;
 			this.docInstancesInfo = docInstancesInfo;
@@ -28,18 +31,21 @@ public class DocumentInstancesBuilder {
 			this.docInstancesInfo = docInstancesInfo;
 
 			for (DocumentInstance docInstance : docInstanceVec) {
-				docNGramVec.add(new DocumentNGrams(docInstance.getDocNGram().getnGramVec(),
-						docInstance.getDocNGram().getName(), docInstance.getDocNGram()
-								.getCategory(), docInstance.getDocNGram().getnGramType()));
+				DocumentNGrams docNGram = new DocumentNGrams(docInstance.getDocNGram()
+						.getnGramVec(), docInstance.getDocNGram().getDocID(), docInstance
+						.getDocNGram().getName(), docInstance.getDocNGram().getCategory(),
+						docInstance.getDocNGram().getnGramType());
+				docNGramVec.add(docNGram);
 			}
 		}
-	}
+	} 
 
 	public void buildInstances() {
 		buildNGrams();
 		buildFeatures();
 		buildCategories();
 		buildFeaturesValues();
+		setInstancesEffectiveness();
 	}
 
 	private void buildNGrams() {
@@ -83,6 +89,12 @@ public class DocumentInstancesBuilder {
 		docInstances.setFeaturesIDFVec(dvb.getFeaturesIDFValues());
 	}
 
+	private void setInstancesEffectiveness()
+	{
+		for(DocumentInstance docInstance: docInstances)
+			docInstance.setEffective(effictiveInstances);
+	}
+
 	public DocumentInstances getDocumentInstances() {
 		return docInstances;
 	}
@@ -113,5 +125,10 @@ public class DocumentInstancesBuilder {
 
 	public void setBuildFeatures(boolean buildFeatures) {
 		this.buildFeatures = buildFeatures;
+	}
+
+	public void setEffictiveInstances(boolean effictiveInstances)
+	{
+		this.effictiveInstances = effictiveInstances;
 	}
 }

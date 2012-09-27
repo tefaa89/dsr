@@ -27,6 +27,30 @@ public class OCRSendData {
 		encodedData = Base64.encodeToString(bytes, false);
 	}
 
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getEncodedData() {
+		return encodedData;
+	}
+
+	public void setEncodedData(String encodedData) {
+		this.encodedData = encodedData;
+	}
+
 	@Override
 	public String toString() {
 		return "[OCRSendData:\n    FileName: " + fileName + "\n    Category: " + category

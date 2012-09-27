@@ -22,6 +22,7 @@ public abstract class DocumentClassifer implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private int classifierID;
 	private DocumentInstancesInfo docInstancesInfo;
 	private ClassifiersEnum classifierType;
 
@@ -89,7 +90,7 @@ public abstract class DocumentClassifer implements Serializable {
 	protected void updateClassifier(DocumentInstances docInstances, Classifier classifier) {
 		Instances wekaInstances;
 		if (containsNewCategory(docInstances)) {
-			Vector<DocumentInstance> trainingDataVec = getOldTrainingData();
+			Vector<DocumentInstance> trainingDataVec = getEffictiveDocumentInstaces();
 			boolean oldTrainingDataExists = trainingDataVec.size() > 0;
 			trainingDataVec.addAll(docInstances.getDocInstanceVec());
 			DocumentInstances newDocInstances = docInstances;
@@ -124,7 +125,7 @@ public abstract class DocumentClassifer implements Serializable {
 				e.printStackTrace();
 			}
 		}
-		// updateDatabase(docInstances.getDocInstanceVec());
+		updateDatabase(docInstances.getDocInstanceVec());
 	}
 
 	/**
@@ -152,6 +153,7 @@ public abstract class DocumentClassifer implements Serializable {
 				e.printStackTrace();
 			}
 		}
+		//TODO Update Category in DB
 		return res;
 	}
 
@@ -175,8 +177,8 @@ public abstract class DocumentClassifer implements Serializable {
 	 *
 	 * @return
 	 */
-	protected Vector<DocumentInstance> getOldTrainingData() {
-		Vector<DocumentInstance> docInstanceVec = DBQuery.getTrainingDocumentInstaces(DBConnection
+	protected Vector<DocumentInstance> getEffictiveDocumentInstaces() {
+		Vector<DocumentInstance> docInstanceVec = DBQuery.getEffictiveDocumentInstaces(DBConnection
 				.connect());
 		if (docInstanceVec == null)
 			return new Vector<DocumentInstance>();
@@ -205,5 +207,13 @@ public abstract class DocumentClassifer implements Serializable {
 	 */
 	public void setTrainedClassifierBool(boolean trainedClassifierBool) {
 		this.trainedClassifierBool = trainedClassifierBool;
+	}
+
+	public int getClassifierID() {
+		return classifierID;
+	}
+
+	public void setClassifierID(int classifierID) {
+		this.classifierID = classifierID;
 	}
 }

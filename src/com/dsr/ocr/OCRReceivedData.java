@@ -23,8 +23,20 @@ public class OCRReceivedData {
 		return ocrString;
 	}
 
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public void setOcrString(String ocrString) {
+		this.ocrString = ocrString;
+	}
+
 	@Override
 	public String toString() {
-		return "### OCRReceivedData:\n    FileName: " + fileName + "\n    OCRString: " + ocrString;
+		return "===> OCRReceivedData:\n\tFileName: " + fileName + "\n\tOCRString Size: " + ocrString.length();
 	}
 }

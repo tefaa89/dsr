@@ -10,9 +10,9 @@ public class DBConnection {
 	private static Connection connection = null;
 
 	public static Connection connect() {
-		Trace.trace("Connecting to Database on " + DBConfig.DB_CONNECTION);
 		if (DBConnection.connection == null)
 			try {
+				Trace.trace("Connecting to Database on " + DBConfig.DB_CONNECTION);
 				Class.forName("com.mysql.jdbc.Driver");
 				DBConnection.connection = DriverManager.getConnection(DBConfig.DB_CONNECTION,
 						DBConfig.DB_USERNAME, DBConfig.DB_PASSWORD);
@@ -21,7 +21,7 @@ public class DBConnection {
 			}
 		return DBConnection.connection;
 	}
-	
+
 	public static boolean isConnected()
 	{
 		boolean isConn = false;

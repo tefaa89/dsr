@@ -18,14 +18,17 @@ public class DSRTrainingFiles {
 
 	public DSRTrainingFiles(Map<String, Vector<DSRFile>> trainingFiles) {
 		this.trainingFilesMap = trainingFiles;
+		buildPreprocessingVector();
 	}
 
 	public DSRTrainingFiles(String directory) {
 		buildTrainingFilesMapfromDirectory(directory);
+		buildPreprocessingVector();
 	}
 
 	public void setTrainingFiles(Map<String, Vector<DSRFile>> trainingFiles) {
 		this.trainingFilesMap = trainingFiles;
+		buildPreprocessingVector();
 	}
 
 	private void buildTrainingFilesMapfromDirectory(String directory) {
@@ -52,12 +55,16 @@ public class DSRTrainingFiles {
 		return dsrFilesVec;
 	}
 
-	public Vector<OCRSendData> getPreprocessingVector() {
+	private void buildPreprocessingVector()
+	{
 		ocrSendDataVec = new Vector<OCRSendData>();
 		for (String key : trainingFilesMap.keySet()) {
 			for (DSRFile dsrFile : trainingFilesMap.get(key))
 				ocrSendDataVec.add(new OCRSendData(dsrFile.getFileName(), key, dsrFile.getBytes()));
 		}
+	}
+
+	public Vector<OCRSendData> getPreprocessingVector() {
 		return ocrSendDataVec;
 	}
 }

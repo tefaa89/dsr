@@ -1,10 +1,15 @@
 package com.dsr.instances;
 
+import java.io.Serializable;
 import java.util.Vector;
 import com.dsr.util.enumu.FeatureValuesEnum;
 import com.dsr.util.enumu.NGramEnum;
 
-public class DocumentInstancesInfo {
+public class DocumentInstancesInfo implements Serializable {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private Vector<String> featuresVec;
 	private Vector<String> categoriesVec;
 	private Vector<Double> featureIDFValuesVec;
