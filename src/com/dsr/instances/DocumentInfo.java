@@ -18,6 +18,13 @@ public class DocumentInfo implements Serializable {
 		this.content = content;
 	}
 
+	public DocumentInfo(int id, String name, String category, String content) {
+		this.id = id;
+		this.name = name;
+		this.category = category;
+		this.content = content;
+	}
+
 	public void setDocID(int id) {
 		this.id = id;
 	}

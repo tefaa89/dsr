@@ -57,6 +57,14 @@ public class DocumentInstances implements Iterable<DocumentInstance>{
 		return docInstanceVec.toString();
 	}
 
+	public Vector<DocumentInfo> getDocumentsInfoVec()
+	{
+		Vector<DocumentInfo> docInfoVec = new Vector<DocumentInfo>();
+		for(DocumentInstance docInstance: docInstanceVec)
+			docInfoVec.add((DocumentInfo)docInstance.getDocNGram());
+		return docInfoVec;
+	}
+
 	@Override
 	public Iterator<DocumentInstance> iterator() {
 		return docInstanceVec.iterator();

@@ -2,6 +2,7 @@ package com.dsr.classifier;
 
 import java.util.Vector;
 import weka.classifiers.lazy.IBk;
+import com.dsr.instances.DocumentInfo;
 import com.dsr.instances.DocumentInstances;
 import com.dsr.instances.DocumentInstancesInfo;
 import com.dsr.util.enumu.ClassifiersEnum;
@@ -35,12 +36,17 @@ public class IBKDocumentClassifier extends DocumentClassifer {
 	}
 
 	@Override
-	public Vector<String> classifyDocumentInstances(DocumentInstances docInstances) {
+	public Vector<DocumentInfo> classifyDocumentInstances(DocumentInstances docInstances) {
 		return classifyDocumentInstances(docInstances,ibkClassifier);
 	}
 
 	@Override
 	public void updateClassifier(DocumentInstances docInstances) {
 		updateClassifier(docInstances, ibkClassifier);
+	}
+
+	@Override
+	public void refreshFromDB() {
+		refreshFromDB(ibkClassifier);
 	}
 }

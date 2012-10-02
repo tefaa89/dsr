@@ -35,10 +35,11 @@ public class DocumentInstancesBuilder {
 						.getnGramVec(), docInstance.getDocNGram().getDocID(), docInstance
 						.getDocNGram().getName(), docInstance.getDocNGram().getCategory(),
 						docInstance.getDocNGram().getnGramType());
+				docNGram.setContent(docInstance.getDocNGram().getContent());
 				docNGramVec.add(docNGram);
 			}
 		}
-	} 
+	}
 
 	public void buildInstances() {
 		buildNGrams();

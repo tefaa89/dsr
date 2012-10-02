@@ -31,7 +31,7 @@ public class DSRCoreEngine {
 		}
 	}
 
-	public Vector<String> classifyFiles(DSRUnClassifiedFiles files) {
+	public Vector<DocumentInfo> classifyFiles(DSRUnClassifiedFiles files) {
 		Trace.trace("Classifier: " + "Classifying " + files.getUnClassifiedFiles().size() + " Files");
 		DocumentsProcessing docProcess = new DocumentsProcessing(files.getPreprocessingVector());
 		docProcess.process();
@@ -44,7 +44,7 @@ public class DSRCoreEngine {
 		else
 			docInstancesB.setBuildFeatures(true);
 		docInstancesB.buildInstances();
-		Vector<String> classificationVec = classifier.classifyDocumentInstances(docInstancesB
+		Vector<DocumentInfo> classificationVec = classifier.classifyDocumentInstances(docInstancesB
 				.getDocumentInstances());
 		return classificationVec;
 	}
@@ -69,6 +69,23 @@ public class DSRCoreEngine {
 		docInstanceB.buildInstances();
 		classifier.updateClassifier(docInstanceB.getDocumentInstances());
 		backupCurrentTrainedClassifier();
+	}
+
+	public void updateClassifier(Vector<DocumentInfo> docInfoVec)
+	{
+		//For existing documents
+		// 1 - Update the new Category in DB
+		// 2 - Update instance effectiveness in DB
+		// 3 - ReFresh Classifier
+		DBQuery.updateCategories(DBConnection.connect(), docInfoVec);
+		DBQuery.updateInstanceEffectiveness(DBConnection.connect(), docInfoVec);
+		classifier.refreshFromDB();
+	}
+
+	public Vector<DocumentInfo> getAllDocumentsInfo()
+	{
+		Vector<DocumentInfo> docInfoVec = DBQuery.getAllDocuments(DBConnection.connect());
+		return docInfoVec;
 	}
 
 	private void backupCurrentTrainedClassifier() {

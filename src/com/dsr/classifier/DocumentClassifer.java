@@ -8,11 +8,13 @@ import weka.core.Instance;
 import weka.core.Instances;
 import com.dsr.database.DBConnection;
 import com.dsr.database.DBQuery;
+import com.dsr.instances.DocumentInfo;
 import com.dsr.instances.DocumentInstance;
 import com.dsr.instances.DocumentInstances;
 import com.dsr.instances.DocumentInstancesBuilder;
 import com.dsr.instances.DocumentInstancesInfo;
 import com.dsr.util.DSRWekaUtil;
+import com.dsr.util.Trace;
 import com.dsr.util.enumu.ClassifiersEnum;
 
 public abstract class DocumentClassifer implements Serializable {
@@ -33,7 +35,7 @@ public abstract class DocumentClassifer implements Serializable {
 	 * @param docInstances
 	 * @return Vector<String>
 	 */
-	public abstract Vector<String> classifyDocumentInstances(DocumentInstances docInstances);
+	public abstract Vector<DocumentInfo> classifyDocumentInstances(DocumentInstances docInstances);
 
 	/**
 	 *
@@ -41,6 +43,11 @@ public abstract class DocumentClassifer implements Serializable {
 	 * @return Void
 	 */
 	public abstract void updateClassifier(DocumentInstances docInstances);
+
+	/**
+	 *
+	 */
+	public abstract void refreshFromDB();
 
 	/**
 	 *
@@ -73,6 +80,27 @@ public abstract class DocumentClassifer implements Serializable {
 	 */
 	public void setDocInstancesInfo(DocumentInstancesInfo docInstancesInfo) {
 		this.docInstancesInfo = docInstancesInfo;
+	}
+
+	/**
+	 *
+	 * @param classifier
+	 */
+	protected void refreshFromDB(Classifier classifier) {
+		Trace.trace("Classifier: Re-Training Classifier from DB");
+		Instances wekaInstances;
+		Vector<DocumentInstance> trainingDataVec = getEffictiveDocumentInstaces();
+		DocumentInstancesBuilder docInstancesBuilder = new DocumentInstancesBuilder(
+				trainingDataVec, getDocInstancesInfo(), false);
+		docInstancesBuilder.setBuildFeatures(true);
+		docInstancesBuilder.buildInstances();
+		DocumentInstances newDocInstances = docInstancesBuilder.getDocumentInstances();
+		wekaInstances = DSRWekaUtil.convertDocInstancesToWekaInstances(newDocInstances);
+		try {
+			classifier.buildClassifier(wekaInstances);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -135,25 +163,35 @@ public abstract class DocumentClassifer implements Serializable {
 	 * @return Vector<String> that contains the classification strings for each
 	 *         instance
 	 */
-	protected Vector<String> classifyDocumentInstances(DocumentInstances docInstances,
+	protected Vector<DocumentInfo> classifyDocumentInstances(DocumentInstances docInstances,
 			Classifier classifier) {
 		if (!isTrainedClassifierBool())
 			return null;
 		Instances instances = DSRWekaUtil.convertDocInstancesToWekaInstances(docInstances);
-		Vector<String> res = new Vector<String>();
-		for (Instance inst : instances) {
+		Vector<DocumentInfo> res = new Vector<DocumentInfo>();
+		for (int i = 0; i < instances.size(); i++) {
+			Instance currentWekaInstance = instances.get(i);
+			DocumentInstance docInstance = docInstances.getDocInstanceVec().get(i);
+			int id = docInstance.getDocNGram().getDocID();
+			String name = docInstance.getDocNGram().getName();
+			String category;
+			String content = docInstance.getDocNGram().getContent();
 			try {
-				if (docInstances.getCategoriesVec().size() == 1)
-					res.add(docInstances.getCategoriesVec().firstElement());
-				else {
-					double classificationIndex = classifier.classifyInstance(inst);
-					res.add(instances.classAttribute().value((int) classificationIndex));
+				if (docInstances.getCategoriesVec().size() == 1) {
+					category = docInstances.getCategoriesVec().firstElement();
+					res.add(new DocumentInfo(id, name, category, content));
+				} else {
+					double classificationIndex = classifier.classifyInstance(currentWekaInstance);
+					category = instances.classAttribute().value((int) classificationIndex);
 				}
+				docInstance.getDocNGram().setCategory(category);
+				res.add(new DocumentInfo(id, name, category, content));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		//TODO Update Category in DB
+		updateCategories(docInstances.getDocumentsInfoVec());
+		updateDatabase(docInstances.getDocInstanceVec());
 		return res;
 	}
 
@@ -183,6 +221,14 @@ public abstract class DocumentClassifer implements Serializable {
 		if (docInstanceVec == null)
 			return new Vector<DocumentInstance>();
 		return docInstanceVec;
+	}
+
+	/**
+	 *
+	 * @param instanceVec
+	 */
+	protected void updateCategories(Vector<DocumentInfo> docInfoVec) {
+		DBQuery.updateCategories(DBConnection.connect(), docInfoVec);
 	}
 
 	/**

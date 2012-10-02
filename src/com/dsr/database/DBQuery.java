@@ -20,21 +20,21 @@ import com.dsr.util.enumu.NGramEnum;
 import com.mysql.jdbc.Statement;
 
 public class DBQuery {
-	public static DocumentInfo[] getAllDocuments(Connection conn) {
+	public static Vector<DocumentInfo> getAllDocuments(Connection conn) {
 		Trace.trace("Database: " + "Retrieving All Documents");
 		Vector<DocumentInfo> dInfoVec = new Vector<DocumentInfo>();
 		try {
 			PreparedStatement query = conn.prepareStatement("select * from documents_info");
 			ResultSet res = query.executeQuery();
 			while (res.next()) {
-				DocumentInfo dInfo = new DocumentInfo(res.getString("name"),
-						res.getString("category"), res.getString("content"));
+				DocumentInfo dInfo = new DocumentInfo(res.getInt("ID"),res.getString("NAME"),
+						res.getString("CATEGORY"), res.getString("CONTENT"));
 				dInfoVec.add(dInfo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return dInfoVec.toArray(new DocumentInfo[dInfoVec.size()]);
+		return dInfoVec;
 	}
 
 	public static DocumentInfo getDocumentInfobyName(Connection conn, String docName) {
@@ -124,6 +124,42 @@ public class DBQuery {
 		}
 		return docInstanceVec;
 
+	}
+
+	public static void updateCategories(Connection conn, Vector<DocumentInfo> docInfoVec) {
+		try {
+			Trace.trace("Database: " + "Updating Classified Categories");
+			String queryStr = "UPDATE `documents_info` ";
+			queryStr += "SET `CATEGORY` = ? ";
+			queryStr += "WHERE ID = ?";
+
+			PreparedStatement ps = conn.prepareStatement(queryStr);
+			for (DocumentInfo docInfo : docInfoVec) {
+				ps.setString(1, docInfo.getCategory());
+				ps.setInt(2, docInfo.getDocID());
+				ps.executeUpdate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void updateInstanceEffectiveness(Connection conn, Vector<DocumentInfo> docInfoVec) {
+		try {
+			Trace.trace("Database: " + "Updating Classified Instances Effectiveness");
+			String queryStr = "UPDATE `documents_instances` ";
+			queryStr += "SET `EFFICTIVE_INSTANCE` = ? ";
+			queryStr += "WHERE DOC_ID = ?";
+
+			PreparedStatement ps = conn.prepareStatement(queryStr);
+			for (DocumentInfo docInfo : docInfoVec) {
+				ps.setBoolean(1, true);
+				ps.setInt(2, docInfo.getDocID());
+				ps.executeUpdate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void storeTrainingDocumentInstaces(Connection conn,
