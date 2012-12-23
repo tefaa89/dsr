@@ -1,7 +1,6 @@
 package com.dsr.preprocessing;
 
 import java.util.Vector;
-import com.dsr.configuration.Phase1Config;
 import com.dsr.database.DBConnection;
 import com.dsr.database.DBQuery;
 import com.dsr.instances.DocumentInfo;
@@ -34,8 +33,7 @@ public class DocumentsProcessing {
 
 	private void convertDocToText() {
 		ocrReceivedDataVec = new Vector<OCRReceivedData>();
-		OCRService ocrService = new OCRService(Phase1Config.OCR_SERVICE_URL
-				+ Phase1Config.OCR_SERVICE_SINGLE_FILE_FUNCTION);
+		OCRService ocrService = new OCRService();
 		for (OCRSendData dataToSend : ocrSendDataVec) {
 			OCRReceivedData receivedData = ocrService.sendRequest(dataToSend);
 			ocrReceivedDataVec.add(receivedData);

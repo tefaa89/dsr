@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 import com.dsr.classifier.DocumentClassifer;
 import com.dsr.classifier.IBKDocumentClassifier;
@@ -20,6 +22,137 @@ import com.dsr.util.enumu.NGramEnum;
 import com.mysql.jdbc.Statement;
 
 public class DBQuery {
+	private static Map<String, Boolean> dbTables;
+
+	public static boolean isDBExists(Connection conn) {
+		try {
+			Trace.trace("Database: Checking if 'document_system_recognition' database exists or not ...");
+			String queryString = "SELECT SCHEMA_NAME ";
+			queryString += "FROM INFORMATION_SCHEMA.SCHEMATA ";
+			queryString += "WHERE SCHEMA_NAME = 'document_system_recognition'";
+			PreparedStatement query = conn.prepareStatement(queryString);
+			ResultSet res = query.executeQuery();
+			if (res.next()) {
+				Trace.trace("Database: Database exists ...");
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Trace.trace("Database: Database does not exist ...");
+		return false;
+	}
+
+	public static void dropDatabase(Connection conn)
+	{
+		try {
+			Trace.trace("Database: Droping Database ...");
+			String queryString = "DROP Database `document_system_recognition`;";
+			PreparedStatement query = conn.prepareStatement(queryString);
+			query.executeUpdate();
+			Trace.trace("Database has been dropped ...");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static boolean tablesExists(Connection conn) {
+		try {
+			Trace.trace("Database: Checking if required tables exists in database or not ...");
+			String queryString = "SELECT * ";
+			queryString += "FROM information_schema.tables ";
+			queryString += "WHERE table_schema = 'document_system_recognition' AND (";
+			queryString += "table_name = 'documents_info' OR ";
+			queryString += "table_name = 'classifiers_backups' OR ";
+			queryString += "table_name = 'documents_instances' OR ";
+			queryString += "table_name = 'documents_ngrams')";
+			PreparedStatement query = conn.prepareStatement(queryString);
+			ResultSet res = query.executeQuery();
+			dbTables = new HashMap<String, Boolean>();
+			dbTables.put("documents_info", false);
+			dbTables.put("classifiers_backups", false);
+			dbTables.put("documents_instances", false);
+			dbTables.put("documents_ngrams", false);
+			int counter = 0;
+			for (; res.next(); counter++)
+				dbTables.put(res.getString("table_name"), true);
+			if (counter >= 4) {
+				Trace.trace("Database: Requried tables exists ...");
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Trace.trace("Database: Some tables does not exists ...");
+		return false;
+	}
+
+	public static void createDB(Connection conn) {
+		try {
+			Trace.trace("Database: Creating 'document_system_recognition' Database");
+			String queryString = "CREATE DATABASE IF NOT EXISTS document_system_recognition ";
+			queryString += "CHARACTER SET utf8 ";
+			queryString += "COLLATE utf8_general_ci;";
+			PreparedStatement query = conn.prepareStatement(queryString);
+			query.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void createTables(Connection conn) {
+		try {
+			Trace.trace("Database: Creating missing tables in 'document_system_recognition' database ...");
+			for (String key : dbTables.keySet()) {
+				if (!dbTables.get(key)) {
+					String queryString = "";
+					if (key.equals("documents_info")) {
+						queryString = "CREATE TABLE `documents_info`";
+						queryString += "(`ID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,"
+								+ "`NAME` varchar(100) COLLATE 'utf8_general_ci' NOT NULL,"
+								+ "`CATEGORY` varchar(100) COLLATE 'utf8_general_ci' NULL,"
+								+ "`CONTENT` longtext COLLATE 'utf8_general_ci' NULL) ";
+						queryString += "CHARACTER SET utf8 ";
+						queryString += "COLLATE utf8_general_ci;";
+						PreparedStatement query = conn.prepareStatement(queryString);
+						query.executeUpdate();
+					} else if (key.equals("documents_ngrams")) {
+						queryString = "CREATE TABLE `documents_ngrams`";
+						queryString += "(`DOC_ID` int(11) NOT NULL,"
+								+ "`NGRAM_TYPE` varchar(100) COLLATE 'utf8_general_ci' NOT NULL,"
+								+ "`NGRAM_VEC` longblob NOT NULL,"
+								+ "FOREIGN KEY (`DOC_ID`) REFERENCES `documents_info` (`ID`)) ";
+						queryString += "CHARACTER SET utf8 ";
+						queryString += "COLLATE utf8_general_ci;";
+						PreparedStatement query = conn.prepareStatement(queryString);
+						query.executeUpdate();
+					} else if (key.equals("documents_instances")) {
+						queryString = "CREATE TABLE `documents_instances`";
+						queryString += "(`DOC_ID` int(11) NOT NULL,"
+								+ "`EFFICTIVE_INSTANCE` tinyint NOT NULL,"
+								+ "`FEATURES_VALUES_VEC` longblob NOT NULL,"
+								+ "FOREIGN KEY (`DOC_ID`) REFERENCES `documents_info` (`ID`)) ";
+						queryString += "CHARACTER SET utf8 ";
+						queryString += "COLLATE utf8_general_ci;";
+						PreparedStatement query = conn.prepareStatement(queryString);
+						query.executeUpdate();
+					} else if (key.equals("classifiers_backups")) {
+						queryString = "CREATE TABLE `classifiers_backups`";
+						queryString += "(`ID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,"
+								+ "`TYPE` varchar(100) COLLATE 'utf8_general_ci' NOT NULL,"
+								+ "`CLASSIFIER` longblob NULL)";
+						queryString += "CHARACTER SET utf8 ";
+						queryString += "COLLATE utf8_general_ci;";
+						PreparedStatement query = conn.prepareStatement(queryString);
+						query.executeUpdate();
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static Vector<DocumentInfo> getAllDocuments(Connection conn) {
 		Trace.trace("Database: " + "Retrieving All Documents");
 		Vector<DocumentInfo> dInfoVec = new Vector<DocumentInfo>();
@@ -27,7 +160,7 @@ public class DBQuery {
 			PreparedStatement query = conn.prepareStatement("select * from documents_info");
 			ResultSet res = query.executeQuery();
 			while (res.next()) {
-				DocumentInfo dInfo = new DocumentInfo(res.getInt("ID"),res.getString("NAME"),
+				DocumentInfo dInfo = new DocumentInfo(res.getInt("ID"), res.getString("NAME"),
 						res.getString("CATEGORY"), res.getString("CONTENT"));
 				dInfoVec.add(dInfo);
 			}

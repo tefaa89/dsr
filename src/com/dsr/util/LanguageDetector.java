@@ -10,7 +10,7 @@ public class LanguageDetector {
 	public LanguageDetector() {
 		try {
 			if(DetectorFactory.getLangList().size() <= 0)
-				DetectorFactory.loadProfile(Config.LANGUAGE_DETECTOR_PROFILES);
+				DetectorFactory.loadProfile(Config.getLangDetectorProfiles());
 		} catch (LangDetectException e) {
 			e.printStackTrace();
 		}

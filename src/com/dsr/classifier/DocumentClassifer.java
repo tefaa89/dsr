@@ -179,7 +179,7 @@ public abstract class DocumentClassifer implements Serializable {
 			try {
 				if (docInstances.getCategoriesVec().size() == 1) {
 					category = docInstances.getCategoriesVec().firstElement();
-					res.add(new DocumentInfo(id, name, category, content));
+					//res.add(new DocumentInfo(id, name, category, content));
 				} else {
 					double classificationIndex = classifier.classifyInstance(currentWekaInstance);
 					category = instances.classAttribute().value((int) classificationIndex);

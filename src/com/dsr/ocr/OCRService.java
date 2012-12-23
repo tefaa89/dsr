@@ -7,13 +7,30 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import com.dsr.configuration.Config;
+import com.dsr.util.Trace;
 import com.google.gson.Gson;
 
 public class OCRService {
-	private String jsonServiceURL;
+	private static String jsonServiceURL;
 
-	public OCRService(String jsonServiceURL) {
-		this.jsonServiceURL = jsonServiceURL;
+	public OCRService() {
+
+	}
+
+	public static boolean checkConnection() {
+		jsonServiceURL = Config.getOCRServiceURL() + Config.getOCRSingleFileFunc();
+		try {
+			URL url = new URL(jsonServiceURL);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.connect();
+			Trace.trace("OCR WebService : Connected Successfully ...");
+			conn.disconnect();
+		} catch (Exception e) {
+			Trace.trace("OCR Error: " + e);
+			return false;
+		}
+		return true;
 	}
 
 	public OCRReceivedData sendRequest(Object objToSend) {
@@ -22,10 +39,12 @@ public class OCRService {
 		String jsonResponse = "";
 		try {
 			OCRSendData ocrSendDataRaw = (OCRSendData) objToSend;
-			if(ocrSendDataRaw.getFileName() != null)
-				ocrSendDataRaw.setFileName(URLEncoder.encode(ocrSendDataRaw.getFileName(),"UTF-8"));
-			if(ocrSendDataRaw.getCategory() != null)
-				ocrSendDataRaw.setCategory(URLEncoder.encode(ocrSendDataRaw.getCategory(),"UTF-8"));
+			if (ocrSendDataRaw.getFileName() != null)
+				ocrSendDataRaw
+						.setFileName(URLEncoder.encode(ocrSendDataRaw.getFileName(), "UTF-8"));
+			if (ocrSendDataRaw.getCategory() != null)
+				ocrSendDataRaw
+						.setCategory(URLEncoder.encode(ocrSendDataRaw.getCategory(), "UTF-8"));
 
 			String json = gson.toJson(ocrSendDataRaw);
 			URL url = new URL(jsonServiceURL);
@@ -38,7 +57,8 @@ public class OCRService {
 			os.write(json.getBytes());
 			os.flush();
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(),
+					"UTF-8"));
 			String output;
 			while ((output = br.readLine()) != null) {
 				jsonResponse += output;
@@ -46,9 +66,9 @@ public class OCRService {
 
 			conn.disconnect();
 			receivedData = gson.fromJson(jsonResponse, OCRReceivedData.class);
-			if(receivedData.getFileName() != null)
+			if (receivedData.getFileName() != null)
 				receivedData.setFileName(URLDecoder.decode(receivedData.getFileName(), "UTF-8"));
-			if(receivedData.getCategory() != null)
+			if (receivedData.getCategory() != null)
 				receivedData.setCategory(URLDecoder.decode(receivedData.getCategory(), "UTF-8"));
 		} catch (Exception e) {
 
