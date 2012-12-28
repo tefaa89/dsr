@@ -1,0 +1,6 @@
+package com.dces.util.enumu;
+
+public enum FeaturesModelEnum {
+	WORD_UNIGRAM, WORD_BIGRAM, WORD_TRIGRAM, 
+	WORD_UNIGRAM_BIGRAM, WORD_BIGRAM_TRIGRAM, WORD_UNIGRAM_BIGRAM_TRIGRAM
+}
