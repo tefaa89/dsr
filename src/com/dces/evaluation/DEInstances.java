@@ -1,4 +1,4 @@
-package com.dces.instances;
+package com.dces.evaluation;
 
 import weka.core.Instances;
 

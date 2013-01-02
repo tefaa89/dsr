@@ -1,9 +1,10 @@
 package com.dces.core;
 
-import com.dces.classifier.EvalClassifiers;
-import com.dces.instances.DEInstances;
-import com.dces.instances.EvalFeatureSpace;
-import com.dces.instances.LoadDirectoryInstances;
+import com.dces.configuration.Config;
+import com.dces.evaluation.DEInstances;
+import com.dces.evaluation.LoadDirectoryInstances;
+import com.dces.evaluation.classifiers.EvalClassifiers;
+import com.dces.evaluation.features.EvalFeatureSpace;
 import com.dces.util.Trace;
 
 public class DECoreEngine {
@@ -11,7 +12,7 @@ public class DECoreEngine {
 	private String dataCorpusPath;
 
 	public DECoreEngine() {
-
+		Config.initConfiguration();
 	}
 
 	public void setDataCorpusPath(String path) {
@@ -29,11 +30,14 @@ public class DECoreEngine {
 		Trace.trace("Corpus Data Loaded Successfuly\n");
 		EvalFeatureSpace evalFS = new EvalFeatureSpace(loadDI.getRowDataInstances());
 		report = new DEReport();
+		DEInstances featuresDeInstances;
 		while (evalFS.hasNext()) {
-			DEInstances featuresDeInstances = evalFS.getNextDEInstances();
+			featuresDeInstances = evalFS.getNextDEInstances();
+			
 			EvalClassifiers evalClass = new EvalClassifiers(featuresDeInstances);
 			while (evalClass.hasNext()) {
-				DEInstances classifierDeInstances = evalClass.getNextDEInstances();
+				// It will get the same instance with updated report
+				DEInstances classifierDeInstances = evalClass.getNext();
 				report.updateReport(classifierDeInstances.getEvaluationParameters(),
 						classifierDeInstances.getEvaluationResults());
 			}

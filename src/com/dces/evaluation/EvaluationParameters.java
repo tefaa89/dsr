@@ -1,13 +1,35 @@
-package com.dces.instances;
+package com.dces.evaluation;
 
 import com.dces.util.enumu.FeaturesModelEnum;
 
 public class EvaluationParameters {
+	private String classifierClassPath;
+	private String parametersStr;
 	private FeaturesModelEnum featureModelEnum;
 	private boolean tfBool;
 	private boolean idfBool;
 	private boolean useStopList;
 	private boolean useStemming;
+
+	public EvaluationParameters() {
+
+	}
+
+	public String getClassifierClassPath() {
+		return classifierClassPath;
+	}
+
+	public void setClassifierClassPath(String classifierClassPath) {
+		this.classifierClassPath = classifierClassPath;
+	}
+
+	public String getParametersStr() {
+		return parametersStr;
+	}
+
+	public void setParametersStr(String parametersStr) {
+		this.parametersStr = parametersStr;
+	}
 
 	public FeaturesModelEnum getFeatureModelEnum() {
 		return featureModelEnum;

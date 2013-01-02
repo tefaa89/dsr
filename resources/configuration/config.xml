@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dsr>
+<dces>
 	<debug>true</debug>
 
-	<database>
-		<username>root</username>
-		<password>dsr</password>
-		<mysql_url>jdbc:mysql://localhost</mysql_url>
-	</database>
-	<webservices>
-		<service name="ocr">
-			<url>http://localhost:2289/OCRService.svc/</url>
-			<functions>
-				<function name="SingleFile">getOCRResult</function>
-			</functions>
-		</service>
-	</webservices>
-	<LanguageDetectorProfiles>resources\\profiles</LanguageDetectorProfiles>
-</dsr>
+	<classifiers>
+		<classifier id="ibk" className="com.dces.evaluation.classifiers.IBKDocumentClassifier">
+			<parameters>
+				<param option="K" description="Set the number of nearest neighbors to use in prediction (default 1)">
+					<value>1</value>
+					<value>3</value>
+					<value>5</value>
+				</param>
+				<param option="W" description="Set a fixed window size for incremental train/testing. As new training instances are added, oldest instances are removed to maintain the number of training instances at this size. (default no window)">
+					<value>0</value>
+					<value>20</value>
+					<value>50</value>
+				</param>
+				<param option="*" description="">
+					<value>*</value>
+					<value>F</value>
+					<value>I</value>
+				</param>
+			</parameters>
+		</classifier>
+	</classifiers>
+</dces>

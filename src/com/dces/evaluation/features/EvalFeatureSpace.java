@@ -1,6 +1,7 @@
-package com.dces.instances;
+package com.dces.evaluation.features;
 
 import weka.core.Instances;
+import com.dces.evaluation.DEInstances;
 import com.dces.util.Trace;
 import com.dces.util.enumu.FeaturesModelEnum;
 import com.dces.util.enumu.FeaturesParametersEnum;
@@ -43,6 +44,7 @@ public class EvalFeatureSpace {
 		fsb.setFeatureSpaceParamater(currentFParam);
 		fsb.setIDFTransform(true);
 		fsb.setTFTransform(true);
+		fsb.build();
 		nextState();
 		return fsb.getFilteredDataSet();
 	}

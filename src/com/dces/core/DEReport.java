@@ -1,19 +1,19 @@
 package com.dces.core;
 
+import java.util.ArrayList;
 import java.util.Random;
-import java.util.Vector;
-import com.dces.instances.EvaluationParameters;
-import com.dces.instances.EvaluationResults;
+import com.dces.evaluation.EvaluationParameters;
+import com.dces.evaluation.EvaluationResults;
 
 public class DEReport {
 	private int id;
-	private Vector<EvaluationParameters> evalParamsVec;
-	private Vector<EvaluationResults> evalResultsVec;
+	private ArrayList<EvaluationParameters> evalParamsVec;
+	private ArrayList<EvaluationResults> evalResultsVec;
 
 	public DEReport() {
 		id = randomID();
-		evalParamsVec = new Vector<EvaluationParameters>();
-		evalResultsVec = new Vector<EvaluationResults>();
+		evalParamsVec = new ArrayList<EvaluationParameters>();
+		evalResultsVec = new ArrayList<EvaluationResults>();
 	}
 
 	public void updateReport(EvaluationParameters evalParams, EvaluationResults evalResults) {
