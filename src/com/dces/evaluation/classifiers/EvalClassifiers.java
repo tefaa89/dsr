@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import weka.classifiers.AbstractClassifier;
 import weka.classifiers.Evaluation;
 import com.dces.configuration.Config;
 import com.dces.evaluation.DEInstances;
@@ -24,23 +25,26 @@ public class EvalClassifiers {
 	public EvalClassifiers(DEInstances deInstances) {
 		this.deInstances = deInstances;
 		classifierInfoList = Config.getClassifiersInfo();
-		initCurrentDocClassifier();
 		reSetState();
+		initCurrentState();
+	}
+
+	private void initCurrentState() {
+		initCurrentDocClassifier();
 		initDocClassifiersList();
 	}
 
 	private void initCurrentDocClassifier() {
 		try {
-			currentDocumentClassifier = (DocumentClassifer) Class.forName(
-					classifierInfoList.get(classifierInfoState).getClassName()).newInstance();
+			currentDocumentClassifier = new DocumentClassifer();
+			currentDocumentClassifier.setClassifier((AbstractClassifier) Class.forName(
+					classifierInfoList.get(classifierInfoState).getClassName()).newInstance());
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 
 	private void initDocClassifiersList() {
-		if (!hasNext())
-			return;
 		currentClassifierOptionsList = new ArrayList<Map<String, String>>();
 		ClassifierInfoXML currentClassifierInfo = classifierInfoList.get(classifierInfoState);
 		// All possible current classifier parameter combination count
@@ -69,25 +73,26 @@ public class EvalClassifiers {
 	public DEInstances getNext() {
 		if (!hasNext())
 			return null;
+		nextState();
+		initCurrentState();
 		try {
 			String optionStr = currentDocumentClassifier.setOptions(currentClassifierOptionsList
 					.get(currentClassifierOptionsState));
 			Evaluation eval = new Evaluation(deInstances.getInstances());
 			eval.crossValidateModel(currentDocumentClassifier.getClassifier(),
 					deInstances.getInstances(), 10, new Random(1));
-			//Set Classifier Evaluation Parameters
+			// Set Classifier Evaluation Parameters
 			String classPath = classifierInfoList.get(classifierInfoState).getClassName();
 			deInstances.getEvaluationParameters().setClassifierClassPath(classPath);
 			deInstances.getEvaluationParameters().setParametersStr(optionStr);
-			
-			//Set Classifier Evaluation Results
+
+			// Set Classifier Evaluation Results
 			deInstances.getEvaluationResults().setConfusionMatrix(eval.confusionMatrix());
 			deInstances.getEvaluationResults().setSummaryString(eval.toSummaryString());
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		nextState();
 		return deInstances;
 	}
 
@@ -96,16 +101,16 @@ public class EvalClassifiers {
 		if (currentClassifierOptionsState >= currentClassifierOptionsList.size()) {
 			currentClassifierOptionsState = 0;
 			classifierInfoState++;
-			initDocClassifiersList();
 		}
 	}
 
 	public boolean hasNext() {
-		return classifierInfoState >= classifierInfoList.size() ? false : true;
+		return currentClassifierOptionsState + 1 >= currentClassifierOptionsList.size()
+				&& classifierInfoState + 1 >= classifierInfoList.size() ? false : true;
 	}
 
 	public void reSetState() {
+		currentClassifierOptionsState = -1;
 		classifierInfoState = 0;
-		currentClassifierOptionsState = 0;
 	}
 }

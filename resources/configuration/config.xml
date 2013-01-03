@@ -3,7 +3,7 @@
 	<debug>true</debug>
 
 	<classifiers>
-		<classifier id="ibk" className="com.dces.evaluation.classifiers.IBKDocumentClassifier">
+		<classifier id="ibk" className="weka.classifiers.lazy.IBk">
 			<parameters>
 				<param option="K" description="Set the number of nearest neighbors to use in prediction (default 1)">
 					<value>1</value>
@@ -19,6 +19,13 @@
 					<value>*</value>
 					<value>F</value>
 					<value>I</value>
+				</param>
+			</parameters>
+		</classifier>
+		<classifier id="smo" className="weka.classifiers.functions.SMO">
+			<parameters>
+				<param option="*">
+					<value>*</value>
 				</param>
 			</parameters>
 		</classifier>

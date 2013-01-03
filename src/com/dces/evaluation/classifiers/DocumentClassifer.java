@@ -1,26 +1,28 @@
 package com.dces.evaluation.classifiers;
 
 import java.util.Map;
-import weka.classifiers.Classifier;
-import weka.core.OptionHandler;
+import weka.classifiers.AbstractClassifier;
 
-public abstract class DocumentClassifer {
-	private Classifier classifier;
+public class DocumentClassifer {
+	private AbstractClassifier classifier;
 
-	public abstract String setOptions(Map<String, String> options);
+	public DocumentClassifer() {
 
-	protected String setOptions(Map<String, String> options, OptionHandler optionsInterface) {
+	}
+
+	public String setOptions(Map<String, String> options) {
 		String optionsStr = "";
 		for (String option : options.keySet()) {
+			String value = options.get(option) + " ";
+			if (value.trim().equals("*"))
+				continue;
 			if (option.trim().equals("*")) {
-				String value = options.get(option) + " ";
-				if (!value.trim().equals("*"))
-					optionsStr += "-" + options.get(option) + " ";
+				optionsStr += "-" + options.get(option) + " ";
 			} else
 				optionsStr += "-" + option + " " + options.get(option) + " ";
 		}
 		try {
-			optionsInterface.setOptions(weka.core.Utils.splitOptions(optionsStr));
+			classifier.setOptions(weka.core.Utils.splitOptions(optionsStr));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -28,11 +30,11 @@ public abstract class DocumentClassifer {
 		return optionsStr;
 	}
 
-	public Classifier getClassifier() {
+	public AbstractClassifier getClassifier() {
 		return classifier;
 	}
 
-	public void setClassifier(Classifier classifier) {
+	public void setClassifier(AbstractClassifier classifier) {
 		this.classifier = classifier;
 	}
 }

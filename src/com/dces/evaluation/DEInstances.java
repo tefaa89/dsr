@@ -37,4 +37,10 @@ public class DEInstances {
 	{
 		return evalResults;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return evalParameters + "\n" + evalResults + "\n\n";
+	}
 }

@@ -31,16 +31,23 @@ public class DECoreEngine {
 		EvalFeatureSpace evalFS = new EvalFeatureSpace(loadDI.getRowDataInstances());
 		report = new DEReport();
 		DEInstances featuresDeInstances;
+		int featureCounter = 0;
+		int classifiersCounter = 0;
 		while (evalFS.hasNext()) {
 			featuresDeInstances = evalFS.getNextDEInstances();
-			
+			featureCounter++;
 			EvalClassifiers evalClass = new EvalClassifiers(featuresDeInstances);
 			while (evalClass.hasNext()) {
 				// It will get the same instance with updated report
 				DEInstances classifierDeInstances = evalClass.getNext();
+				System.out.println(classifierDeInstances);
 				report.updateReport(classifierDeInstances.getEvaluationParameters(),
 						classifierDeInstances.getEvaluationResults());
+				classifiersCounter++;
 			}
 		}
+		
+		Trace.trace("Num of Features Evaluated: " + featureCounter);
+		Trace.trace("Num of Classifiers Evaluated: " + classifiersCounter);
 	}
 }

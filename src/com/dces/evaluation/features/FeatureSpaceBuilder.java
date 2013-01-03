@@ -125,8 +125,13 @@ public class FeatureSpaceBuilder {
 			filteredDEDataSet.getEvaluationParameters().setIdfBool(trasformIDFBool);
 			filteredDEDataSet.getEvaluationParameters().setTfBool(trasformTFBool);
 			filteredDEDataSet.getEvaluationParameters().setUseStemming(useStemmer);
+			applyFeatureSelection();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void applyFeatureSelection() {
+		
 	}
 }

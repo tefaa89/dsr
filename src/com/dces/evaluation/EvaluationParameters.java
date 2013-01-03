@@ -71,4 +71,8 @@ public class EvaluationParameters {
 		this.useStemming = useStemming;
 	}
 
+	@Override
+	public String toString() {
+		return "# Evaluation Parameters: " + "\n\t Classifier: " + classifierClassPath + "\n\t Parameters: " + parametersStr;
+	}
 }

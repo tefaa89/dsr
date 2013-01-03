@@ -21,12 +21,12 @@ public class EvaluationResults {
 	}
 
 	public void setSummaryString(String summaryString) {
-		this.summaryString = summaryString;
+		this.summaryString = summaryString.replaceAll("\n", "\n\t\t");
 	}
 
 	@Override
 	public String toString()
 	{
-		return summaryString;
+		return "# Evaluation Results: \n\t Summary: " + summaryString;
 	}
 }
