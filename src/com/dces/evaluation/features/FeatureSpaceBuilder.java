@@ -5,8 +5,8 @@ import weka.core.stemmers.SnowballStemmer;
 import weka.core.tokenizers.NGramTokenizer;
 import weka.core.tokenizers.Tokenizer;
 import weka.filters.Filter;
-import weka.filters.unsupervised.attribute.StringToWordVector;
 import com.dces.evaluation.DEInstances;
+import com.dces.util.StringToWordVector;
 import com.dces.util.enumu.FeaturesModelEnum;
 import com.dces.util.enumu.FeaturesParametersEnum;
 import com.dces.util.enumu.LanguageEnum;
@@ -81,17 +81,8 @@ public class FeatureSpaceBuilder {
 		case WORD_UNIGRAM:
 			buildNgramTokenizer(1, 1);
 			break;
-		case WORD_BIGRAM:
-			buildNgramTokenizer(2, 2);
-			break;
-		case WORD_TRIGRAM:
-			buildNgramTokenizer(3, 3);
-			break;
 		case WORD_UNIGRAM_BIGRAM:
 			buildNgramTokenizer(1, 2);
-			break;
-		case WORD_BIGRAM_TRIGRAM:
-			buildNgramTokenizer(2, 3);
 			break;
 		case WORD_UNIGRAM_BIGRAM_TRIGRAM:
 			buildNgramTokenizer(1, 3);

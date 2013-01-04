@@ -4,7 +4,7 @@ import com.dces.configuration.Config;
 import com.dces.evaluation.DEInstances;
 import com.dces.evaluation.LoadDirectoryInstances;
 import com.dces.evaluation.classifiers.EvalClassifiers;
-import com.dces.evaluation.features.EvalFeatureSpace;
+import com.dces.evaluation.features.FeatureSpaceGenerator;
 import com.dces.util.Trace;
 
 public class DECoreEngine {
@@ -28,13 +28,14 @@ public class DECoreEngine {
 		LoadDirectoryInstances loadDI = new LoadDirectoryInstances(dataCorpusPath);
 		loadDI.load();
 		Trace.trace("Corpus Data Loaded Successfuly\n");
-		EvalFeatureSpace evalFS = new EvalFeatureSpace(loadDI.getRowDataInstances());
+		FeatureSpaceGenerator evalFS = new FeatureSpaceGenerator(loadDI.getRowDataInstances());
 		report = new DEReport();
 		DEInstances featuresDeInstances;
 		int featureCounter = 0;
 		int classifiersCounter = 0;
 		while (evalFS.hasNext()) {
 			featuresDeInstances = evalFS.getNextDEInstances();
+			System.out.println(featuresDeInstances.getInstances().toSummaryString());
 			featureCounter++;
 			EvalClassifiers evalClass = new EvalClassifiers(featuresDeInstances);
 			while (evalClass.hasNext()) {

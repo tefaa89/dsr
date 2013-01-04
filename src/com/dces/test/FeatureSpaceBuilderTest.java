@@ -1,6 +1,7 @@
 package com.dces.test;
 
 import weka.classifiers.trees.J48;
+import weka.core.stemmers.SnowballStemmer;
 import com.dces.evaluation.LoadDirectoryInstances;
 import com.dces.evaluation.features.FeatureSpaceBuilder;
 import com.dces.util.enumu.FeaturesModelEnum;
@@ -8,12 +9,13 @@ import com.dces.util.enumu.LanguageEnum;
 
 public class FeatureSpaceBuilderTest {
 	public static void main(String[] args) throws Exception {
-		LoadDirectoryInstances ldi = new LoadDirectoryInstances("c:\\test");
+		LoadDirectoryInstances ldi = new LoadDirectoryInstances("c:\\test2");
 		ldi.load();
 		FeatureSpaceBuilder fsb = new FeatureSpaceBuilder(ldi.getRowDataInstances());
 		fsb.setStemmerStopListLanguage(LanguageEnum.English);
-		fsb.setFeatureSpaceModel(FeaturesModelEnum.WORD_UNIGRAM);
-		fsb.setUseStopWordList(false);
+		fsb.setFeatureSpaceModel(FeaturesModelEnum.WORD_UNIGRAM_BIGRAM);
+		fsb.setUseStemmer(true);
+		fsb.setUseStopWordList(true);
 		fsb.setTFTransform(true);
 		fsb.setIDFTransform(true);
 		fsb.build();
@@ -43,11 +45,11 @@ public class FeatureSpaceBuilderTest {
 		filter.setTFTransform(true);
 		// filter.setOptions(new String[]{"-S"});
 		Instances dataFiltered = Filter.useFilter(dataRaw, filter);
-		*/System.out.println("\n\nFiltered data:\n\n" + fsb.getFilteredDataSet().getInstances());
+		*/System.out.println("\n\nFiltered data:\n\n" + fsb.getFilteredDataSet().getInstances().toSummaryString());
 
-		// train J48 and output model
+		/*// train J48 and output model
 		J48 classifier = new J48();
 		classifier.buildClassifier(fsb.getFilteredDataSet().getInstances());
-		System.out.println("\n\nClassifier model:\n\n" + classifier);
+		System.out.println("\n\nClassifier model:\n\n" + classifier);*/
 	}
 }
