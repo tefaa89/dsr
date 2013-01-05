@@ -1509,18 +1509,28 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 						String[] wordsArr = word.split(" ");
 						String stemmedStr = "";
-						for (int icounter = 0; icounter < wordsArr.length; icounter++) {
+						for (String wordStr : wordsArr)
+							stemmedStr += m_Stemmer.stem(wordStr) + " ";
+						/*for (int icounter = 0; icounter < wordsArr.length; icounter++) {
 							stemmedStr += m_Stemmer.stem(wordsArr[icounter]);
 							if (icounter + 1 < wordsArr.length)
 								stemmedStr += " ";
-						}
-
-						word = stemmedStr;
-
-						if (this.m_useStoplist == true)
-							if (stopwords.is(word))
+						}*/
+						
+						word = stemmedStr.trim();
+						
+						if (this.m_useStoplist == true) {
+							stemmedStr = "";
+							wordsArr = word.split(" ");
+							for (String wordStr : wordsArr) {
+								if (stopwords.is(wordStr))
+									continue;
+								stemmedStr += wordStr + " ";
+							}
+							word = stemmedStr.trim();
+							if (word.equals("") || stopwords.is(word))
 								continue;
-
+						}
 						if (!(h.containsKey(word)))
 							h.put(word, new Integer(0));
 

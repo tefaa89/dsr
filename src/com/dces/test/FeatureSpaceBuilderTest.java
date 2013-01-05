@@ -1,7 +1,5 @@
 package com.dces.test;
 
-import weka.classifiers.trees.J48;
-import weka.core.stemmers.SnowballStemmer;
 import com.dces.evaluation.LoadDirectoryInstances;
 import com.dces.evaluation.features.FeatureSpaceBuilder;
 import com.dces.util.enumu.FeaturesModelEnum;

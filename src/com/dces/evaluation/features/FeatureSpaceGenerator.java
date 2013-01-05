@@ -1,8 +1,9 @@
 package com.dces.evaluation.features;
 
+import org.slf4j.LoggerFactory;
 import weka.core.Instances;
+import ch.qos.logback.classic.Logger;
 import com.dces.evaluation.DEInstances;
-import com.dces.util.Trace;
 import com.dces.util.enumu.FeaturesModelEnum;
 import com.dces.util.enumu.FeaturesParametersEnum;
 import com.dces.util.enumu.LanguageEnum;
@@ -14,7 +15,7 @@ import com.dces.util.enumu.LanguageEnum;
  * 
  */
 public class FeatureSpaceGenerator {
-
+	private static Logger logger = (Logger) LoggerFactory.getLogger(FeatureSpaceGenerator.class);
 	private FeatureSpaceBuilder fsb;
 	private int featureParamIndexState;
 	private int featureModelIndexState;
@@ -35,8 +36,8 @@ public class FeatureSpaceGenerator {
 		if (!hasNext())
 			return null;
 		nextState();
-		Trace.trace("Feature Space Evalutation :\n" + "\t Param State: " + featureParamIndexState
-				+ "\n\t Model State: " + featureModelIndexState + "\n");
+		logger.debug("Feature Space Evalutation :\n" + "\t Param State: " + featureParamIndexState
+				+ "\n\t Model State: " + featureModelIndexState);
 		FeaturesParametersEnum currentFParam = FeaturesParametersEnum.values()[featureParamIndexState];
 		FeaturesModelEnum currentFModel = FeaturesModelEnum.values()[featureModelIndexState];
 		fsb = new FeatureSpaceBuilder(rawData);

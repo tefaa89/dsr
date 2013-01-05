@@ -41,6 +41,6 @@ public class DEInstances {
 	@Override
 	public String toString()
 	{
-		return evalParameters + "\n" + evalResults + "\n\n";
+		return evalParameters + "\n" + evalResults;
 	}
 }
