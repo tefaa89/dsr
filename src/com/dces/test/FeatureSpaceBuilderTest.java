@@ -1,7 +1,7 @@
 package com.dces.test;
 
 import com.dces.evaluation.LoadDirectoryInstances;
-import com.dces.evaluation.features.FeatureSpaceBuilder;
+import com.dces.evaluation.featureExtraction.FeatureSpaceBuilder;
 import com.dces.util.enumu.FeaturesModelEnum;
 import com.dces.util.enumu.LanguageEnum;
 

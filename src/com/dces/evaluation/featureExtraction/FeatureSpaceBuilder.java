@@ -1,4 +1,4 @@
-package com.dces.evaluation.features;
+package com.dces.evaluation.featureExtraction;
 
 import weka.core.Instances;
 import weka.core.stemmers.SnowballStemmer;

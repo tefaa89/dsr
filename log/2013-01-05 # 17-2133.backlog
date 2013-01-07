@@ -1,0 +1,2879 @@
+-- [INFO]com.dces.Main - Initializing Core Engine:
+-- [INFO]com.dces.core.DECoreEngine - Loading Corpus Data from: c:\test
+-- [INFO]com.dces.core.DECoreEngine - Corpus Data Loaded Successfuly
+-- [DEBUG]com.dces.evaluation.features.FeatureSpaceGenerator - Feature Space Evalutation :
+		 Param State: TOGGLESTEMMING_STOPWORDS_ON(0) 
+		 Model State: WORD_UNIGRAM(0)
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          18               54.5455 %
+			Incorrectly Classified Instances        15               45.4545 %
+			Kappa statistic                          0.127 
+			Mean absolute error                      0.4717
+			Root mean squared error                  0.6489
+			Relative absolute error                101.0736 %
+			Root relative squared error            134.3605 %
+			Coverage of cases (0.95 level)          57.5758 %
+			Mean rel. region size (0.95 level)      54.5455 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4259
+			Root mean squared error                  0.4709
+			Relative absolute error                 91.2715 %
+			Root relative squared error             97.5136 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      95.4545 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.4183
+			Root mean squared error                  0.4628
+			Relative absolute error                 89.6297 %
+			Root relative squared error             95.8212 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          18               54.5455 %
+			Incorrectly Classified Instances        15               45.4545 %
+			Kappa statistic                          0.127 
+			Mean absolute error                      0.4716
+			Root mean squared error                  0.6434
+			Relative absolute error                101.0563 %
+			Root relative squared error            133.2178 %
+			Coverage of cases (0.95 level)          60.6061 %
+			Mean rel. region size (0.95 level)      59.0909 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4252
+			Root mean squared error                  0.4698
+			Relative absolute error                 91.1144 %
+			Root relative squared error             97.2704 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      95.4545 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4177
+			Root mean squared error                  0.4616
+			Relative absolute error                 89.5131 %
+			Root relative squared error             95.5736 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          18               54.5455 %
+			Incorrectly Classified Instances        15               45.4545 %
+			Kappa statistic                          0.127 
+			Mean absolute error                      0.4698
+			Root mean squared error                  0.664 
+			Relative absolute error                100.6789 %
+			Root relative squared error            137.4815 %
+			Coverage of cases (0.95 level)          57.5758 %
+			Mean rel. region size (0.95 level)      54.5455 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4191
+			Root mean squared error                  0.4666
+			Relative absolute error                 89.8029 %
+			Root relative squared error             96.6169 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      95.4545 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4133
+			Root mean squared error                  0.4581
+			Relative absolute error                 88.575  %
+			Root relative squared error             94.8622 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          18               54.5455 %
+			Incorrectly Classified Instances        15               45.4545 %
+			Kappa statistic                          0     
+			Mean absolute error                      0.4587
+			Root mean squared error                  0.6444
+			Relative absolute error                 98.2932 %
+			Root relative squared error            133.4366 %
+			Coverage of cases (0.95 level)          54.5455 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          20               60.6061 %
+			Incorrectly Classified Instances        13               39.3939 %
+			Kappa statistic                          0.0654
+			Mean absolute error                      0.4022
+			Root mean squared error                  0.5155
+			Relative absolute error                 86.2006 %
+			Root relative squared error            106.7455 %
+			Coverage of cases (0.95 level)          87.8788 %
+			Mean rel. region size (0.95 level)      78.7879 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          21               63.6364 %
+			Incorrectly Classified Instances        12               36.3636 %
+			Kappa statistic                          0     
+			Mean absolute error                      0.393 
+			Root mean squared error                  0.4853
+			Relative absolute error                 84.229  %
+			Root relative squared error            100.492  %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          18               54.5455 %
+			Incorrectly Classified Instances        15               45.4545 %
+			Kappa statistic                          0     
+			Mean absolute error                      0.458 
+			Root mean squared error                  0.6356
+			Relative absolute error                 98.1497 %
+			Root relative squared error            131.6106 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          20               60.6061 %
+			Incorrectly Classified Instances        13               39.3939 %
+			Kappa statistic                          0.0654
+			Mean absolute error                      0.4027
+			Root mean squared error                  0.5141
+			Relative absolute error                 86.2975 %
+			Root relative squared error            106.4496 %
+			Coverage of cases (0.95 level)          87.8788 %
+			Mean rel. region size (0.95 level)      78.7879 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.3932
+			Root mean squared error                  0.4843
+			Relative absolute error                 84.2593 %
+			Root relative squared error            100.2888 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          18               54.5455 %
+			Incorrectly Classified Instances        15               45.4545 %
+			Kappa statistic                          0     
+			Mean absolute error                      0.4545
+			Root mean squared error                  0.6664
+			Relative absolute error                 97.3984 %
+			Root relative squared error            137.9929 %
+			Coverage of cases (0.95 level)          54.5455 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          20               60.6061 %
+			Incorrectly Classified Instances        13               39.3939 %
+			Kappa statistic                          0.0654
+			Mean absolute error                      0.3966
+			Root mean squared error                  0.517 
+			Relative absolute error                 84.9842 %
+			Root relative squared error            107.0435 %
+			Coverage of cases (0.95 level)          87.8788 %
+			Mean rel. region size (0.95 level)      78.7879 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.389 
+			Root mean squared error                  0.4852
+			Relative absolute error                 83.3532 %
+			Root relative squared error            100.4713 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          18               54.5455 %
+			Incorrectly Classified Instances        15               45.4545 %
+			Kappa statistic                          0.127 
+			Mean absolute error                      0.4717
+			Root mean squared error                  0.6489
+			Relative absolute error                101.0736 %
+			Root relative squared error            134.3605 %
+			Coverage of cases (0.95 level)          57.5758 %
+			Mean rel. region size (0.95 level)      54.5455 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4259
+			Root mean squared error                  0.4709
+			Relative absolute error                 91.2715 %
+			Root relative squared error             97.5136 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      95.4545 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.4183
+			Root mean squared error                  0.4628
+			Relative absolute error                 89.6297 %
+			Root relative squared error             95.8212 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          18               54.5455 %
+			Incorrectly Classified Instances        15               45.4545 %
+			Kappa statistic                          0.127 
+			Mean absolute error                      0.4716
+			Root mean squared error                  0.6434
+			Relative absolute error                101.0563 %
+			Root relative squared error            133.2178 %
+			Coverage of cases (0.95 level)          60.6061 %
+			Mean rel. region size (0.95 level)      59.0909 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4252
+			Root mean squared error                  0.4698
+			Relative absolute error                 91.1144 %
+			Root relative squared error             97.2704 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      95.4545 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4177
+			Root mean squared error                  0.4616
+			Relative absolute error                 89.5131 %
+			Root relative squared error             95.5736 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          18               54.5455 %
+			Incorrectly Classified Instances        15               45.4545 %
+			Kappa statistic                          0.127 
+			Mean absolute error                      0.4698
+			Root mean squared error                  0.664 
+			Relative absolute error                100.6789 %
+			Root relative squared error            137.4815 %
+			Coverage of cases (0.95 level)          57.5758 %
+			Mean rel. region size (0.95 level)      54.5455 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4191
+			Root mean squared error                  0.4666
+			Relative absolute error                 89.8029 %
+			Root relative squared error             96.6169 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      95.4545 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4133
+			Root mean squared error                  0.4581
+			Relative absolute error                 88.575  %
+			Root relative squared error             94.8622 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.functions.SMO
+		 Parameters: 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          29               87.8788 %
+			Incorrectly Classified Instances         4               12.1212 %
+			Kappa statistic                          0.7179
+			Mean absolute error                      0.1212
+			Root mean squared error                  0.3482
+			Relative absolute error                 25.9754 %
+			Root relative squared error             72.0896 %
+			Coverage of cases (0.95 level)          87.8788 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [DEBUG]com.dces.evaluation.features.FeatureSpaceGenerator - Feature Space Evalutation :
+		 Param State: TOGGLESTEMMING_STOPWORDS_ON(0) 
+		 Model State: WORD_UNIGRAM_BIGRAM(1)
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.4   
+			Mean absolute error                      0.3155
+			Root mean squared error                  0.4672
+			Relative absolute error                 67.6028 %
+			Root relative squared error             96.7489 %
+			Coverage of cases (0.95 level)          84.8485 %
+			Mean rel. region size (0.95 level)      65.1515 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4135
+			Root mean squared error                  0.4657
+			Relative absolute error                 88.6159 %
+			Root relative squared error             96.4257 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      93.9394 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.4173
+			Root mean squared error                  0.4589
+			Relative absolute error                 89.4181 %
+			Root relative squared error             95.0166 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.4   
+			Mean absolute error                      0.3186
+			Root mean squared error                  0.4655
+			Relative absolute error                 68.2657 %
+			Root relative squared error             96.3947 %
+			Coverage of cases (0.95 level)          84.8485 %
+			Mean rel. region size (0.95 level)      66.6667 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4127
+			Root mean squared error                  0.4642
+			Relative absolute error                 88.4418 %
+			Root relative squared error             96.1131 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      93.9394 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.4164
+			Root mean squared error                  0.4573
+			Relative absolute error                 89.2371 %
+			Root relative squared error             94.6983 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.4   
+			Mean absolute error                      0.3057
+			Root mean squared error                  0.4749
+			Relative absolute error                 65.5023 %
+			Root relative squared error             98.331  %
+			Coverage of cases (0.95 level)          84.8485 %
+			Mean rel. region size (0.95 level)      65.1515 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4057
+			Root mean squared error                  0.4605
+			Relative absolute error                 86.9334 %
+			Root relative squared error             95.3585 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      93.9394 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.4112
+			Root mean squared error                  0.4528
+			Relative absolute error                 88.1292 %
+			Root relative squared error             93.754  %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2667
+			Mean absolute error                      0.3347
+			Root mean squared error                  0.5099
+			Relative absolute error                 71.7275 %
+			Root relative squared error            105.5847 %
+			Coverage of cases (0.95 level)          75.7576 %
+			Mean rel. region size (0.95 level)      57.5758 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          20               60.6061 %
+			Incorrectly Classified Instances        13               39.3939 %
+			Kappa statistic                          0.0654
+			Mean absolute error                      0.4119
+			Root mean squared error                  0.5092
+			Relative absolute error                 88.2698 %
+			Root relative squared error            105.4429 %
+			Coverage of cases (0.95 level)          90.9091 %
+			Mean rel. region size (0.95 level)      83.3333 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.3979
+			Root mean squared error                  0.4812
+			Relative absolute error                 85.2727 %
+			Root relative squared error             99.6392 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      93.9394 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2667
+			Mean absolute error                      0.3387
+			Root mean squared error                  0.5058
+			Relative absolute error                 72.5736 %
+			Root relative squared error            104.726  %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          20               60.6061 %
+			Incorrectly Classified Instances        13               39.3939 %
+			Kappa statistic                          0.0654
+			Mean absolute error                      0.4117
+			Root mean squared error                  0.5075
+			Relative absolute error                 88.2256 %
+			Root relative squared error            105.0827 %
+			Coverage of cases (0.95 level)          90.9091 %
+			Mean rel. region size (0.95 level)      83.3333 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.3978
+			Root mean squared error                  0.4801
+			Relative absolute error                 85.2476 %
+			Root relative squared error             99.4189 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      93.9394 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2667
+			Mean absolute error                      0.3217
+			Root mean squared error                  0.5249
+			Relative absolute error                 68.9488 %
+			Root relative squared error            108.6816 %
+			Coverage of cases (0.95 level)          75.7576 %
+			Mean rel. region size (0.95 level)      57.5758 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          20               60.6061 %
+			Incorrectly Classified Instances        13               39.3939 %
+			Kappa statistic                          0.0654
+			Mean absolute error                      0.4048
+			Root mean squared error                  0.5086
+			Relative absolute error                 86.758  %
+			Root relative squared error            105.3059 %
+			Coverage of cases (0.95 level)          90.9091 %
+			Mean rel. region size (0.95 level)      83.3333 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.3939
+			Root mean squared error                  0.4808
+			Relative absolute error                 84.4116 %
+			Root relative squared error             99.5539 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      93.9394 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.4   
+			Mean absolute error                      0.3155
+			Root mean squared error                  0.4672
+			Relative absolute error                 67.6028 %
+			Root relative squared error             96.7489 %
+			Coverage of cases (0.95 level)          84.8485 %
+			Mean rel. region size (0.95 level)      65.1515 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4135
+			Root mean squared error                  0.4657
+			Relative absolute error                 88.6159 %
+			Root relative squared error             96.4257 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      93.9394 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.4173
+			Root mean squared error                  0.4589
+			Relative absolute error                 89.4181 %
+			Root relative squared error             95.0166 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.4   
+			Mean absolute error                      0.3186
+			Root mean squared error                  0.4655
+			Relative absolute error                 68.2657 %
+			Root relative squared error             96.3947 %
+			Coverage of cases (0.95 level)          84.8485 %
+			Mean rel. region size (0.95 level)      66.6667 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4127
+			Root mean squared error                  0.4642
+			Relative absolute error                 88.4418 %
+			Root relative squared error             96.1131 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      93.9394 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.4164
+			Root mean squared error                  0.4573
+			Relative absolute error                 89.2371 %
+			Root relative squared error             94.6983 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.4   
+			Mean absolute error                      0.3057
+			Root mean squared error                  0.4749
+			Relative absolute error                 65.5023 %
+			Root relative squared error             98.331  %
+			Coverage of cases (0.95 level)          84.8485 %
+			Mean rel. region size (0.95 level)      65.1515 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4057
+			Root mean squared error                  0.4605
+			Relative absolute error                 86.9334 %
+			Root relative squared error             95.3585 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      93.9394 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.4112
+			Root mean squared error                  0.4528
+			Relative absolute error                 88.1292 %
+			Root relative squared error             93.754  %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.functions.SMO
+		 Parameters: 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          30               90.9091 %
+			Incorrectly Classified Instances         3                9.0909 %
+			Kappa statistic                          0.7925
+			Mean absolute error                      0.0909
+			Root mean squared error                  0.3015
+			Relative absolute error                 19.4815 %
+			Root relative squared error             62.4314 %
+			Coverage of cases (0.95 level)          90.9091 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [DEBUG]com.dces.evaluation.features.FeatureSpaceGenerator - Feature Space Evalutation :
+		 Param State: TOGGLESTEMMING_STOPWORDS_ON(0) 
+		 Model State: WORD_UNIGRAM_BIGRAM_TRIGRAM(2)
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4762
+			Mean absolute error                      0.2582
+			Root mean squared error                  0.4776
+			Relative absolute error                 55.3417 %
+			Root relative squared error             98.8852 %
+			Coverage of cases (0.95 level)          75.7576 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3963
+			Root mean squared error                  0.4528
+			Relative absolute error                 84.9204 %
+			Root relative squared error             93.7595 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.4113
+			Root mean squared error                  0.4561
+			Relative absolute error                 88.1363 %
+			Root relative squared error             94.4364 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4762
+			Mean absolute error                      0.2611
+			Root mean squared error                  0.4737
+			Relative absolute error                 55.9515 %
+			Root relative squared error             98.0875 %
+			Coverage of cases (0.95 level)          78.7879 %
+			Mean rel. region size (0.95 level)      51.5152 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3959
+			Root mean squared error                  0.4517
+			Relative absolute error                 84.849  %
+			Root relative squared error             93.5238 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.4106
+			Root mean squared error                  0.4547
+			Relative absolute error                 87.9957 %
+			Root relative squared error             94.1604 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4762
+			Mean absolute error                      0.2452
+			Root mean squared error                  0.489 
+			Relative absolute error                 52.5423 %
+			Root relative squared error            101.2601 %
+			Coverage of cases (0.95 level)          75.7576 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3893
+			Root mean squared error                  0.448 
+			Relative absolute error                 83.4171 %
+			Root relative squared error             92.7645 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.4055
+			Root mean squared error                  0.4499
+			Relative absolute error                 86.8915 %
+			Root relative squared error             93.1557 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2667
+			Mean absolute error                      0.3203
+			Root mean squared error                  0.5268
+			Relative absolute error                 68.6352 %
+			Root relative squared error            109.077  %
+			Coverage of cases (0.95 level)          69.697  %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2361
+			Mean absolute error                      0.385 
+			Root mean squared error                  0.486 
+			Relative absolute error                 82.4964 %
+			Root relative squared error            100.6349 %
+			Coverage of cases (0.95 level)          90.9091 %
+			Mean rel. region size (0.95 level)      81.8182 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.395 
+			Root mean squared error                  0.4657
+			Relative absolute error                 84.6465 %
+			Root relative squared error             96.4278 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      93.9394 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2667
+			Mean absolute error                      0.3223
+			Root mean squared error                  0.52  
+			Relative absolute error                 69.06   %
+			Root relative squared error            107.6761 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      95.4545 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2361
+			Mean absolute error                      0.3854
+			Root mean squared error                  0.485 
+			Relative absolute error                 82.5834 %
+			Root relative squared error            100.4269 %
+			Coverage of cases (0.95 level)          90.9091 %
+			Mean rel. region size (0.95 level)      81.8182 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.3949
+			Root mean squared error                  0.4652
+			Relative absolute error                 84.6331 %
+			Root relative squared error             96.3179 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      93.9394 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2667
+			Mean absolute error                      0.3054
+			Root mean squared error                  0.5443
+			Relative absolute error                 65.4487 %
+			Root relative squared error            112.6982 %
+			Coverage of cases (0.95 level)          69.697  %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2361
+			Mean absolute error                      0.3792
+			Root mean squared error                  0.4872
+			Relative absolute error                 81.2587 %
+			Root relative squared error            100.8786 %
+			Coverage of cases (0.95 level)          90.9091 %
+			Mean rel. region size (0.95 level)      81.8182 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.3906
+			Root mean squared error                  0.4667
+			Relative absolute error                 83.7072 %
+			Root relative squared error             96.6294 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      93.9394 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4762
+			Mean absolute error                      0.2582
+			Root mean squared error                  0.4776
+			Relative absolute error                 55.3417 %
+			Root relative squared error             98.8852 %
+			Coverage of cases (0.95 level)          75.7576 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3963
+			Root mean squared error                  0.4528
+			Relative absolute error                 84.9204 %
+			Root relative squared error             93.7595 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.4113
+			Root mean squared error                  0.4561
+			Relative absolute error                 88.1363 %
+			Root relative squared error             94.4364 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4762
+			Mean absolute error                      0.2611
+			Root mean squared error                  0.4737
+			Relative absolute error                 55.9515 %
+			Root relative squared error             98.0875 %
+			Coverage of cases (0.95 level)          78.7879 %
+			Mean rel. region size (0.95 level)      51.5152 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3959
+			Root mean squared error                  0.4517
+			Relative absolute error                 84.849  %
+			Root relative squared error             93.5238 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.4106
+			Root mean squared error                  0.4547
+			Relative absolute error                 87.9957 %
+			Root relative squared error             94.1604 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4762
+			Mean absolute error                      0.2452
+			Root mean squared error                  0.489 
+			Relative absolute error                 52.5423 %
+			Root relative squared error            101.2601 %
+			Coverage of cases (0.95 level)          75.7576 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3893
+			Root mean squared error                  0.448 
+			Relative absolute error                 83.4171 %
+			Root relative squared error             92.7645 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1037
+			Mean absolute error                      0.4055
+			Root mean squared error                  0.4499
+			Relative absolute error                 86.8915 %
+			Root relative squared error             93.1557 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.functions.SMO
+		 Parameters: 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          30               90.9091 %
+			Incorrectly Classified Instances         3                9.0909 %
+			Kappa statistic                          0.7925
+			Mean absolute error                      0.0909
+			Root mean squared error                  0.3015
+			Relative absolute error                 19.4815 %
+			Root relative squared error             62.4314 %
+			Coverage of cases (0.95 level)          90.9091 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [DEBUG]com.dces.evaluation.features.FeatureSpaceGenerator - Feature Space Evalutation :
+		 Param State: TOGGLESTEMMING_STOPWORDS_OFF(1) 
+		 Model State: WORD_UNIGRAM(0)
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          19               57.5758 %
+			Incorrectly Classified Instances        14               42.4242 %
+			Kappa statistic                          0.1979
+			Mean absolute error                      0.4291
+			Root mean squared error                  0.6206
+			Relative absolute error                 91.9547 %
+			Root relative squared error            128.506  %
+			Coverage of cases (0.95 level)          60.6061 %
+			Mean rel. region size (0.95 level)      53.0303 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3962
+			Root mean squared error                  0.4528
+			Relative absolute error                 84.9047 %
+			Root relative squared error             93.7586 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4003
+			Root mean squared error                  0.4507
+			Relative absolute error                 85.7848 %
+			Root relative squared error             93.3317 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          19               57.5758 %
+			Incorrectly Classified Instances        14               42.4242 %
+			Kappa statistic                          0.1979
+			Mean absolute error                      0.4299
+			Root mean squared error                  0.615 
+			Relative absolute error                 92.1183 %
+			Root relative squared error            127.3339 %
+			Coverage of cases (0.95 level)          63.6364 %
+			Mean rel. region size (0.95 level)      57.5758 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3961
+			Root mean squared error                  0.4518
+			Relative absolute error                 84.8778 %
+			Root relative squared error             93.5403 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4001
+			Root mean squared error                  0.4496
+			Relative absolute error                 85.7368 %
+			Root relative squared error             93.0976 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          19               57.5758 %
+			Incorrectly Classified Instances        14               42.4242 %
+			Kappa statistic                          0.1979
+			Mean absolute error                      0.425 
+			Root mean squared error                  0.6349
+			Relative absolute error                 91.0846 %
+			Root relative squared error            131.463  %
+			Coverage of cases (0.95 level)          60.6061 %
+			Mean rel. region size (0.95 level)      53.0303 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3899
+			Root mean squared error                  0.4489
+			Relative absolute error                 83.5479 %
+			Root relative squared error             92.9484 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.3959
+			Root mean squared error                  0.4459
+			Relative absolute error                 84.8483 %
+			Root relative squared error             92.3293 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          20               60.6061 %
+			Incorrectly Classified Instances        13               39.3939 %
+			Kappa statistic                          0.1333
+			Mean absolute error                      0.4174
+			Root mean squared error                  0.6064
+			Relative absolute error                 89.438  %
+			Root relative squared error            125.5596 %
+			Coverage of cases (0.95 level)          60.6061 %
+			Mean rel. region size (0.95 level)      51.5152 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          21               63.6364 %
+			Incorrectly Classified Instances        12               36.3636 %
+			Kappa statistic                          0.12  
+			Mean absolute error                      0.4071
+			Root mean squared error                  0.527 
+			Relative absolute error                 87.248  %
+			Root relative squared error            109.1254 %
+			Coverage of cases (0.95 level)          84.8485 %
+			Mean rel. region size (0.95 level)      77.2727 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          21               63.6364 %
+			Incorrectly Classified Instances        12               36.3636 %
+			Kappa statistic                          0     
+			Mean absolute error                      0.3841
+			Root mean squared error                  0.4952
+			Relative absolute error                 82.3191 %
+			Root relative squared error            102.535  %
+			Coverage of cases (0.95 level)          93.9394 %
+			Mean rel. region size (0.95 level)      84.8485 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          20               60.6061 %
+			Incorrectly Classified Instances        13               39.3939 %
+			Kappa statistic                          0.1333
+			Mean absolute error                      0.4194
+			Root mean squared error                  0.599 
+			Relative absolute error                 89.8786 %
+			Root relative squared error            124.0298 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          21               63.6364 %
+			Incorrectly Classified Instances        12               36.3636 %
+			Kappa statistic                          0.12  
+			Mean absolute error                      0.4076
+			Root mean squared error                  0.5252
+			Relative absolute error                 87.341  %
+			Root relative squared error            108.7487 %
+			Coverage of cases (0.95 level)          84.8485 %
+			Mean rel. region size (0.95 level)      77.2727 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          21               63.6364 %
+			Incorrectly Classified Instances        12               36.3636 %
+			Kappa statistic                          0     
+			Mean absolute error                      0.3844
+			Root mean squared error                  0.4938
+			Relative absolute error                 82.3852 %
+			Root relative squared error            102.2472 %
+			Coverage of cases (0.95 level)          93.9394 %
+			Mean rel. region size (0.95 level)      84.8485 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          20               60.6061 %
+			Incorrectly Classified Instances        13               39.3939 %
+			Kappa statistic                          0.1333
+			Mean absolute error                      0.4111
+			Root mean squared error                  0.6269
+			Relative absolute error                 88.0956 %
+			Root relative squared error            129.8012 %
+			Coverage of cases (0.95 level)          60.6061 %
+			Mean rel. region size (0.95 level)      51.5152 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          21               63.6364 %
+			Incorrectly Classified Instances        12               36.3636 %
+			Kappa statistic                          0.12  
+			Mean absolute error                      0.4017
+			Root mean squared error                  0.5285
+			Relative absolute error                 86.077  %
+			Root relative squared error            109.4222 %
+			Coverage of cases (0.95 level)          84.8485 %
+			Mean rel. region size (0.95 level)      77.2727 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          21               63.6364 %
+			Incorrectly Classified Instances        12               36.3636 %
+			Kappa statistic                          0     
+			Mean absolute error                      0.3802
+			Root mean squared error                  0.4939
+			Relative absolute error                 81.4826 %
+			Root relative squared error            102.2717 %
+			Coverage of cases (0.95 level)          93.9394 %
+			Mean rel. region size (0.95 level)      84.8485 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          19               57.5758 %
+			Incorrectly Classified Instances        14               42.4242 %
+			Kappa statistic                          0.1979
+			Mean absolute error                      0.4291
+			Root mean squared error                  0.6206
+			Relative absolute error                 91.9547 %
+			Root relative squared error            128.506  %
+			Coverage of cases (0.95 level)          60.6061 %
+			Mean rel. region size (0.95 level)      53.0303 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3962
+			Root mean squared error                  0.4528
+			Relative absolute error                 84.9047 %
+			Root relative squared error             93.7586 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4003
+			Root mean squared error                  0.4507
+			Relative absolute error                 85.7848 %
+			Root relative squared error             93.3317 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          19               57.5758 %
+			Incorrectly Classified Instances        14               42.4242 %
+			Kappa statistic                          0.1979
+			Mean absolute error                      0.4299
+			Root mean squared error                  0.615 
+			Relative absolute error                 92.1183 %
+			Root relative squared error            127.3339 %
+			Coverage of cases (0.95 level)          63.6364 %
+			Mean rel. region size (0.95 level)      57.5758 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3961
+			Root mean squared error                  0.4518
+			Relative absolute error                 84.8778 %
+			Root relative squared error             93.5403 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.4001
+			Root mean squared error                  0.4496
+			Relative absolute error                 85.7368 %
+			Root relative squared error             93.0976 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          19               57.5758 %
+			Incorrectly Classified Instances        14               42.4242 %
+			Kappa statistic                          0.1979
+			Mean absolute error                      0.425 
+			Root mean squared error                  0.6349
+			Relative absolute error                 91.0846 %
+			Root relative squared error            131.463  %
+			Coverage of cases (0.95 level)          60.6061 %
+			Mean rel. region size (0.95 level)      53.0303 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3899
+			Root mean squared error                  0.4489
+			Relative absolute error                 83.5479 %
+			Root relative squared error             92.9484 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.3959
+			Root mean squared error                  0.4459
+			Relative absolute error                 84.8483 %
+			Root relative squared error             92.3293 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.functions.SMO
+		 Parameters: 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          27               81.8182 %
+			Incorrectly Classified Instances         6               18.1818 %
+			Kappa statistic                          0.56  
+			Mean absolute error                      0.1818
+			Root mean squared error                  0.4264
+			Relative absolute error                 38.9631 %
+			Root relative squared error             88.2914 %
+			Coverage of cases (0.95 level)          81.8182 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [DEBUG]com.dces.evaluation.features.FeatureSpaceGenerator - Feature Space Evalutation :
+		 Param State: TOGGLESTEMMING_STOPWORDS_OFF(1) 
+		 Model State: WORD_UNIGRAM_BIGRAM(1)
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4943
+			Mean absolute error                      0.2587
+			Root mean squared error                  0.4776
+			Relative absolute error                 55.4399 %
+			Root relative squared error             98.8899 %
+			Coverage of cases (0.95 level)          75.7576 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          27               81.8182 %
+			Incorrectly Classified Instances         6               18.1818 %
+			Kappa statistic                          0.56  
+			Mean absolute error                      0.3271
+			Root mean squared error                  0.3857
+			Relative absolute error                 70.1023 %
+			Root relative squared error             79.8672 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.3744
+			Root mean squared error                  0.4218
+			Relative absolute error                 80.229  %
+			Root relative squared error             87.333  %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4943
+			Mean absolute error                      0.2658
+			Root mean squared error                  0.475 
+			Relative absolute error                 56.969  %
+			Root relative squared error             98.3499 %
+			Coverage of cases (0.95 level)          75.7576 %
+			Mean rel. region size (0.95 level)      54.5455 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          27               81.8182 %
+			Incorrectly Classified Instances         6               18.1818 %
+			Kappa statistic                          0.56  
+			Mean absolute error                      0.3279
+			Root mean squared error                  0.3849
+			Relative absolute error                 70.2695 %
+			Root relative squared error             79.6923 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3735
+			Root mean squared error                  0.4199
+			Relative absolute error                 80.0321 %
+			Root relative squared error             86.9454 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4943
+			Mean absolute error                      0.2476
+			Root mean squared error                  0.4894
+			Relative absolute error                 53.0538 %
+			Root relative squared error            101.3306 %
+			Coverage of cases (0.95 level)          75.7576 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          27               81.8182 %
+			Incorrectly Classified Instances         6               18.1818 %
+			Kappa statistic                          0.56  
+			Mean absolute error                      0.3205
+			Root mean squared error                  0.3814
+			Relative absolute error                 68.6721 %
+			Root relative squared error             78.966  %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3684
+			Root mean squared error                  0.4155
+			Relative absolute error                 78.9366 %
+			Root relative squared error             86.0304 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4359
+			Mean absolute error                      0.2658
+			Root mean squared error                  0.4716
+			Relative absolute error                 56.9687 %
+			Root relative squared error             97.6602 %
+			Coverage of cases (0.95 level)          75.7576 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1418
+			Mean absolute error                      0.3654
+			Root mean squared error                  0.4655
+			Relative absolute error                 78.3068 %
+			Root relative squared error             96.3803 %
+			Coverage of cases (0.95 level)          93.9394 %
+			Mean rel. region size (0.95 level)      81.8182 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          21               63.6364 %
+			Incorrectly Classified Instances        12               36.3636 %
+			Kappa statistic                          0.0435
+			Mean absolute error                      0.393 
+			Root mean squared error                  0.4615
+			Relative absolute error                 84.229  %
+			Root relative squared error             95.552  %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4359
+			Mean absolute error                      0.2749
+			Root mean squared error                  0.467 
+			Relative absolute error                 58.9071 %
+			Root relative squared error             96.69   %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)     100      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2361
+			Mean absolute error                      0.3665
+			Root mean squared error                  0.4639
+			Relative absolute error                 78.5374 %
+			Root relative squared error             96.0636 %
+			Coverage of cases (0.95 level)          93.9394 %
+			Mean rel. region size (0.95 level)      81.8182 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1418
+			Mean absolute error                      0.3924
+			Root mean squared error                  0.46  
+			Relative absolute error                 84.0805 %
+			Root relative squared error             95.2505 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4359
+			Mean absolute error                      0.2494
+			Root mean squared error                  0.4869
+			Relative absolute error                 53.4475 %
+			Root relative squared error            100.8237 %
+			Coverage of cases (0.95 level)          75.7576 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2361
+			Mean absolute error                      0.3615
+			Root mean squared error                  0.4674
+			Relative absolute error                 77.471  %
+			Root relative squared error             96.7748 %
+			Coverage of cases (0.95 level)          93.9394 %
+			Mean rel. region size (0.95 level)      81.8182 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          22               66.6667 %
+			Incorrectly Classified Instances        11               33.3333 %
+			Kappa statistic                          0.1418
+			Mean absolute error                      0.3879
+			Root mean squared error                  0.4604
+			Relative absolute error                 83.1153 %
+			Root relative squared error             95.3375 %
+			Coverage of cases (0.95 level)          96.9697 %
+			Mean rel. region size (0.95 level)      92.4242 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4943
+			Mean absolute error                      0.2587
+			Root mean squared error                  0.4776
+			Relative absolute error                 55.4399 %
+			Root relative squared error             98.8899 %
+			Coverage of cases (0.95 level)          75.7576 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          27               81.8182 %
+			Incorrectly Classified Instances         6               18.1818 %
+			Kappa statistic                          0.56  
+			Mean absolute error                      0.3271
+			Root mean squared error                  0.3857
+			Relative absolute error                 70.1023 %
+			Root relative squared error             79.8672 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2029
+			Mean absolute error                      0.3744
+			Root mean squared error                  0.4218
+			Relative absolute error                 80.229  %
+			Root relative squared error             87.333  %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4943
+			Mean absolute error                      0.2658
+			Root mean squared error                  0.475 
+			Relative absolute error                 56.969  %
+			Root relative squared error             98.3499 %
+			Coverage of cases (0.95 level)          75.7576 %
+			Mean rel. region size (0.95 level)      54.5455 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          27               81.8182 %
+			Incorrectly Classified Instances         6               18.1818 %
+			Kappa statistic                          0.56  
+			Mean absolute error                      0.3279
+			Root mean squared error                  0.3849
+			Relative absolute error                 70.2695 %
+			Root relative squared error             79.6923 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3735
+			Root mean squared error                  0.4199
+			Relative absolute error                 80.0321 %
+			Root relative squared error             86.9454 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4943
+			Mean absolute error                      0.2476
+			Root mean squared error                  0.4894
+			Relative absolute error                 53.0538 %
+			Root relative squared error            101.3306 %
+			Coverage of cases (0.95 level)          75.7576 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          27               81.8182 %
+			Incorrectly Classified Instances         6               18.1818 %
+			Kappa statistic                          0.56  
+			Mean absolute error                      0.3205
+			Root mean squared error                  0.3814
+			Relative absolute error                 68.6721 %
+			Root relative squared error             78.966  %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.2979
+			Mean absolute error                      0.3684
+			Root mean squared error                  0.4155
+			Relative absolute error                 78.9366 %
+			Root relative squared error             86.0304 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.functions.SMO
+		 Parameters: 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          27               81.8182 %
+			Incorrectly Classified Instances         6               18.1818 %
+			Kappa statistic                          0.56  
+			Mean absolute error                      0.1818
+			Root mean squared error                  0.4264
+			Relative absolute error                 38.9631 %
+			Root relative squared error             88.2914 %
+			Coverage of cases (0.95 level)          81.8182 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [DEBUG]com.dces.evaluation.features.FeatureSpaceGenerator - Feature Space Evalutation :
+		 Param State: TOGGLESTEMMING_STOPWORDS_OFF(1) 
+		 Model State: WORD_UNIGRAM_BIGRAM_TRIGRAM(2)
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4359
+			Mean absolute error                      0.2435
+			Root mean squared error                  0.4551
+			Relative absolute error                 52.1864 %
+			Root relative squared error             94.2351 %
+			Coverage of cases (0.95 level)          78.7879 %
+			Mean rel. region size (0.95 level)      51.5152 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          26               78.7879 %
+			Incorrectly Classified Instances         7               21.2121 %
+			Kappa statistic                          0.4762
+			Mean absolute error                      0.3414
+			Root mean squared error                  0.4045
+			Relative absolute error                 73.1585 %
+			Root relative squared error             83.7602 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.3889
+			Mean absolute error                      0.3764
+			Root mean squared error                  0.4262
+			Relative absolute error                 80.6592 %
+			Root relative squared error             88.2404 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4359
+			Mean absolute error                      0.2497
+			Root mean squared error                  0.4527
+			Relative absolute error                 53.5018 %
+			Root relative squared error             93.7355 %
+			Coverage of cases (0.95 level)          78.7879 %
+			Mean rel. region size (0.95 level)      56.0606 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          26               78.7879 %
+			Incorrectly Classified Instances         7               21.2121 %
+			Kappa statistic                          0.4762
+			Mean absolute error                      0.3409
+			Root mean squared error                  0.4028
+			Relative absolute error                 73.0614 %
+			Root relative squared error             83.4107 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.3889
+			Mean absolute error                      0.375 
+			Root mean squared error                  0.4242
+			Relative absolute error                 80.3622 %
+			Root relative squared error             87.8358 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4359
+			Mean absolute error                      0.2318
+			Root mean squared error                  0.466 
+			Relative absolute error                 49.6787 %
+			Root relative squared error             96.489  %
+			Coverage of cases (0.95 level)          78.7879 %
+			Mean rel. region size (0.95 level)      51.5152 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          26               78.7879 %
+			Incorrectly Classified Instances         7               21.2121 %
+			Kappa statistic                          0.4762
+			Mean absolute error                      0.3322
+			Root mean squared error                  0.3978
+			Relative absolute error                 71.1873 %
+			Root relative squared error             82.3628 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 0 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.3889
+			Mean absolute error                      0.3682
+			Root mean squared error                  0.4182
+			Relative absolute error                 78.9063 %
+			Root relative squared error             86.6029 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4133
+			Mean absolute error                      0.2521
+			Root mean squared error                  0.4499
+			Relative absolute error                 54.017  %
+			Root relative squared error             93.1586 %
+			Coverage of cases (0.95 level)          78.7879 %
+			Mean rel. region size (0.95 level)      51.5152 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          23               69.697  %
+			Incorrectly Classified Instances        10               30.303  %
+			Kappa statistic                          0.2667
+			Mean absolute error                      0.3559
+			Root mean squared error                  0.4695
+			Relative absolute error                 76.2631 %
+			Root relative squared error             97.2106 %
+			Coverage of cases (0.95 level)          90.9091 %
+			Mean rel. region size (0.95 level)      78.7879 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          21               63.6364 %
+			Incorrectly Classified Instances        12               36.3636 %
+			Kappa statistic                          0.0435
+			Mean absolute error                      0.395 
+			Root mean squared error                  0.4551
+			Relative absolute error                 84.6569 %
+			Root relative squared error             94.2251 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      95.4545 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4133
+			Mean absolute error                      0.2606
+			Root mean squared error                  0.4457
+			Relative absolute error                 55.8387 %
+			Root relative squared error             92.2803 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.3529
+			Mean absolute error                      0.3568
+			Root mean squared error                  0.4675
+			Relative absolute error                 76.47   %
+			Root relative squared error             96.8035 %
+			Coverage of cases (0.95 level)          90.9091 %
+			Mean rel. region size (0.95 level)      78.7879 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          21               63.6364 %
+			Incorrectly Classified Instances        12               36.3636 %
+			Kappa statistic                          0.0435
+			Mean absolute error                      0.3938
+			Root mean squared error                  0.4535
+			Relative absolute error                 84.3816 %
+			Root relative squared error             93.9074 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      95.4545 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4133
+			Mean absolute error                      0.2341
+			Root mean squared error                  0.4638
+			Relative absolute error                 50.1695 %
+			Root relative squared error             96.0404 %
+			Coverage of cases (0.95 level)          78.7879 %
+			Mean rel. region size (0.95 level)      51.5152 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          24               72.7273 %
+			Incorrectly Classified Instances         9               27.2727 %
+			Kappa statistic                          0.3529
+			Mean absolute error                      0.3487
+			Root mean squared error                  0.4676
+			Relative absolute error                 74.7294 %
+			Root relative squared error             96.8242 %
+			Coverage of cases (0.95 level)          90.9091 %
+			Mean rel. region size (0.95 level)      78.7879 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 20 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          21               63.6364 %
+			Incorrectly Classified Instances        12               36.3636 %
+			Kappa statistic                          0.0435
+			Mean absolute error                      0.3884
+			Root mean squared error                  0.4536
+			Relative absolute error                 83.2425 %
+			Root relative squared error             93.9309 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      95.4545 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4359
+			Mean absolute error                      0.2435
+			Root mean squared error                  0.4551
+			Relative absolute error                 52.1864 %
+			Root relative squared error             94.2351 %
+			Coverage of cases (0.95 level)          78.7879 %
+			Mean rel. region size (0.95 level)      51.5152 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          26               78.7879 %
+			Incorrectly Classified Instances         7               21.2121 %
+			Kappa statistic                          0.4762
+			Mean absolute error                      0.3414
+			Root mean squared error                  0.4045
+			Relative absolute error                 73.1585 %
+			Root relative squared error             83.7602 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.3889
+			Mean absolute error                      0.3764
+			Root mean squared error                  0.4262
+			Relative absolute error                 80.6592 %
+			Root relative squared error             88.2404 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4359
+			Mean absolute error                      0.2497
+			Root mean squared error                  0.4527
+			Relative absolute error                 53.5018 %
+			Root relative squared error             93.7355 %
+			Coverage of cases (0.95 level)          78.7879 %
+			Mean rel. region size (0.95 level)      56.0606 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          26               78.7879 %
+			Incorrectly Classified Instances         7               21.2121 %
+			Kappa statistic                          0.4762
+			Mean absolute error                      0.3409
+			Root mean squared error                  0.4028
+			Relative absolute error                 73.0614 %
+			Root relative squared error             83.4107 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -F -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.3889
+			Mean absolute error                      0.375 
+			Root mean squared error                  0.4242
+			Relative absolute error                 80.3622 %
+			Root relative squared error             87.8358 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 1 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.4359
+			Mean absolute error                      0.2318
+			Root mean squared error                  0.466 
+			Relative absolute error                 49.6787 %
+			Root relative squared error             96.489  %
+			Coverage of cases (0.95 level)          78.7879 %
+			Mean rel. region size (0.95 level)      51.5152 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 3 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          26               78.7879 %
+			Incorrectly Classified Instances         7               21.2121 %
+			Kappa statistic                          0.4762
+			Mean absolute error                      0.3322
+			Root mean squared error                  0.3978
+			Relative absolute error                 71.1873 %
+			Root relative squared error             82.3628 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      89.3939 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.lazy.IBk
+		 Parameters: -W 50 -I -K 5 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          25               75.7576 %
+			Incorrectly Classified Instances         8               24.2424 %
+			Kappa statistic                          0.3889
+			Mean absolute error                      0.3682
+			Root mean squared error                  0.4182
+			Relative absolute error                 78.9063 %
+			Root relative squared error             86.6029 %
+			Coverage of cases (0.95 level)         100      %
+			Mean rel. region size (0.95 level)      98.4848 %
+			Total Number of Instances               33     
+			
+-- [TRACE]com.dces.core.DECoreEngine - Classifier Instance: 
+	# Evaluation Parameters: 
+		 Classifier: weka.classifiers.functions.SMO
+		 Parameters: 
+	# Evaluation Results: 
+		 Summary: 
+			Correctly Classified Instances          28               84.8485 %
+			Incorrectly Classified Instances         5               15.1515 %
+			Kappa statistic                          0.6405
+			Mean absolute error                      0.1515
+			Root mean squared error                  0.3892
+			Relative absolute error                 32.4692 %
+			Root relative squared error             80.5986 %
+			Coverage of cases (0.95 level)          84.8485 %
+			Mean rel. region size (0.95 level)      50      %
+			Total Number of Instances               33     
+			
+-- [DEBUG]com.dces.core.DECoreEngine - Num of Features Evaluated: 6
+-- [DEBUG]com.dces.core.DECoreEngine - Num of Classifiers Evaluated: 168

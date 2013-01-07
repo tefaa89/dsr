@@ -4,12 +4,10 @@ import weka.core.Instances;
 
 public class DEInstances {
 	private Instances instances;
-	private EvaluationParameters evalParameters;
-	private EvaluationResults evalResults;
+	private EvaluationInfo evalInfo ;
 
 	public DEInstances() {
-		evalParameters = new EvaluationParameters();
-		evalResults = new EvaluationResults();
+		evalInfo = new EvaluationInfo();
 	}
 
 	public DEInstances(Instances instances) {

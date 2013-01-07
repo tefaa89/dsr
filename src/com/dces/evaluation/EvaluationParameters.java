@@ -1,10 +1,10 @@
 package com.dces.evaluation;
 
+import com.dces.evaluation.classifiers.DocumentClassifer;
 import com.dces.util.enumu.FeaturesModelEnum;
 
 public class EvaluationParameters {
-	private String classifierClassPath;
-	private String parametersStr;
+	private DocumentClassifer classifier;
 	private FeaturesModelEnum featureModelEnum;
 	private boolean tfBool;
 	private boolean idfBool;
@@ -15,20 +15,12 @@ public class EvaluationParameters {
 
 	}
 
-	public String getClassifierClassPath() {
-		return classifierClassPath;
+	public DocumentClassifer getClassifier() {
+		return classifier;
 	}
 
-	public void setClassifierClassPath(String classifierClassPath) {
-		this.classifierClassPath = classifierClassPath;
-	}
-
-	public String getParametersStr() {
-		return parametersStr;
-	}
-
-	public void setParametersStr(String parametersStr) {
-		this.parametersStr = parametersStr;
+	public void setClassifier(DocumentClassifer classifier) {
+		this.classifier = classifier;
 	}
 
 	public FeaturesModelEnum getFeatureModelEnum() {
@@ -73,6 +65,7 @@ public class EvaluationParameters {
 
 	@Override
 	public String toString() {
-		return "# Evaluation Parameters: " + "\n\t Classifier: " + classifierClassPath + "\n\t Parameters: " + parametersStr;
+		return "# Evaluation Parameters: " + "\n\t Classifier: " + classifier.getClassPath()
+				+ "\n\t Parameters: " + classifier.getOptionsStr();
 	}
 }

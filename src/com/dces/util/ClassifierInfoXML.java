@@ -5,6 +5,10 @@ import java.util.Map;
 public class ClassifierInfoXML {
 	private String id;
 	private String className;
+	/**
+	 * Map<String, String[]>: First String is classifier option. Second String[]
+	 * contains the values for this option ex, ("k",[20,50,100]);
+	 */
 	private Map<String, String[]> parameters;
 
 	public ClassifierInfoXML() {

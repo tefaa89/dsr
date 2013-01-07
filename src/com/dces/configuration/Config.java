@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import com.dces.util.ClassifierInfoXML;
+import com.dces.util.FeatureSelectionInfoXml;
 import nu.xom.*;
 
 public class Config {
@@ -24,7 +25,13 @@ public class Config {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public static ArrayList<FeatureSelectionInfoXml> getFeatureSelectionInfo()
+	{
+		ArrayList<FeatureSelectionInfoXml> res = new ArrayList<FeatureSelectionInfoXml>();
+		return res;
+	}
+	
 	public static ClassifierInfoXML getClassifierByID(String id) {
 		return getClassifierByID(id, configXmlRoot);
 	}

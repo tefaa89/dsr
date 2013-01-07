@@ -1,4 +1,4 @@
-package com.dces.evaluation.features;
+package com.dces.evaluation.featureExtraction;
 
 import org.slf4j.LoggerFactory;
 import weka.core.Instances;
@@ -32,14 +32,15 @@ public class FeatureSpaceGenerator {
 		stemmingLang = lang;
 	}
 
-	public DEInstances getNextDEInstances() {
+	public DEInstances getNext() {
 		if (!hasNext())
 			return null;
 		nextState();
-		logger.debug("Feature Space Evalutation :\n" + "\t Param State: " + featureParamIndexState
-				+ "\n\t Model State: " + featureModelIndexState);
 		FeaturesParametersEnum currentFParam = FeaturesParametersEnum.values()[featureParamIndexState];
 		FeaturesModelEnum currentFModel = FeaturesModelEnum.values()[featureModelIndexState];
+		logger.debug(
+				"Feature Space Evalutation :\n\t Param State: {}({}) \n\t Model State: {}({})",
+				new Object[] { currentFParam, featureParamIndexState, currentFModel, featureModelIndexState});
 		fsb = new FeatureSpaceBuilder(rawData);
 		fsb.setStemmerStopListLanguage(stemmingLang);
 		fsb.setFeatureSpaceModel(currentFModel);

@@ -12,7 +12,7 @@ public class LoggingConsoleLayout extends LayoutBase<ILoggingEvent>{
 		sbuf.append("-- ");
 		sbuf.append("[");
 		sbuf.append(event.getLevel());
-		sbuf.append("]");
+		sbuf.append("] ");
 		sbuf.append(event.getLoggerName());
 		sbuf.append(" - ");
 		sbuf.append(event.getFormattedMessage().replaceAll("\n", "\n\t"));
