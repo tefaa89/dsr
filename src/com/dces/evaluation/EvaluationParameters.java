@@ -1,10 +1,12 @@
 package com.dces.evaluation;
 
 import com.dces.evaluation.classifiers.DocumentClassifer;
+import com.dces.evaluation.featureSelection.DocumentFeatureSelectionFilter;
 import com.dces.util.enumu.FeaturesModelEnum;
 
 public class EvaluationParameters {
 	private DocumentClassifer classifier;
+	private DocumentFeatureSelectionFilter featureSelection;
 	private FeaturesModelEnum featureModelEnum;
 	private boolean tfBool;
 	private boolean idfBool;
@@ -21,6 +23,14 @@ public class EvaluationParameters {
 
 	public void setClassifier(DocumentClassifer classifier) {
 		this.classifier = classifier;
+	}
+
+	public DocumentFeatureSelectionFilter getFeatureSelection() {
+		return featureSelection;
+	}
+
+	public void setFeatureSelection(DocumentFeatureSelectionFilter featureSelection) {
+		this.featureSelection = featureSelection;
 	}
 
 	public FeaturesModelEnum getFeatureModelEnum() {

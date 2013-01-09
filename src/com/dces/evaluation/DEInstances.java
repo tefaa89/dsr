@@ -4,10 +4,10 @@ import weka.core.Instances;
 
 public class DEInstances {
 	private Instances instances;
-	private EvaluationInfo evalInfo ;
+	private EvaluationParameters evalParameters;
 
 	public DEInstances() {
-		evalInfo = new EvaluationInfo();
+		evalParameters = new EvaluationParameters();
 	}
 
 	public DEInstances(Instances instances) {
@@ -30,15 +30,9 @@ public class DEInstances {
 	public void setParameters(EvaluationParameters evalParameters) {
 		this.evalParameters = evalParameters;
 	}
-	
-	public EvaluationResults getEvaluationResults()
-	{
-		return evalResults;
-	}
-	
+
 	@Override
-	public String toString()
-	{
-		return evalParameters + "\n" + evalResults;
+	public String toString() {
+		return evalParameters.toString();
 	}
 }

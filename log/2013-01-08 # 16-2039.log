@@ -1,0 +1,4 @@
+-- [INFO] com.dces.Main - Initializing Core Engine:
+-- [INFO] com.dces.core.DECoreEngine - Loading Corpus Data from: c:\test
+-- [INFO] com.dces.core.DECoreEngine - Corpus Data Loaded Successfuly
+-- [INFO] com.dces.core.DECoreEngine - Building Classifiers Object from XML

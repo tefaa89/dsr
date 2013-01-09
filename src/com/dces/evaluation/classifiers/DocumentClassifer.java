@@ -35,10 +35,10 @@ public class DocumentClassifer {
 	public String setOptions(Map<String, String> options) {
 		String optionsStr = "";
 		for (String option : options.keySet()) {
-			String value = options.get(option) + " ";
-			if (value.trim().equals("*"))
+			String value = options.get(option);
+			if (value.equals("") && option.equals("*"))
 				continue;
-			if (option.trim().equals("*")) {
+			if (option.equals("*")) {
 				optionsStr += "-" + options.get(option) + " ";
 			} else
 				optionsStr += "-" + option + " " + options.get(option) + " ";

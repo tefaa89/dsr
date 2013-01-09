@@ -4,41 +4,139 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import com.dces.util.ClassifierInfoXML;
-import com.dces.util.FeatureSelectionInfoXml;
-import nu.xom.*;
+import nu.xom.Builder;
+import nu.xom.Document;
+import nu.xom.Element;
+import nu.xom.Elements;
+import org.slf4j.LoggerFactory;
+import ch.qos.logback.classic.Logger;
+import com.dces.util.xml.DCESInfoXML;
 
 public class Config {
-	private static Element configXmlRoot;
+	private static Logger logger = (Logger) LoggerFactory.getLogger(Config.class);
+	private static final String FS_EVAL_FILENAME = "fs_evaluators_config.xml";
+	private static final String FS_SEARCH_FILENAME = "fs_search_methods_config.xml";
+	private static final String CLASSIFIERS_FILENAME = "classifiers_config.xml";
+
+	private static Element fsEvaluatorsXmlRoot;
+	private static Element fsSearchMethodsXmlRoot;
 	private static Element classifiersXMLRoot;
 
 	public static void initConfiguration() {
+		logger.debug("Calling: initConfiguration():void method");
 		Builder builder = new Builder();
 		try {
-			File file = new File("resources//configuration//config.xml");
+			// Reading Feature Selection Evaluators Config File
+			logger.trace("Reading {} file", FS_EVAL_FILENAME);
+			File file = new File("resources//configuration//" + FS_EVAL_FILENAME);
 			Document doc = builder.build(file);
-			configXmlRoot = doc.getRootElement();
-			file = new File("resources//configuration//classifiers_config.xml");
+			fsEvaluatorsXmlRoot = doc.getRootElement();
+			logger.trace("{} file is successfuly read", FS_EVAL_FILENAME);
+
+			// Reading Feature Selection Search Methods Config File
+			logger.trace("Reading {} file", FS_SEARCH_FILENAME);
+			file = new File("resources//configuration//" + FS_SEARCH_FILENAME);
 			doc = builder.build(file);
+			fsSearchMethodsXmlRoot = doc.getRootElement();
+			logger.trace("{} file is successfuly read", FS_SEARCH_FILENAME);
+
+			// Reading Classifiers Config File
+			logger.trace("Reading {} file", CLASSIFIERS_FILENAME);
+			file = new File("resources//configuration//" + CLASSIFIERS_FILENAME);
+			doc = builder.build(file);
+			logger.trace("{} file is successfuly read", CLASSIFIERS_FILENAME);
 			classifiersXMLRoot = doc.getRootElement();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public static ArrayList<FeatureSelectionInfoXml> getFeatureSelectionInfo()
-	{
-		ArrayList<FeatureSelectionInfoXml> res = new ArrayList<FeatureSelectionInfoXml>();
-		return res;
-	}
-	
-	public static ClassifierInfoXML getClassifierByID(String id) {
-		return getClassifierByID(id, configXmlRoot);
+
+	public static DCESInfoXML getClassifierByID(String id) {
+		logger.debug("Calling: getClassifierByID(String):ClassifierInfoXML method");
+		return getDCESInfoByID(id, classifiersXMLRoot);
 	}
 
-	private static ClassifierInfoXML getClassifierByID(String id, Element currentElement) {
-		ClassifierInfoXML classifierInfoXml = new ClassifierInfoXML();
-		if (currentElement.getAttribute("id") == null) {
+	public static ArrayList<DCESInfoXML> getFSEvaluatorsInfo() {
+		logger.debug("Calling: getFSEvaluatorsInfo():ArrayList<DCESInfoXML> method");
+		ArrayList<DCESInfoXML> fsEvalInfoList = new ArrayList<DCESInfoXML>();
+		Elements elements = fsEvaluatorsXmlRoot.getChildElements();
+		// Loop on classifiers elements
+		for (int i = 0; i < elements.size(); i++) {
+			String id = elements.get(i).getAttributeValue("id");
+			DCESInfoXML infoXML = getDCESInfoByID(id, elements.get(i));
+			if (infoXML != null)
+				fsEvalInfoList.add(infoXML);
+		}
+		return fsEvalInfoList;
+	}
+
+	public static ArrayList<DCESInfoXML> getFSSeachMethodInfo() {
+		logger.debug("Calling: getFSSeachMethodInfo():ArrayList<DCESInfoXML> method");
+		ArrayList<DCESInfoXML> fsSearchInfoList = new ArrayList<DCESInfoXML>();
+		Elements elements = fsSearchMethodsXmlRoot.getChildElements();
+		// Loop on classifiers elements
+		for (int i = 0; i < elements.size(); i++) {
+			String id = elements.get(i).getAttributeValue("id");
+			DCESInfoXML infoXML = getDCESInfoByID(id, elements.get(i));
+			if (infoXML != null)
+				fsSearchInfoList.add(infoXML);
+		}
+		return fsSearchInfoList;
+	}
+
+	/**
+	 * Fetches all the classifiers info form the XML
+	 * 
+	 * @return {@link ArrayList}
+	 */
+	public static ArrayList<DCESInfoXML> getClassifiersInfo() {
+		logger.debug("Calling: getClassifiersInfo():ArrayList<DCESInfoXML> method");
+		ArrayList<DCESInfoXML> classifiersInfoList = new ArrayList<DCESInfoXML>();
+		Elements elements = classifiersXMLRoot.getChildElements();
+		// Loop on classifiers elements
+		for (int i = 0; i < elements.size(); i++) {
+			String id = elements.get(i).getAttributeValue("id");
+			DCESInfoXML infoXML = getDCESInfoByID(id, elements.get(i));
+			if (infoXML != null)
+				classifiersInfoList.add(infoXML);
+		}
+		return classifiersInfoList;
+	}
+
+	/**
+	 * Every element in an XML file is an DCESInfoXml object
+	 * 
+	 * @param id
+	 * @param currentElement
+	 * @return {@link DCESInfoXML}
+	 */
+	private static DCESInfoXML getDCESInfoByID(String id, Element currentElement) {
+		logger.debug("Calling: getDCESInfoByID(String, Element):DCESInfoXML method");
+		DCESInfoXML dcesInfoXml = new DCESInfoXML();
+		currentElement = validateElementandID(id, currentElement);
+		// If after searching the xml file the element with id "id" is not found
+		// return null
+		String useAttributeValue = currentElement.getAttributeValue("use");
+		if (currentElement.getAttribute("id") == null
+				|| (useAttributeValue != null && useAttributeValue.equals("false")))
+			return null;
+		// At this point we are sure that there is an element with id "id"
+		String className = currentElement.getAttributeValue("classPath");
+		Map<String, String[]> paramters = getParametersFromElement(currentElement);
+		ArrayList<String> searchMethodsIDList = getSearchMethodsIDList(currentElement);
+		
+		dcesInfoXml.setID(id);
+		dcesInfoXml.setClassName(className);
+		dcesInfoXml.setParameters(paramters);
+		dcesInfoXml.setEvaluatorSearchMethodsIDList(searchMethodsIDList);
+		return dcesInfoXml;
+	}
+
+	private static Element validateElementandID(String id, Element currentElement) {
+		// If the current element is null or not equal to the id string, then
+		// starting from the root search for the element with id "id"
+		if (currentElement.getAttribute("id") == null
+				|| !currentElement.getAttribute("id").equals(id)) {
 			Elements elements = classifiersXMLRoot.getChildElements();
 			// Loop on classifiers elements
 			for (int i = 0; i < elements.size(); i++) {
@@ -49,110 +147,48 @@ public class Config {
 				}
 			}
 		}
-		if (currentElement.getAttribute("id") == null)
-			return null;
-		String className = currentElement.getAttributeValue("className");
-		Map<String, String[]> paramters = new HashMap<String, String[]>();
+		return currentElement;
+	}
 
-		Element element = currentElement.getFirstChildElement("parameters");
+	private static Map<String, String[]> getParametersFromElement(Element element) {
+		Map<String, String[]> paramters = new HashMap<String, String[]>();
+		element = element.getFirstChildElement("parameters");
 		Elements paramElements = element.getChildElements();
 		// Loop on parameters elements
 		for (int j = 0; j < paramElements.size(); j++) {
 			Elements valuesElements = paramElements.get(j).getChildElements();
 			String paramOption = paramElements.get(j).getAttributeValue("option");
-			String[] values = new String[valuesElements.size()];
+			ArrayList<String> values = new ArrayList<String>();
 			// Loop on values elements
-			for (int k = 0; k < valuesElements.size(); k++)
-				values[k] = valuesElements.get(k).getValue();
-			paramters.put(paramOption, values);
+			for (int k = 0; k < valuesElements.size(); k++) {
+				String useAttributeValue = valuesElements.get(k).getAttributeValue("use");
+				if (useAttributeValue != null && useAttributeValue.equals("false"))
+					continue;
+				values.add(valuesElements.get(k).getValue());
+			}
+			paramters.put(paramOption, values.toArray(new String[0]));
 		}
-		classifierInfoXml.setId(id);
-		classifierInfoXml.setClassName(className);
-		classifierInfoXml.setParameters(paramters);
-		return classifierInfoXml;
+		return paramters;
 	}
 
-	public static ArrayList<ClassifierInfoXML> getClassifiersInfo() {
-		ArrayList<ClassifierInfoXML> classifiersInfoList = new ArrayList<ClassifierInfoXML>();
-		Elements elements = classifiersXMLRoot.getChildElements();
-		// Loop on classifiers elements
-		for (int i = 0; i < elements.size(); i++) {
-			String id = elements.get(i).getAttributeValue("id");
-			classifiersInfoList.add(getClassifierByID(id, elements.get(i)));
-		}
-
-		return classifiersInfoList;
-	}
-
-	public static String getMySqlURL() {
-		Element element = configXmlRoot.getFirstChildElement("database");
+	private static ArrayList<String> getSearchMethodsIDList(Element element) {
+		ArrayList<String> searchMethodsIDList = new ArrayList<String>();
+		element = element.getFirstChildElement("searchMethods");
 		if (element != null) {
-			element = element.getFirstChildElement("mysql_url");
-			if (element != null)
-				return element.getValue();
+			Elements searchElements = element.getChildElements();
+			for (int i = 0; i < searchElements.size(); i++) {
+				Element searchElement = searchElements.get(i);
+				String searchRefID = searchElement.getAttributeValue("refID");
+				searchMethodsIDList.add(searchRefID);
+			}
 		}
-		return "";
-	}
-
-	public static String getDBUsername() {
-		Element element = configXmlRoot.getFirstChildElement("database");
-		if (element != null) {
-			element = element.getFirstChildElement("username");
-			if (element != null)
-				return element.getValue();
-		}
-		return "";
-	}
-
-	public static String getDBPassword() {
-		Element element = configXmlRoot.getFirstChildElement("database");
-		if (element != null) {
-			element = element.getFirstChildElement("password");
-			if (element != null)
-				return element.getValue();
-		}
-		return "";
+		return searchMethodsIDList;
 	}
 
 	public static String getLangDetectorProfiles() {
-		Element element = configXmlRoot.getFirstChildElement("LanguageDetectorProfiles");
+		Element element = fsEvaluatorsXmlRoot.getFirstChildElement("LanguageDetectorProfiles");
 		if (element != null)
 			return element.getValue();
 		return "";
-	}
-
-	public static String getOCRServiceURL() {
-		Element element = configXmlRoot.getFirstChildElement("webservices");
-		if (element != null) {
-			Elements elements = element.getChildElements();
-			for (int i = 0; i < elements.size(); i++) {
-				if (elements.get(i).getAttribute("name").getValue().equals("ocr"))
-					return elements.get(i).getFirstChildElement("url").getValue();
-			}
-		}
-		return "";
-	}
-
-	public static String getOCRSingleFileFunc() {
-		Element element = configXmlRoot.getFirstChildElement("webservices");
-		if (element != null) {
-			Elements elements = element.getChildElements();
-			for (int i = 0; i < elements.size(); i++) {
-				if (elements.get(i).getAttribute("name").getValue().equals("ocr")) {
-					elements = elements.get(i).getFirstChildElement("functions").getChildElements();
-					for (int j = 0; j < elements.size(); j++)
-						if (elements.get(j).getAttribute("name").getValue().equals("SingleFile"))
-							return elements.get(j).getValue();
-				}
-			}
-		}
-		return "";
-	}
-
-	public static boolean debug() {
-		Element element = configXmlRoot.getFirstChildElement("debug");
-		if (element != null)
-			return element.getValue().equals("true") ? true : false;
-		return false;
 	}
 }

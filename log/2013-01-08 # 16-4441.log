@@ -1,0 +1,18 @@
+-- [INFO] com.dces.Main - Initializing Core Engine:
+-- [DEBUG] com.dces.configuration.Config - Calling: initConfiguration():void method
+-- [TRACE] com.dces.configuration.Config - Reading feature_selection_config.xml file
+-- [TRACE] com.dces.configuration.Config - feature_selection_config.xml file is successfuly read
+-- [TRACE] com.dces.configuration.Config - Reading classifiers_config.xml file
+-- [TRACE] com.dces.configuration.Config - classifiers_config.xml file is successfuly read
+-- [INFO] com.dces.core.DECoreEngine - Loading Corpus Data from: c:\test
+-- [INFO] com.dces.core.DECoreEngine - Corpus Data Loaded Successfuly
+-- [INFO] com.dces.core.DECoreEngine - Building Classifiers Object from XML
+-- [DEBUG] com.dces.configuration.Config - Calling: getClassifiersInfo():ArrayList<ClassifierInfoXML> method
+-- [DEBUG] com.dces.configuration.Config - Calling: getClassifierByID(String, Element):ClassifierInfoXML method
+-- [DEBUG] com.dces.configuration.Config - Calling: getClassifierByID(String, Element):ClassifierInfoXML method
+-- [DEBUG] com.dces.evaluation.classifiers.ClassifiersBuilder - Calling: build(ArrayList<ClassifierInfoXML>):void method
+-- [TRACE] com.dces.evaluation.classifiers.ClassifiersBuilder - Start Loop
+-- [TRACE] com.dces.evaluation.classifiers.ClassifiersBuilder - Looping on each classifier found in the xml file to wrap it in DocumentClassifier object
+-- [TRACE] com.dces.evaluation.classifiers.ClassifiersBuilder - Wrapping ClassifierInfoXml:
+		ID: ibk
+		className: weka.classifiers.lazy.IBk :

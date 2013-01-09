@@ -3,11 +3,8 @@ package com.dces.core;
 import java.util.ArrayList;
 import java.util.Random;
 import com.dces.evaluation.EvaluationInfo;
-import com.dces.evaluation.EvaluationParameters;
-import com.dces.evaluation.EvaluationResults;
-import com.dces.evaluation.classifiers.IClassifierResults;
 
-public class DEEvaluationLog implements IClassifierResults{
+public class DEEvaluationLog{
 	private int id;
 	private ArrayList<EvaluationInfo> evalInfoList;
 
@@ -16,11 +13,10 @@ public class DEEvaluationLog implements IClassifierResults{
 		evalInfoList = new ArrayList<EvaluationInfo>();
 	}
 
-	public void updateReport(EvaluationParameters evalParams, EvaluationResults evalResults) {
-		if (evalParams == null || evalResults == null)
+	public void updateReport(EvaluationInfo evalInfo) {
+		if (evalInfo == null)
 			return;
-		evalInfoList.add(evalParams);
-		evalInfoList.add(evalResults);
+		evalInfoList.add(evalInfo);
 	}
 
 	public int randomID() {

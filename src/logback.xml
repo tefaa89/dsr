@@ -23,7 +23,7 @@
 			<!-- daily rollover -->
 			<fileNamePattern>log/%d{yyyy-MM-dd}.log</fileNamePattern>
 
-			<!-- keep 30 days' worth of history -->
+			<!-- keep 6 days' worth of history -->
 			<maxHistory>6</maxHistory>
 		</rollingPolicy>
 		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
