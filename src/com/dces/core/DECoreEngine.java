@@ -44,10 +44,10 @@ public class DECoreEngine {
 		FeatureSelectionFiltersBuilder fsfb = new FeatureSelectionFiltersBuilder();
 		fsfb.build(Config.getFSEvaluatorsInfo(),Config.getFSSeachMethodInfo());
 		logger.info("Feature Selection Filters Built Successfuly");
-
+		
 		logger.info("Initializing Feature Space Generator");
 		FeatureSpaceGenerator fsGenerator = new FeatureSpaceGenerator(loadDI.getRowDataInstances());
-
+		
 		DEInstances featuresDeInstances;
 		int featureCounter = 0;
 		int classifiersCounter = 0;
