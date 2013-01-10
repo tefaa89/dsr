@@ -1,15 +1,19 @@
 package com.dces.evaluation.featureSelection;
 
 import java.util.Map;
+import org.slf4j.LoggerFactory;
 import weka.attributeSelection.ASEvaluation;
 import weka.attributeSelection.ASSearch;
 import weka.core.Instances;
 import weka.core.OptionHandler;
 import weka.filters.Filter;
 import weka.filters.supervised.attribute.AttributeSelection;
+import ch.qos.logback.classic.Logger;
 import com.dces.evaluation.DEInstances;
 
 public class DocumentFeatureSelectionFilter {
+	private static Logger logger = (Logger) LoggerFactory
+			.getLogger(DocumentFeatureSelectionFilter.class);
 	private AttributeSelection attFilter;
 
 	public DocumentFeatureSelectionFilter() {
@@ -21,8 +25,9 @@ public class DocumentFeatureSelectionFilter {
 			ASEvaluation eval = (ASEvaluation) Class.forName(classPath).newInstance();
 			attFilter.setEvaluator(eval);
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(
+					"Creating an ASEValuation object for feature evaluator from ClassPath: {}",
+					e.toString());
 		}
 	}
 
@@ -32,8 +37,8 @@ public class DocumentFeatureSelectionFilter {
 			search = (ASSearch) Class.forName(classPath).newInstance();
 			attFilter.setSearch(search);
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Creating an ASSearch object for a search method from ClassPath: ",
+					e.toString());
 		}
 	}
 
@@ -51,8 +56,7 @@ public class DocumentFeatureSelectionFilter {
 		try {
 			handler.setOptions(weka.core.Utils.splitOptions(optionsStr));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Settings Options for Feature Evaluator: {}", e.toString());
 		}
 	}
 
@@ -90,6 +94,8 @@ public class DocumentFeatureSelectionFilter {
 
 	public DEInstances useFilter(DEInstances instances) {
 		DEInstances filteredInstances = new DEInstances();
+		if (attFilter.getEvaluator() == null)
+			return instances;
 		try {
 			Instances unFilteredInstances = instances.getInstances();
 			attFilter.setInputFormat(unFilteredInstances);
@@ -97,7 +103,7 @@ public class DocumentFeatureSelectionFilter {
 			filteredInstances.setParameters(instances.getEvaluationParameters());
 			filteredInstances.getEvaluationParameters().setFeatureSelection(this);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Applying filter on instances: {}", e.toString());
 		}
 		return filteredInstances;
 	}

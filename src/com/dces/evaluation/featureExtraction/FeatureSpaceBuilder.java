@@ -1,10 +1,12 @@
 package com.dces.evaluation.featureExtraction;
 
+import org.slf4j.LoggerFactory;
 import weka.core.Instances;
 import weka.core.stemmers.SnowballStemmer;
 import weka.core.tokenizers.NGramTokenizer;
 import weka.core.tokenizers.Tokenizer;
 import weka.filters.Filter;
+import ch.qos.logback.classic.Logger;
 import com.dces.evaluation.DEInstances;
 import com.dces.util.StringToWordVector;
 import com.dces.util.enumu.FeaturesModelEnum;
@@ -12,6 +14,7 @@ import com.dces.util.enumu.FeaturesParametersEnum;
 import com.dces.util.enumu.LanguageEnum;
 
 public class FeatureSpaceBuilder {
+	private static Logger logger = (Logger) LoggerFactory.getLogger(FeatureSpaceBuilder.class);
 	private FeaturesModelEnum featuresModel;
 	private Instances rowDataSet;
 	private DEInstances filteredDEDataSet;
@@ -116,13 +119,8 @@ public class FeatureSpaceBuilder {
 			filteredDEDataSet.getEvaluationParameters().setIdfBool(trasformIDFBool);
 			filteredDEDataSet.getEvaluationParameters().setTfBool(trasformTFBool);
 			filteredDEDataSet.getEvaluationParameters().setUseStemming(useStemmer);
-			applyFeatureSelection();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Building word vector from raw text: {}", e);
 		}
-	}
-
-	private void applyFeatureSelection() {
-		
 	}
 }

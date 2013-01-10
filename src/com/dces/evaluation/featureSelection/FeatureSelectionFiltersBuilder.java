@@ -26,22 +26,20 @@ public class FeatureSelectionFiltersBuilder extends BuilderAbstract {
 
 	public void build(ArrayList<DCESInfoXML> fsEvalXmlList,
 			ArrayList<DCESInfoXML> fsSearchMethodsXmlList) {
-		//Loop on all feature selection evaluators
+		// Loop on all feature selection evaluators
 		for (DCESInfoXML fsEvalXml : fsEvalXmlList) {
 			ArrayList<Map<String, String>> currentfsEvalOptionsList = getOptions(fsEvalXml);
 			ArrayList<String> seachMethodsList = fsEvalXml.getEvaluatorSearchMethodsIDList();
-			
-			//Loop on all searching methods
+
+			// Loop on all searching methods
 			for (String searchMethod : seachMethodsList) {
 				DCESInfoXML currentSearchMethodXML = getSeachMethodbyID(searchMethod,
 						fsSearchMethodsXmlList);
-				ArrayList<Map<String,String>> currentSeachMethodOptionsList = getOptions(currentSearchMethodXML);
-				//Loop on all current search methods options
-				for(Map<String, String> currentSeachMethodOptions : currentSeachMethodOptionsList)
-				{
-					//Loop on all current evaluator options
-					for(Map<String, String> currentfsEvalOptions: currentfsEvalOptionsList)
-					{
+				ArrayList<Map<String, String>> currentSeachMethodOptionsList = getOptions(currentSearchMethodXML);
+				// Loop on all current search methods options
+				for (Map<String, String> currentSeachMethodOptions : currentSeachMethodOptionsList) {
+					// Loop on all current evaluator options
+					for (Map<String, String> currentfsEvalOptions : currentfsEvalOptionsList) {
 						DocumentFeatureSelectionFilter dsF = new DocumentFeatureSelectionFilter();
 						dsF.setEvaluator(fsEvalXml.getClassName());
 						dsF.setEvaluatorOptions(currentfsEvalOptions);

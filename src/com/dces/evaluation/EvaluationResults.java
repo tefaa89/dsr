@@ -1,32 +1,25 @@
 package com.dces.evaluation;
 
+import weka.classifiers.Evaluation;
+
 public class EvaluationResults {
-	private double [][] confusionMatrix;
-	private String summaryString;
-	
+	private Evaluation evaluation;
+
 	public EvaluationResults() {
-		
+
 	}
 
-	public double[][] getConfusionMatrix() {
-		return confusionMatrix;
+	public double getAccuracy() {
+		return evaluation.correct();
 	}
 
-	public void setConfusionMatrix(double[][] confusionMatrix) {
-		this.confusionMatrix = confusionMatrix;
-	}
-
-	public String getSummaryString() {
-		return summaryString;
-	}
-
-	public void setSummaryString(String summaryString) {
-		this.summaryString = summaryString.replaceAll("\n", "\n\t\t");
+	public void setEvaluation(Evaluation evaluation) {
+		this.evaluation = evaluation;
 	}
 
 	@Override
-	public String toString()
-	{
-		return "# Evaluation Results: \n\t Summary: " + summaryString;
+	public String toString() {
+		return "# Evaluation Results: \n\t Summary: "
+				+ evaluation.toSummaryString().replaceAll("\n", "\n\t\t");
 	}
 }

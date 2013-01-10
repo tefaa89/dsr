@@ -39,7 +39,7 @@ public class FeatureSpaceGenerator {
 		FeaturesParametersEnum currentFParam = FeaturesParametersEnum.values()[featureParamIndexState];
 		FeaturesModelEnum currentFModel = FeaturesModelEnum.values()[featureModelIndexState];
 		logger.debug(
-				"Feature Space Evalutation :\n\t Param State: {}({}) \n\t Model State: {}({})",
+				"\nFeature Space Evalutation :\n\t Param State: {}({}) \n\t Model State: {}({})",
 				new Object[] { currentFParam, featureParamIndexState, currentFModel, featureModelIndexState});
 		fsb = new FeatureSpaceBuilder(rawData);
 		fsb.setStemmerStopListLanguage(stemmingLang);

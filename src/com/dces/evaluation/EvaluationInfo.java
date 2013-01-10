@@ -5,7 +5,7 @@ public class EvaluationInfo {
 	private EvaluationResults evalResults;
 
 	public EvaluationInfo() {
-
+		
 	}
 
 	public EvaluationParameters getEvalParameters() {
@@ -22,5 +22,14 @@ public class EvaluationInfo {
 
 	public void setEvalResults(EvaluationResults evalResults) {
 		this.evalResults = evalResults;
+	}
+	
+	@Override
+	public String toString()
+	{
+		String res = "\n============== Evaluation Info ==============\n";
+		res += evalParameters + "\n";
+		res += evalResults + "\n";
+		return res;
 	}
 }

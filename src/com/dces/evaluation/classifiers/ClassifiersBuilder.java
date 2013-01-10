@@ -1,6 +1,7 @@
 package com.dces.evaluation.classifiers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.Logger;
@@ -9,37 +10,32 @@ import com.dces.util.xml.DCESInfoXML;
 
 public class ClassifiersBuilder extends BuilderAbstract {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(ClassifiersBuilder.class);
-	private ArrayList<DocumentClassifer> classifierList;
+	private Map<String, ArrayList<DocumentClassifer>> classifiersMap;
 
 	public ClassifiersBuilder() {
-		classifierList = new ArrayList<DocumentClassifer>();
+		classifiersMap = new HashMap<String, ArrayList<DocumentClassifer>>();
 	}
 
 	public ArrayList<DocumentClassifer> getClassifiersWithDefaultSettings() {
-		ArrayList<String> classifiersSofar = new ArrayList<String>();
 		ArrayList<DocumentClassifer> res = new ArrayList<DocumentClassifer>();
-		for (DocumentClassifer classifier : classifierList) {
-			String classPath = classifier.getClassPath();
-			if (!classifiersSofar.contains(classPath)) {
-				classifiersSofar.add(classPath);
-				res.add(classifier);
-			}
+		for (String key : classifiersMap.keySet())
+			res.add(classifiersMap.get(key).get(0));
+		return res;
+	}
+
+	public Map<String, ArrayList<DocumentClassifer>> getClassifiersExcludingDefaultSettings() {
+		Map<String, ArrayList<DocumentClassifer>> res = new HashMap<String, ArrayList<DocumentClassifer>>();
+		for (String key : classifiersMap.keySet()) {
+			if (classifiersMap.get(key).size() <= 1)
+				continue;
+			res.put(key, classifiersMap.get(key));
+			res.get(key).remove(0);
 		}
 		return res;
 	}
 
-	public ArrayList<DocumentClassifer> getClassifiersExcludingDefaultSettings() {
-		ArrayList<DocumentClassifer> classifiersWithDefaultSettings = getClassifiersWithDefaultSettings();
-		ArrayList<DocumentClassifer> res = new ArrayList<DocumentClassifer>();
-		for (DocumentClassifer classifier : classifierList) {
-			if (!classifiersWithDefaultSettings.contains(classifier))
-				res.add(classifier);
-		}
-		return res;
-	}
-
-	public ArrayList<DocumentClassifer> getClassifierList() {
-		return classifierList;
+	public Map<String, ArrayList<DocumentClassifer>> getClassifiersMap() {
+		return classifiersMap;
 	}
 
 	public void build(ArrayList<DCESInfoXML> classifierInfoXMLList) {
@@ -51,10 +47,13 @@ public class ClassifiersBuilder extends BuilderAbstract {
 
 			ArrayList<Map<String, String>> currentClassifierOptionsList = getOptions(classifierInfoXml);
 			for (Map<String, String> currentClassifierOption : currentClassifierOptionsList) {
+				String classifierClassPath = classifierInfoXml.getClassName();
 				DocumentClassifer docClassifier = new DocumentClassifer();
-				docClassifier.setClassPath(classifierInfoXml.getClassName());
+				docClassifier.setClassPath(classifierClassPath);
 				docClassifier.setOptions(currentClassifierOption);
-				classifierList.add(docClassifier);
+				if (!classifiersMap.containsKey(classifierClassPath))
+					classifiersMap.put(classifierClassPath, new ArrayList<DocumentClassifer>());
+				classifiersMap.get(classifierClassPath).add(docClassifier);
 			}
 		}
 		logger.trace("End Loop");

@@ -12,6 +12,8 @@ public class Main {
 		DECoreEngine dsrEngine = new DECoreEngine();
 		dsrEngine.setDataCorpusPath("c:\\test");
 		dsrEngine.evaluate();
-		System.out.println(dsrEngine.getEvaluationLog());
+		logger.trace("Evaluation Log: {}", dsrEngine.getEvaluationLog());
+		logger.info("Best Classifier Configutration: {}"
+				+ dsrEngine.getEvaluationLog().getBestEvaluationInfo());
 	}
 }

@@ -34,20 +34,20 @@ public class DECoreEngine {
 		loadDI.load();
 		logger.info("Corpus Data Loaded Successfuly");
 		evalLog = new DEEvaluationLog();
-		
+
 		logger.info("Building Classifiers Object from XML");
 		ClassifiersBuilder classifiers = new ClassifiersBuilder();
 		classifiers.build(Config.getClassifiersInfo());
 		logger.info("Classifiers Object Built Successfuly");
-		
+
 		logger.info("Building Feature Selection Filters from XML");
 		FeatureSelectionFiltersBuilder fsfb = new FeatureSelectionFiltersBuilder();
-		fsfb.build(Config.getFSEvaluatorsInfo(),Config.getFSSeachMethodInfo());
+		fsfb.build(Config.getFSEvaluatorsInfo(), Config.getFSSeachMethodInfo());
 		logger.info("Feature Selection Filters Built Successfuly");
-		
+
 		logger.info("Initializing Feature Space Generator");
 		FeatureSpaceGenerator fsGenerator = new FeatureSpaceGenerator(loadDI.getRowDataInstances());
-		
+
 		DEInstances featuresDeInstances;
 		int featureCounter = 0;
 		int classifiersCounter = 0;
@@ -55,20 +55,21 @@ public class DECoreEngine {
 		FeatureSelectionEvaluator fsEval = new FeatureSelectionEvaluator();
 		fsEval.setClassifierList(classifiers.getClassifiersWithDefaultSettings());
 		fsEval.setFeatureSelectionFilterList(fsfb.getFeatureSelectionFilters());
-		
+
 		logger.info("Initializing Classifiers Evaluator");
 		ClassifiersEvaluator cEval = new ClassifiersEvaluator();
-		cEval.setClassifierList(classifiers.getClassifiersExcludingDefaultSettings());
+		cEval.setClassifiersMap(classifiers.getClassifiersExcludingDefaultSettings());
 
 		while (fsGenerator.hasNext()) {
-			logger.info("Generating Feature Space ...");
+			featureCounter++;
+			logger.info("Generating Feature Space ({})", featureCounter);
 			featuresDeInstances = fsGenerator.getNext();
 
 			logger.info("Evaluating Feature Space on Feature Selection Methods ...");
 			fsEval.evaluate(featuresDeInstances);
 			fsEval.updateEvaluationLog(evalLog);
 
-			cEval.setFeatureSelectionFilterMap(fsEval.getEvaluationInfoResultList());
+			cEval.setFeatureSelectionFilterMap(fsEval.getBestClassifiersFSMap());
 			logger.info("Evaluating Feature Space on All Classifiers ...");
 			cEval.evaluate(featuresDeInstances);
 			cEval.updateEvaluationLog(evalLog);

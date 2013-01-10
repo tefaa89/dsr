@@ -47,7 +47,7 @@ public class Config {
 			logger.trace("{} file is successfuly read", CLASSIFIERS_FILENAME);
 			classifiersXMLRoot = doc.getRootElement();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Building XML Files: {}", e);
 		}
 	}
 
@@ -124,7 +124,7 @@ public class Config {
 		String className = currentElement.getAttributeValue("classPath");
 		Map<String, String[]> paramters = getParametersFromElement(currentElement);
 		ArrayList<String> searchMethodsIDList = getSearchMethodsIDList(currentElement);
-		
+
 		dcesInfoXml.setID(id);
 		dcesInfoXml.setClassName(className);
 		dcesInfoXml.setParameters(paramters);

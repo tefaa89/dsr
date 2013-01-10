@@ -28,7 +28,8 @@ public class DocumentClassifer {
 		try {
 			classifier = (AbstractClassifier) Class.forName(classPath).newInstance();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			logger.error("Faild to initialize (AbstractClassifier) Class.forName(classPath)\n{}", e);
+			logger.error("Faild to initialize (AbstractClassifier) Class.forName(classPath)\n{}",
+					e.toString());
 		}
 	}
 
@@ -51,23 +52,24 @@ public class DocumentClassifer {
 		}
 		return optionsStr;
 	}
-	
-	public String[] getOptions()
-	{
+
+	public String[] getOptions() {
 		return classifier.getOptions();
 	}
-	
-	public String getOptionsStr()
-	{
+
+	public String getOptionsStr() {
 		StringBuffer str = new StringBuffer();
-		for(String option:getOptions())
-		{
+		for (String option : getOptions()) {
 			str.append(option);
 			str.append(" ");
 		}
 		return str.toString().trim();
 	}
-	
+
+	public AbstractClassifier getClassifier() {
+		return classifier;
+	}
+
 	public void setClassifier(AbstractClassifier classifier) {
 		this.classifier = classifier;
 	}
@@ -88,10 +90,9 @@ public class DocumentClassifer {
 				return false;
 		return true;
 	}
-	
+
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		StringBuffer str = new StringBuffer();
 		str.append("Classifier Info:\n\t");
 		str.append("Path: ");
@@ -99,7 +100,7 @@ public class DocumentClassifer {
 		str.append("\n\t");
 		str.append("Parameters: ");
 		str.append(getOptionsStr());
-		
-		return  str.toString();
+
+		return str.toString();
 	}
 }
