@@ -10,6 +10,7 @@ import com.dces.evaluation.classifiers.ClassifiersEvaluator;
 import com.dces.evaluation.featureExtraction.FeatureSpaceGenerator;
 import com.dces.evaluation.featureSelection.FeatureSelectionEvaluator;
 import com.dces.evaluation.featureSelection.FeatureSelectionFiltersBuilder;
+import com.dces.util.WekaFilters;
 
 public class DECoreEngine {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(DECoreEngine.class);
@@ -28,9 +29,48 @@ public class DECoreEngine {
 		return evalLog;
 	}
 
+	public void evaluateARFF() {
+		logger.info("Loading Corpus Data from: {}", dataCorpusPath);
+		LoadDirectoryInstances loadDI = new LoadDirectoryInstances(dataCorpusPath, true);
+		loadDI.load();
+		logger.info("Corpus Data Loaded Successfuly");
+
+		DEInstances instances = new DEInstances(loadDI.getRowDataInstances());
+		WekaFilters.standardizeFilter(instances);
+
+		evalLog = new DEEvaluationLog();
+		logger.info("Building Classifiers Object from XML");
+		ClassifiersBuilder classifiers = new ClassifiersBuilder();
+		classifiers.build(Config.getClassifiersInfo());
+		logger.info("Classifiers Object Built Successfuly");
+
+		logger.info("Building Feature Selection Filters from XML");
+		FeatureSelectionFiltersBuilder fsfb = new FeatureSelectionFiltersBuilder();
+		fsfb.build(Config.getFSEvaluatorsInfo(), Config.getFSSeachMethodInfo());
+		logger.info("Feature Selection Filters Built Successfuly");
+
+		logger.info("Initializing Feature Selection Evaluator");
+		FeatureSelectionEvaluator fsEval = new FeatureSelectionEvaluator();
+		fsEval.setClassifierList(classifiers.getClassifiersWithDefaultSettings());
+		fsEval.setFeatureSelectionFilterList(fsfb.getFeatureSelectionFilters());
+		fsEval.clear();
+		logger.info("Evaluating Feature Space on Feature Selection Methods ...");
+		fsEval.evaluate(instances);
+		fsEval.updateEvaluationLog(evalLog);
+
+		logger.info("Initializing Classifiers Evaluator");
+		ClassifiersEvaluator cEval = new ClassifiersEvaluator();
+		cEval.setClassifiersMap(classifiers.getClassifiersExcludingDefaultSettings());
+		cEval.clear();
+		cEval.setFeatureSelectionFilterMap(fsEval.getBestClassifiersFSMap());
+		logger.info("Evaluating Feature Space on All Classifiers ...");
+		cEval.evaluate(instances);
+		cEval.updateEvaluationLog(evalLog);
+	}
+
 	public void evaluate() {
 		logger.info("Loading Corpus Data from: {}", dataCorpusPath);
-		LoadDirectoryInstances loadDI = new LoadDirectoryInstances(dataCorpusPath);
+		LoadDirectoryInstances loadDI = new LoadDirectoryInstances(dataCorpusPath, false);
 		loadDI.load();
 		logger.info("Corpus Data Loaded Successfuly");
 		evalLog = new DEEvaluationLog();
@@ -64,11 +104,14 @@ public class DECoreEngine {
 			featureCounter++;
 			logger.info("Generating Feature Space ({})", featureCounter);
 			featuresDeInstances = fsGenerator.getNext();
+			logger.trace("Generated Feature Vector :\n{} ", featuresDeInstances.getInstances());
 
+			fsEval.clear();
 			logger.info("Evaluating Feature Space on Feature Selection Methods ...");
 			fsEval.evaluate(featuresDeInstances);
 			fsEval.updateEvaluationLog(evalLog);
 
+			cEval.clear();
 			cEval.setFeatureSelectionFilterMap(fsEval.getBestClassifiersFSMap());
 			logger.info("Evaluating Feature Space on All Classifiers ...");
 			cEval.evaluate(featuresDeInstances);

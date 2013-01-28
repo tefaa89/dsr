@@ -8,9 +8,9 @@ import ch.qos.logback.classic.Logger;
 /**
  * Since we are not going to build the AbstractClassifier, this object will ONLY
  * hold the classifier class path and the classifier options
- * 
+ *
  * @author TeFa
- * 
+ *
  */
 public class DocumentClassifer {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(DocumentClassifer.class);
@@ -18,6 +18,10 @@ public class DocumentClassifer {
 
 	public DocumentClassifer() {
 
+	}
+
+	public DocumentClassifer(DocumentClassifer docClassifer) {
+		this.classifier = docClassifer.getClassifier();
 	}
 
 	public String getClassPath() {
@@ -45,7 +49,8 @@ public class DocumentClassifer {
 				optionsStr += "-" + option + " " + options.get(option) + " ";
 		}
 		try {
-			classifier.setOptions(weka.core.Utils.splitOptions(optionsStr));
+			if(optionsStr.trim() != "")
+				classifier.setOptions(weka.core.Utils.splitOptions(optionsStr));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

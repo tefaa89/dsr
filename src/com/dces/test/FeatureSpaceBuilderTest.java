@@ -7,7 +7,7 @@ import com.dces.util.enumu.LanguageEnum;
 
 public class FeatureSpaceBuilderTest {
 	public static void main(String[] args) throws Exception {
-		LoadDirectoryInstances ldi = new LoadDirectoryInstances("c:\\test2");
+		LoadDirectoryInstances ldi = new LoadDirectoryInstances("c:\\test2",false);
 		ldi.load();
 		FeatureSpaceBuilder fsb = new FeatureSpaceBuilder(ldi.getRowDataInstances());
 		fsb.setStemmerStopListLanguage(LanguageEnum.English);

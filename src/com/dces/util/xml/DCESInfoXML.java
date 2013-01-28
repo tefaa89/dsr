@@ -12,6 +12,7 @@ public class DCESInfoXML {
 	 * contains the values for this option ex, ("k",[20,50,100]);
 	 */
 	private Map<String, String[]> parameters;
+	private ArrayList<String> cutPercentagesList;
 	private ArrayList<String> evaluatorSearchMethodsIDList;
 
 	public DCESInfoXML() {
@@ -48,6 +49,14 @@ public class DCESInfoXML {
 
 	public void setEvaluatorSearchMethodsIDList(ArrayList<String> evaluatorSearchMethodsIDList) {
 		this.evaluatorSearchMethodsIDList = evaluatorSearchMethodsIDList;
+	}
+
+	public ArrayList<String> getCutPercentagesList() {
+		return cutPercentagesList;
+	}
+
+	public void setCutPercentagesList(ArrayList<String> cutPercentagesList) {
+		this.cutPercentagesList = cutPercentagesList;
 	}
 
 	@Override

@@ -27,10 +27,10 @@
 					description="numToSelect -- Specify the number of attributes to retain. The default value (-1) indicates that all attributes are to be retained. Use either this option or a threshold to reduce the attribute set.">
 					<value>-1</value>
 				</param>
-				<param option="P"
+				<param option="*"
 					description="startSet -- Set the start point for the search. This is specified as a comma seperated list off attribute indexes starting at 1. It can include ranges. Eg. 1,2,5-9,17.">
-					<value />
-					<value use="false">1,2,3</value>
+					<value></value>
+					<value use="false">P 1,2,3</value>
 				</param>
 				<param option="T"
 					description="threshold -- Set threshold by which attributes can be discarded. Default value results in no attributes being discarded. Use either this option or numToSelect to reduce the attribute set.">

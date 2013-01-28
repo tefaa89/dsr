@@ -9,8 +9,16 @@ public class EvaluationResults {
 
 	}
 
+	public EvaluationResults(EvaluationResults evalRes) {
+		this.evaluation = evalRes.getEvaluation();
+	}
+
 	public double getAccuracy() {
 		return evaluation.correct();
+	}
+
+	public Evaluation getEvaluation() {
+		return evaluation;
 	}
 
 	public void setEvaluation(Evaluation evaluation) {
@@ -19,7 +27,13 @@ public class EvaluationResults {
 
 	@Override
 	public String toString() {
-		return "# Evaluation Results: \n\t Summary: "
-				+ evaluation.toSummaryString().replaceAll("\n", "\n\t\t");
+		String matrix = "";
+		try {
+			matrix = evaluation.toMatrixString();
+		} catch (Exception e) {
+
+		}
+		return "# Evaluation Results: \n\t Summary: \n" + matrix.replaceAll("\n", "\n\t\t")
+				+ "\n\t" + evaluation.toSummaryString().replaceAll("\n", "\n\t\t");
 	}
 }

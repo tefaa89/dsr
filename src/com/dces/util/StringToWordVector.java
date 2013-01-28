@@ -22,8 +22,16 @@
 
 package com.dces.util;
 
+import java.io.File;
+import java.io.Serializable;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.TreeMap;
+import java.util.Vector;
 import weka.core.Attribute;
 import weka.core.Capabilities;
+import weka.core.Capabilities.Capability;
 import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
@@ -37,20 +45,12 @@ import weka.core.SparseInstance;
 import weka.core.Stopwords;
 import weka.core.Tag;
 import weka.core.Utils;
-import weka.core.Capabilities.Capability;
 import weka.core.stemmers.NullStemmer;
 import weka.core.stemmers.Stemmer;
 import weka.core.tokenizers.Tokenizer;
 import weka.core.tokenizers.WordTokenizer;
 import weka.filters.Filter;
 import weka.filters.UnsupervisedFilter;
-import java.io.File;
-import java.io.Serializable;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.TreeMap;
-import java.util.Vector;
 
 /**
  * <!-- globalinfo-start --> Converts String attributes into a set of attributes

@@ -10,7 +10,7 @@ import com.dces.evaluation.featureSelection.FeatureSelectionFiltersBuilder;
 public class DocumentFeatureSelectionFilterTest {
 	public static void main(String[] args) {
 		Config.initConfiguration();
-		LoadDirectoryInstances loadDI = new LoadDirectoryInstances("c:\\test");
+		LoadDirectoryInstances loadDI = new LoadDirectoryInstances("c:\\test",false);
 		loadDI.load();
 
 		FeatureSelectionFiltersBuilder fsfb = new FeatureSelectionFiltersBuilder();

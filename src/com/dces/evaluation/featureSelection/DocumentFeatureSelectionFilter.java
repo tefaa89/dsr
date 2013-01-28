@@ -15,9 +15,28 @@ public class DocumentFeatureSelectionFilter {
 	private static Logger logger = (Logger) LoggerFactory
 			.getLogger(DocumentFeatureSelectionFilter.class);
 	private AttributeSelection attFilter;
+	private double attributesScalingFactor;
 
 	public DocumentFeatureSelectionFilter() {
 		attFilter = new AttributeSelection();
+		attributesScalingFactor = 1;
+	}
+
+	public DocumentFeatureSelectionFilter(DocumentFeatureSelectionFilter fsF) {
+		this.attFilter = fsF.getAttributeSelectionObj();
+		attributesScalingFactor = 1;
+	}
+
+	public double getAttibutesScalingFactor() {
+		return attributesScalingFactor;
+	}
+
+	public void setAttibutesScalingFactor(double attributesScalingFactor) {
+		this.attributesScalingFactor = attributesScalingFactor;
+	}
+
+	public AttributeSelection getAttributeSelectionObj() {
+		return attFilter;
 	}
 
 	public void setEvaluator(String classPath) {
@@ -54,7 +73,8 @@ public class DocumentFeatureSelectionFilter {
 				optionsStr += "-" + option + " " + options.get(option) + " ";
 		}
 		try {
-			handler.setOptions(weka.core.Utils.splitOptions(optionsStr));
+			if (optionsStr.trim() != "")
+				handler.setOptions(weka.core.Utils.splitOptions(optionsStr));
 		} catch (Exception e) {
 			logger.error("Settings Options for Feature Evaluator: {}", e.toString());
 		}
@@ -92,6 +112,22 @@ public class DocumentFeatureSelectionFilter {
 		return ((OptionHandler) attFilter.getSearch()).getOptions();
 	}
 
+	public String getEvaluatorParamStr() {
+		String[] optionsArr = getEvaluatorParam();
+		String res = "";
+		for (String str : optionsArr)
+			res += str + " ";
+		return res.trim();
+	}
+
+	public String getSearchMethodParamStr() {
+		String[] optionsArr = getSearchMethodParam();
+		String res = "";
+		for (String str : optionsArr)
+			res += str + " ";
+		return res.trim();
+	}
+
 	public DEInstances useFilter(DEInstances instances) {
 		DEInstances filteredInstances = new DEInstances();
 		if (attFilter.getEvaluator() == null)
@@ -99,13 +135,29 @@ public class DocumentFeatureSelectionFilter {
 		try {
 			Instances unFilteredInstances = instances.getInstances();
 			attFilter.setInputFormat(unFilteredInstances);
-			filteredInstances.setInstances(Filter.useFilter(unFilteredInstances, attFilter));
+			Instances filteredInstancesWeka = Filter.useFilter(unFilteredInstances, attFilter);
+			cutAttributes(filteredInstancesWeka);
+			filteredInstances.setInstances(filteredInstancesWeka);
 			filteredInstances.setParameters(instances.getEvaluationParameters());
 			filteredInstances.getEvaluationParameters().setFeatureSelection(this);
 		} catch (Exception e) {
 			logger.error("Applying filter on instances: {}", e.toString());
 		}
 		return filteredInstances;
+	}
+
+	private void cutAttributes(Instances instances) {
+		int attrNum = instances.numAttributes();
+		if (attributesScalingFactor >= 1 || attrNum <= 2)
+			return;
+		// This -1 is to exclude the class attribute
+		int numAttrToKeep = (int) ((attrNum - 1) * attributesScalingFactor);
+		int numAttrToCut = (attrNum - 1) - numAttrToKeep;
+		// Keep deleting the attribute before class attribute "numAttrToCut"
+		// times.
+		for (; numAttrToCut >= 0; numAttrToCut--) {
+			instances.deleteAttributeAt(instances.numAttributes() - 2);
+		}
 	}
 
 	@Override
@@ -130,5 +182,10 @@ public class DocumentFeatureSelectionFilter {
 			if (!optionsSearchArr1[i].equals(optionsSearchArr2[i]))
 				return false;
 		return true;
+	}
+
+	public String toString() {
+		return "Selection Method: " + getEvaluatorClassPath() + "\nSelection Param: "
+				+ getEvaluatorParamStr();
 	}
 }

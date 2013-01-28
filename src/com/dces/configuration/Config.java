@@ -60,7 +60,7 @@ public class Config {
 		logger.debug("Calling: getFSEvaluatorsInfo():ArrayList<DCESInfoXML> method");
 		ArrayList<DCESInfoXML> fsEvalInfoList = new ArrayList<DCESInfoXML>();
 		Elements elements = fsEvaluatorsXmlRoot.getChildElements();
-		// Loop on classifiers elements
+		// Loop on feature selection methods elements
 		for (int i = 0; i < elements.size(); i++) {
 			String id = elements.get(i).getAttributeValue("id");
 			DCESInfoXML infoXML = getDCESInfoByID(id, elements.get(i));
@@ -86,7 +86,7 @@ public class Config {
 
 	/**
 	 * Fetches all the classifiers info form the XML
-	 * 
+	 *
 	 * @return {@link ArrayList}
 	 */
 	public static ArrayList<DCESInfoXML> getClassifiersInfo() {
@@ -105,7 +105,7 @@ public class Config {
 
 	/**
 	 * Every element in an XML file is an DCESInfoXml object
-	 * 
+	 *
 	 * @param id
 	 * @param currentElement
 	 * @return {@link DCESInfoXML}
@@ -124,10 +124,12 @@ public class Config {
 		String className = currentElement.getAttributeValue("classPath");
 		Map<String, String[]> paramters = getParametersFromElement(currentElement);
 		ArrayList<String> searchMethodsIDList = getSearchMethodsIDList(currentElement);
+		ArrayList<String> cutPercentagesList = getAttributesScalingFactorList(currentElement);
 
 		dcesInfoXml.setID(id);
 		dcesInfoXml.setClassName(className);
 		dcesInfoXml.setParameters(paramters);
+		dcesInfoXml.setCutPercentagesList(cutPercentagesList);
 		dcesInfoXml.setEvaluatorSearchMethodsIDList(searchMethodsIDList);
 		return dcesInfoXml;
 	}
@@ -183,6 +185,19 @@ public class Config {
 			}
 		}
 		return searchMethodsIDList;
+	}
+
+	private static ArrayList<String> getAttributesScalingFactorList(Element element) {
+		ArrayList<String> attrFactorList = new ArrayList<>();
+		element = element.getFirstChildElement("selected_attributes");
+		if (element != null) {
+			Elements factorElements = element.getChildElements();
+			for (int i = 0; i < factorElements.size(); i++) {
+				Element factorElement = factorElements.get(i);
+				attrFactorList.add(factorElement.getValue());
+			}
+		}
+		return attrFactorList;
 	}
 
 	public static String getLangDetectorProfiles() {

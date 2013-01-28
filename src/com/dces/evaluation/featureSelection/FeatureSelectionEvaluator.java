@@ -72,6 +72,12 @@ public class FeatureSelectionEvaluator extends EvaluatorAbstract {
 			double prevAccuracy = res.getEvalResults().getAccuracy();
 			if (currentAccuracy > prevAccuracy)
 				res = evalInfo;
+			else if (currentAccuracy == prevAccuracy) {
+				int currentNumOfAttr = evalInfo.getEvalParameters().getSelectedAttributes().size();
+				int prevNumOfAttr = res.getEvalParameters().getSelectedAttributes().size();
+				if (currentNumOfAttr < prevNumOfAttr)
+					res = evalInfo;
+			}
 		}
 		return res;
 	}
@@ -88,12 +94,25 @@ public class FeatureSelectionEvaluator extends EvaluatorAbstract {
 		}
 	}
 
+	@Override
+	public void clear() {
+		super.clear();
+		evaluationInfoMap = new HashMap<String, ArrayList<EvaluationInfo>>();
+	}
+
 	public void evaluate(DEInstances deInstances) {
 		Map<String, ArrayList<DocumentClassifer>> classifiersMap = getClassifiersMap();
 		for (DocumentFeatureSelectionFilter fsFilter : featureSelectionFilterList) {
 			// Apply filter on deInstances and then evaluate the instance with
 			// all classifiers.
+			String s = fsFilter.getEvaluatorClassPath();
+			String s2 = fsFilter.getEvaluatorParamStr();
+			String s3 = fsFilter.getSearchMethodClassPath();
+			String s4 = fsFilter.getSearchMethodParamStr();
+			logger.debug("Filtering current feature vector with the following fillter : \n{}",
+					fsFilter.toString());
 			DEInstances filteredInstances = fsFilter.useFilter(deInstances);
+			logger.trace("Filtered Instances: \n{}", filteredInstances.getInstances());
 			ClassifiersEvaluator classifierEval = new ClassifiersEvaluator();
 			classifierEval.setClassifiersMap(classifiersMap);
 			classifierEval.setFeatureSelectionFilterMap(null);

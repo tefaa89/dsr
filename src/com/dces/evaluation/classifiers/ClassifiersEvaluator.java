@@ -9,6 +9,7 @@ import weka.classifiers.Evaluation;
 import ch.qos.logback.classic.Logger;
 import com.dces.evaluation.DEInstances;
 import com.dces.evaluation.EvaluationInfo;
+import com.dces.evaluation.EvaluationParameters;
 import com.dces.evaluation.EvaluationResults;
 import com.dces.evaluation.EvaluatorAbstract;
 import com.dces.evaluation.featureSelection.DocumentFeatureSelectionFilter;
@@ -35,6 +36,13 @@ public class ClassifiersEvaluator extends EvaluatorAbstract {
 		this.featureSelectionFilterMap = fsMap;
 	}
 
+	@Override
+	public void clear()
+	{
+		super.clear();
+		featureSelectionFilterMap = new HashMap<String, DocumentFeatureSelectionFilter>();
+	}
+
 	public void evaluate(DEInstances deInstances) {
 		DocumentFeatureSelectionFilter fsFilter = null;
 		for (String key : classifiersMap.keySet()) {
@@ -46,14 +54,18 @@ public class ClassifiersEvaluator extends EvaluatorAbstract {
 					.useFilter(deInstances);
 			for (DocumentClassifer classifier : currentClassifiersList) {
 				try {
+					logger.info("Evaluating classifier :\n" + classifier);
 					Evaluation eval = new Evaluation(filteredInstances.getInstances());
 					eval.crossValidateModel(classifier.getClassifier(),
 							filteredInstances.getInstances(), 10, new Random(1));
 					EvaluationResults evalResults = new EvaluationResults();
+					EvaluationParameters evalParams = new EvaluationParameters(
+							filteredInstances.getEvaluationParameters());
+					evalParams.setSelectedAttributes(filteredInstances.getAttributesList());
 					evalResults.setEvaluation(eval);
-					
+
 					EvaluationInfo evalInfo = new EvaluationInfo();
-					evalInfo.setEvalParameters(filteredInstances.getEvaluationParameters());
+					evalInfo.setEvalParameters(evalParams);
 					evalInfo.setEvalResults(evalResults);
 					evalInfo.getEvalParameters().setClassifier(classifier);
 					updateEvaluationInfo(evalInfo);

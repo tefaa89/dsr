@@ -1,5 +1,6 @@
 package com.dces.evaluation;
 
+import java.util.ArrayList;
 import weka.core.Instances;
 
 public class DEInstances {
@@ -29,6 +30,19 @@ public class DEInstances {
 
 	public void setParameters(EvaluationParameters evalParameters) {
 		this.evalParameters = evalParameters;
+	}
+
+	public ArrayList<String> getAttributesList()
+	{
+		ArrayList<String> attList = new ArrayList<>();
+		if(instances == null)
+			return attList;
+		for(int i=0; i<instances.numAttributes();i++)
+		{
+			String attName = instances.attribute(i).name();
+			attList.add(attName);
+		}
+		return attList;
 	}
 
 	@Override

@@ -5,9 +5,13 @@ import com.dces.core.DEEvaluationLog;
 
 public abstract class EvaluatorAbstract {
 	protected ArrayList<EvaluationInfo> evaluationInfoResultList;
-	
+
 	public ArrayList<EvaluationInfo> getEvaluationInfoResultList() {
 		return evaluationInfoResultList;
+	}
+
+	protected void clear() {
+		evaluationInfoResultList = new ArrayList<EvaluationInfo>();
 	}
 
 	public void updateEvaluationLog(DEEvaluationLog evaLog) {
