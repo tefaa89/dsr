@@ -105,10 +105,6 @@ public class FeatureSelectionEvaluator extends EvaluatorAbstract {
 		for (DocumentFeatureSelectionFilter fsFilter : featureSelectionFilterList) {
 			// Apply filter on deInstances and then evaluate the instance with
 			// all classifiers.
-			String s = fsFilter.getEvaluatorClassPath();
-			String s2 = fsFilter.getEvaluatorParamStr();
-			String s3 = fsFilter.getSearchMethodClassPath();
-			String s4 = fsFilter.getSearchMethodParamStr();
 			logger.debug("Filtering current feature vector with the following fillter : \n{}",
 					fsFilter.toString());
 			DEInstances filteredInstances = fsFilter.useFilter(deInstances);

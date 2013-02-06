@@ -6,10 +6,18 @@ import com.dces.evaluation.featureSelection.DocumentFeatureSelectionFilter;
 import com.dces.util.enumu.FeaturesModelEnum;
 
 public class EvaluationParameters {
-	private DocumentClassifer classifier;
-	private DocumentFeatureSelectionFilter featureSelection;
+	private transient DocumentClassifer classifier;
+	private transient DocumentFeatureSelectionFilter featureSelection;
+	private String classifierNameStr;
+	private String classifierParamStr;
+	private String fsEvaluatorNameStr;
+	private String fsEvaluatorParamStr;
+	private String fsSearchMethodNameStr;
+	private String fsSearchMethodParamStr;
+	private String numOfAttributesStr;
+
 	private FeaturesModelEnum featureModelEnum;
-	private ArrayList<String> selectedAttributes;
+	private transient ArrayList<String> selectedAttributes;
 	private boolean tfBool;
 	private boolean idfBool;
 	private boolean useStopList;
@@ -19,10 +27,10 @@ public class EvaluationParameters {
 	}
 
 	public EvaluationParameters(EvaluationParameters evalParams) {
-		this.classifier = evalParams.getClassifier();
-		this.selectedAttributes = evalParams.getSelectedAttributes();
-		this.featureSelection = evalParams.getFeatureSelection();
-		this.featureModelEnum = evalParams.getFeatureModelEnum();
+		setClassifier(evalParams.getClassifier());
+		setSelectedAttributes(evalParams.getSelectedAttributes());
+		setFeatureSelection(evalParams.getFeatureSelection());
+		setFeatureModelEnum(featureModelEnum = evalParams.getFeatureModelEnum());
 		this.tfBool = evalParams.isTfBool();
 		this.idfBool = evalParams.isIdfBool();
 		this.useStemming = evalParams.isUseStemming();
@@ -31,6 +39,8 @@ public class EvaluationParameters {
 
 	public void setSelectedAttributes(ArrayList<String> selectedAttributes) {
 		this.selectedAttributes = selectedAttributes;
+		if(selectedAttributes != null)
+			numOfAttributesStr = selectedAttributes.size() + "";
 	}
 
 	public ArrayList<String> getSelectedAttributes() {
@@ -43,6 +53,10 @@ public class EvaluationParameters {
 
 	public void setClassifier(DocumentClassifer classifier) {
 		this.classifier = classifier;
+		if (classifier != null) {
+			classifierNameStr = classifier.getClassPath();
+			classifierParamStr = classifier.getOptionsStr();
+		}
 	}
 
 	public DocumentFeatureSelectionFilter getFeatureSelection() {
@@ -51,6 +65,12 @@ public class EvaluationParameters {
 
 	public void setFeatureSelection(DocumentFeatureSelectionFilter featureSelection) {
 		this.featureSelection = featureSelection;
+		if (featureSelection != null) {
+			fsEvaluatorNameStr = featureSelection.getEvaluatorClassPath();
+			fsEvaluatorParamStr = featureSelection.getEvaluatorParamStr();
+			fsSearchMethodNameStr = featureSelection.getSearchMethodClassPath();
+			fsSearchMethodParamStr = featureSelection.getSearchMethodParamStr();
+		}
 	}
 
 	public FeaturesModelEnum getFeatureModelEnum() {
@@ -95,14 +115,41 @@ public class EvaluationParameters {
 
 	private String selectedAttributesStr() {
 		String res = "{";
-		for (String att : selectedAttributes)
-		{
-			if(!att.toLowerCase().equals("class"))
+		for (String att : selectedAttributes) {
+			if (!att.toLowerCase().equals("class"))
 				res += att + ", ";
 		}
 		res = res.substring(0, res.length() - 2);
 		res += "}";
 		return res;
+	}
+
+	public String getClassifierNameStr() {
+		return classifierNameStr;
+	}
+
+	public String getClassifierParamStr() {
+		return classifierParamStr;
+	}
+
+	public String getFsEvaluatorNameStr() {
+		return fsEvaluatorNameStr;
+	}
+
+	public String getFsEvaluatorParamStr() {
+		return fsEvaluatorParamStr;
+	}
+
+	public String getFsSearchMethodNameStr() {
+		return fsSearchMethodNameStr;
+	}
+
+	public String getFsSearchMethodParamStr() {
+		return fsSearchMethodParamStr;
+	}
+
+	public String getNumOfAttributesStr() {
+		return numOfAttributesStr;
 	}
 
 	@Override

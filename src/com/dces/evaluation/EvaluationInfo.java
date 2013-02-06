@@ -1,16 +1,28 @@
 package com.dces.evaluation;
 
 public class EvaluationInfo {
+	private transient static int currentID = -1;
+	private int id;
 	private EvaluationParameters evalParameters;
 	private EvaluationResults evalResults;
 
 	public EvaluationInfo() {
-
+		setId();
 	}
 
 	public EvaluationInfo(EvaluationInfo evalInfo) {
+		setId();
 		this.evalParameters = new EvaluationParameters(evalInfo.getEvalParameters());
 		this.evalResults = new EvaluationResults(evalInfo.getEvalResults());
+	}
+
+	private void setId() {
+		currentID++;
+		id = currentID;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public EvaluationParameters getEvalParameters() {
@@ -31,7 +43,7 @@ public class EvaluationInfo {
 
 	@Override
 	public String toString() {
-		String res = "\n============== Evaluation Info ==============\n";
+		String res = "\n============== Evaluation Info " + id + " ==============\n";
 		res += evalParameters + "\n";
 		res += evalResults + "\n";
 		return res;

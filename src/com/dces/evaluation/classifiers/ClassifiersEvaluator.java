@@ -13,6 +13,7 @@ import com.dces.evaluation.EvaluationParameters;
 import com.dces.evaluation.EvaluationResults;
 import com.dces.evaluation.EvaluatorAbstract;
 import com.dces.evaluation.featureSelection.DocumentFeatureSelectionFilter;
+import com.websocket.DCESWebSocket;
 
 public class ClassifiersEvaluator extends EvaluatorAbstract {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(ClassifiersEvaluator.class);
@@ -68,6 +69,7 @@ public class ClassifiersEvaluator extends EvaluatorAbstract {
 					evalInfo.setEvalParameters(evalParams);
 					evalInfo.setEvalResults(evalResults);
 					evalInfo.getEvalParameters().setClassifier(classifier);
+					DCESWebSocket.updateClassifierAcc(evalInfo);
 					updateEvaluationInfo(evalInfo);
 				} catch (Exception e) {
 					logger.error("Evaluating using crossValidation: {}", e.toString());
