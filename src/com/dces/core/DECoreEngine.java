@@ -4,6 +4,7 @@ import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.Logger;
 import com.dces.configuration.Config;
 import com.dces.evaluation.DEInstances;
+import com.dces.evaluation.EvaluationThread;
 import com.dces.evaluation.LoadDirectoryInstances;
 import com.dces.evaluation.classifiers.ClassifiersBuilder;
 import com.dces.evaluation.classifiers.ClassifiersEvaluator;
@@ -91,14 +92,6 @@ public class DECoreEngine {
 		DEInstances featuresDeInstances;
 		int featureCounter = 0;
 		int classifiersCounter = 0;
-		logger.info("Initializing Feature Selection Evaluator");
-		FeatureSelectionEvaluator fsEval = new FeatureSelectionEvaluator();
-		fsEval.setClassifierList(classifiers.getClassifiersWithDefaultSettings());
-		fsEval.setFeatureSelectionFilterList(fsfb.getFeatureSelectionFilters());
-
-		logger.info("Initializing Classifiers Evaluator");
-		ClassifiersEvaluator cEval = new ClassifiersEvaluator();
-		cEval.setClassifiersMap(classifiers.getClassifiersExcludingDefaultSettings());
 
 		while (fsGenerator.hasNext()) {
 			featureCounter++;
@@ -106,16 +99,13 @@ public class DECoreEngine {
 			featuresDeInstances = fsGenerator.getNext();
 			logger.trace("Generated Feature Vector :\n{} ", featuresDeInstances.getInstances());
 
-			fsEval.clear();
-			logger.info("Evaluating Feature Space on Feature Selection Methods ...");
-			fsEval.evaluate(featuresDeInstances);
-			fsEval.updateEvaluationLog(evalLog);
-
-			cEval.clear();
-			cEval.setFeatureSelectionFilterMap(fsEval.getBestClassifiersFSMap());
-			logger.info("Evaluating Feature Space on All Classifiers ...");
-			cEval.evaluate(featuresDeInstances);
-			cEval.updateEvaluationLog(evalLog);
+			EvaluationThread evalThread = new EvaluationThread();
+			evalThread.setTrainingInstances(featuresDeInstances);
+			evalThread.setClassifierBuilder(classifiers);
+			evalThread.setFSBuilder(fsfb);
+			evalThread.setEvalLog(evalLog);
+			logger.debug("Starting Evaluation Thread " );
+			evalThread.start();
 		}
 
 		logger.debug("Num of Features Evaluated: {}", featureCounter);

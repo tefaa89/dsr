@@ -51,6 +51,7 @@ public class ClassifiersEvaluator extends EvaluatorAbstract {
 			if (featureSelectionFilterMap != null)
 				fsFilter = featureSelectionFilterMap.get(key);
 
+			System.out.println("###### NUMBER OF INSTANCES: " + Thread.currentThread().getName() + " "+ deInstances.getInstances().numInstances());
 			DEInstances filteredInstances = (fsFilter == null) ? deInstances : fsFilter
 					.useFilter(deInstances);
 			for (DocumentClassifer classifier : currentClassifiersList) {

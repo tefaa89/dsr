@@ -14,14 +14,14 @@ public abstract class EvaluatorAbstract {
 		evaluationInfoResultList = new ArrayList<EvaluationInfo>();
 	}
 
-	public void updateEvaluationLog(DEEvaluationLog evaLog) {
+	public synchronized void updateEvaluationLog(DEEvaluationLog evaLog) {
 		if (evaluationInfoResultList == null)
 			evaluationInfoResultList = new ArrayList<EvaluationInfo>();
 		for (EvaluationInfo evalInfo : evaluationInfoResultList)
 			evaLog.updateReport(evalInfo);
 	}
 
-	public void updateEvaluationInfo(EvaluationInfo evalInfo) {
+	public synchronized void updateEvaluationInfo(EvaluationInfo evalInfo) {
 		if (evaluationInfoResultList == null)
 			evaluationInfoResultList = new ArrayList<EvaluationInfo>();
 		evaluationInfoResultList.add(evalInfo);

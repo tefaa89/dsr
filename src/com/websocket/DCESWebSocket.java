@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 public class DCESWebSocket {
 	public static WebSocketServerThread wst = new WebSocketServerThread();
 
-	public static void updateClassifierAcc(EvaluationInfo evalInfo) {
+	public synchronized static void updateClassifierAcc(EvaluationInfo evalInfo) {
 		if (!isConnected())
 			return;
 		JSONToken token = new JSONToken();

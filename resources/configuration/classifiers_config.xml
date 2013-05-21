@@ -1,37 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <classifiers>
-	<classifier id="ibk" classPath="weka.classifiers.lazy.IBk">
-		<parameters>
-			<param option="K"
-				description="Set the number of nearest neighbors to use in prediction (default 1)">
-				<value>1</value>
-			</param>
-			<param option="W"
-				description="Set a fixed window size for incremental train/testing. As new training instances are added, oldest instances are removed to maintain the number of training instances at this size. (default no window)">
-				<value>0</value>
-			</param>
-			<param option="*" description="">
-				<value></value>
-				<value>I</value>
-			</param>
-		</parameters>
-	</classifier>
-	
-	<classifier id="randomForest" classPath="weka.classifiers.trees.RandomForest">
-		<parameters>
-			<param option="*">
-				<value></value>
-			</param>
-		</parameters>
-	</classifier>
-	
-	<classifier id="smo" classPath="weka.classifiers.functions.SMO">
-		<parameters>
-			<param option="*">
-				<value></value>
-			</param>
-		</parameters>
-	</classifier>
-	
-	
+  <classifier id="ibk" classPath="weka.classifiers.lazy.IBk">
+    <parameters>
+      <param option="K" description="Set the number of nearest neighbors to use in prediction (default 1)">
+        <value>1</value>
+      </param>
+      <param option="W" description="Set a fixed window size for incremental train/testing. As new training instances are added, oldest instances are removed to maintain the number of training instances at this size. (default no window)">
+        <value>0</value>
+      </param>
+      <param option="*" description="">
+        <value/>
+        <value>I</value>
+      </param>
+    </parameters>
+  </classifier>
+  <classifier id="randomForest" classPath="weka.classifiers.trees.RandomForest">
+    <parameters>
+      <param option="*">
+        <value/>
+      </param>
+    </parameters>
+  </classifier>
+  <classifier id="smo" classPath="weka.classifiers.functions.SMO">
+    <parameters>
+      <param option="*">
+        <value/>
+      </param>
+    </parameters>
+  </classifier>
 </classifiers>

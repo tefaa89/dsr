@@ -10,9 +10,9 @@ import com.dces.util.enumu.LanguageEnum;
 
 /**
  * This class generates all possible feature space models for a given data set
- * 
+ *
  * @author TeFa
- * 
+ *
  */
 public class FeatureSpaceGenerator {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(FeatureSpaceGenerator.class);
@@ -50,8 +50,9 @@ public class FeatureSpaceGenerator {
 		fsb.build();
 		return fsb.getFilteredDataSet();
 	}
-
+	
 	public boolean hasNext() {
+
 		return featureParamIndexState + 1 >= FeaturesParametersEnum.values().length
 				&& featureModelIndexState + 1 >= FeaturesModelEnum.values().length ? false : true;
 	}

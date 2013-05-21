@@ -133,9 +133,11 @@ public class DocumentFeatureSelectionFilter {
 		if (attFilter.getEvaluator() == null)
 			return instances;
 		try {
+			AttributeSelection attrFCopy = (AttributeSelection) AttributeSelection
+					.makeCopy(attFilter);
 			Instances unFilteredInstances = instances.getInstances();
-			attFilter.setInputFormat(unFilteredInstances);
-			Instances filteredInstancesWeka = Filter.useFilter(unFilteredInstances, attFilter);
+			attrFCopy.setInputFormat(unFilteredInstances);
+			Instances filteredInstancesWeka = Filter.useFilter(unFilteredInstances, attrFCopy);
 			cutAttributes(filteredInstancesWeka);
 			filteredInstances.setInstances(filteredInstancesWeka);
 			filteredInstances.setParameters(instances.getEvaluationParameters());

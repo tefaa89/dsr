@@ -15,9 +15,9 @@ public class Main {
 	}
 
 	public static void evalTextData() {
-		logger.info("Initializing Core Engine:");
+		logger.info("Initializing Core Engine:"); 
 		dsrEngine = new DECoreEngine();
-		dsrEngine.setDataCorpusPath("c:\\test");
+		dsrEngine.setDataCorpusPath("test");
 		/*dsrEngine.evaluate();
 		printInfo();*/
 	}
@@ -25,11 +25,11 @@ public class Main {
 	public static void evalArffData() {
 		logger.info("Initializing Core Engine:");
 		dsrEngine = new DECoreEngine();
-		dsrEngine.setDataCorpusPath("c:\\test\\data.arff");
+		dsrEngine.setDataCorpusPath("test\\data.arff");
 		/*dsrEngine.evaluateARFF();
 		printInfo();*/
 	}
-	
+
 
 	public static void printInfo() {
 		logger.debug("Evaluation Log: {}", dsrEngine.getEvaluationLog());
