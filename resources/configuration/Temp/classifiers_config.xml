@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classifiers>
+	<classifier id="ibk" classPath="weka.classifiers.lazy.IBk">
+		<parameters>
+			<param option="K"
+				description="Set the number of nearest neighbors to use in prediction (default 1)">
+				<value>2</value>
+				<value>4</value>
+				<value>6</value>
+				<value>8</value>
+				<value>10</value>
+			</param>
+			<param option="W"
+				description="Set a fixed window size for incremental train/testing. As new training instances are added, oldest instances are removed to maintain the number of training instances at this size. (default no window)">
+				<value>0</value>
+			</param>
+			<param option="*" description="">
+				<value></value>
+				<value>I</value>
+			</param>
+		</parameters>
+	</classifier>
+
+	<classifier id="smo" classPath="weka.classifiers.functions.SMO">
+		<parameters>
+			<param option="*">
+				<value></value>
+			</param>
+		</parameters>
+	</classifier>
+	
+	<classifier id="randomForest" classPath="weka.classifiers.trees.RandomForest">
+		<parameters>
+			<param option="*">
+				<value></value>
+			</param>
+		</parameters>
+	</classifier>
+	
+	<classifier id="Multilayer perceptron" classPath="weka.classifiers.functions.MultilayerPerceptron">
+		<parameters>
+			<param option="*">
+				<value></value>
+			</param>
+		</parameters>
+	</classifier>
+	
+	<classifier id="Random tree" classPath="weka.classifiers.trees.RandomTree">
+		<parameters>
+			<param option="*">
+				<value></value>
+			</param>
+		</parameters>
+	</classifier>
+	
+	<classifier id="Decision table" classPath="weka.classifiers.rules.DecisionTable">
+		<parameters>
+			<param option="*">
+				<value></value>
+			</param>
+		</parameters>
+	</classifier>
+	
+	<classifier id="J48" classPath="weka.classifiers.trees.J48">
+		<parameters>
+			<param option="*">
+				<value></value>
+			</param>
+		</parameters>
+	</classifier>
+	
+	<classifier id="BayesNet" classPath="weka.classifiers.bayes.BayesNet">
+		<parameters>
+			<param option="*">
+				<value></value>
+			</param>
+		</parameters>
+	</classifier>
+	
+	<classifier id="SimpleLogistics" classPath="weka.classifiers.functions.SimpleLogistic">
+		<parameters>
+			<param option="*">
+				<value></value>
+			</param>
+		</parameters>
+	</classifier>
+</classifiers>
