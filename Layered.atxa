@@ -1,0 +1,495 @@
+<,tefaa89@gmail.com,tefaa89@gmail.com> <http://www.architexa.com/rdf/core#creator> "true" .
+
+@prefix atxa-strata: <http://www.architexa.com/rdf/strata#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#Layered.atxa> a atxa-core:strataFile .
+
+atxa:DetailNode atxa-core:detailLevel "1" .
+
+atxa-core:docRoot atxa-core:browseModel "com.architexa.diagrams.relo.jdt/com.architexa.diagrams.relo.jdt.browse.ClassStrucBrowseModel" ;
+	atxa-core:contains _:node17qultmddx1 .
+
+_:node17qultmddx1 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.*> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "0" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.dces.*> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.dces> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.*> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.*> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.core> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.test> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.configuration> .
+
+_:node17qultmddx1 atxa-core:contains _:node17qultmddx2 .
+
+_:node17qultmddx2 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "0" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.dces> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.dces$Main> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces$PlotExample> .
+
+_:node17qultmddx2 atxa-core:contains _:node17qultmddx3 .
+
+_:node17qultmddx3 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces$Main> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx2 atxa-core:contains _:node17qultmddx4 .
+
+_:node17qultmddx4 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces$PlotExample> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx1 atxa-core:contains _:node17qultmddx5 .
+
+_:node17qultmddx5 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.*> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "0" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.*> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.featureExtraction> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.featureSelection> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.classifiers> .
+
+_:node17qultmddx5 atxa-core:contains _:node17qultmddx6 .
+
+_:node17qultmddx6 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "0" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$DEInstances> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$LoadDirectoryInstances> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$BuilderAbstract> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$EvaluationInfo> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$EvaluationParameters> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$EvaluationResults> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$EvaluationThread> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$EvaluatorAbstract> .
+
+_:node17qultmddx6 atxa-core:contains _:node17qultmddx7 .
+
+_:node17qultmddx7 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$DEInstances> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx6 atxa-core:contains _:node17qultmddx8 .
+
+_:node17qultmddx8 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$LoadDirectoryInstances> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx6 atxa-core:contains _:node17qultmddx9 .
+
+_:node17qultmddx9 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$BuilderAbstract> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx6 atxa-core:contains _:node17qultmddx10 .
+
+_:node17qultmddx10 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$EvaluationInfo> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":2,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx6 atxa-core:contains _:node17qultmddx11 .
+
+_:node17qultmddx11 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$EvaluationParameters> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "0" .
+
+_:node17qultmddx6 atxa-core:contains _:node17qultmddx12 .
+
+_:node17qultmddx12 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$EvaluationResults> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":3,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx6 atxa-core:contains _:node17qultmddx13 .
+
+_:node17qultmddx13 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$EvaluationThread> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":4,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx6 atxa-core:contains _:node17qultmddx14 .
+
+_:node17qultmddx14 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation$EvaluatorAbstract> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":5,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx5 atxa-core:contains _:node17qultmddx15 .
+
+_:node17qultmddx15 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.featureExtraction> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "1" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.featureExtraction> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.featureExtraction$FeatureSpaceBuilder> .
+
+_:node17qultmddx15 atxa-core:contains _:node17qultmddx16 .
+
+_:node17qultmddx16 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.featureExtraction$FeatureSpaceBuilder> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "0" .
+
+_:node17qultmddx5 atxa-core:contains _:node17qultmddx17 .
+
+_:node17qultmddx17 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.featureSelection> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:1,false,false,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "1" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.featureSelection> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.featureSelection$DocumentFeatureSelectionFilter> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.featureSelection$FeatureSelectionEvaluator> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.featureSelection$FeatureSelectionFiltersBuilder> .
+
+_:node17qultmddx17 atxa-core:contains _:node17qultmddx18 .
+
+_:node17qultmddx18 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.featureSelection$DocumentFeatureSelectionFilter> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx17 atxa-core:contains _:node17qultmddx19 .
+
+_:node17qultmddx19 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.featureSelection$FeatureSelectionEvaluator> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:2,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx17 atxa-core:contains _:node17qultmddx20 .
+
+_:node17qultmddx20 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.featureSelection$FeatureSelectionFiltersBuilder> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx5 atxa-core:contains _:node17qultmddx21 .
+
+_:node17qultmddx21 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.classifiers> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "0" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.classifiers> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.classifiers$ClassifiersBuilder> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.classifiers$ClassifiersEvaluator> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.classifiers$DocumentClassifer> .
+
+_:node17qultmddx21 atxa-core:contains _:node17qultmddx22 .
+
+_:node17qultmddx22 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.classifiers$ClassifiersBuilder> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx21 atxa-core:contains _:node17qultmddx23 .
+
+_:node17qultmddx23 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.classifiers$ClassifiersEvaluator> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:2,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx21 atxa-core:contains _:node17qultmddx24 .
+
+_:node17qultmddx24 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.evaluation.classifiers$DocumentClassifer> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx1 atxa-core:contains _:node17qultmddx25 .
+
+_:node17qultmddx25 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.*> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:2,false,false,true" ;
+	atxa-strata:layerIndex "2" ;
+	atxa-strata:indexWithinLayer "0" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.*> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.xml> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.enumu> .
+
+_:node17qultmddx25 atxa-core:contains _:node17qultmddx26 .
+
+_:node17qultmddx26 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "0" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.dces.util> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util$FileUtil> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util$LanguageDetector> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util$LoggingConsoleLayout> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util$StringToWordVector> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util$WekaFilters> .
+
+_:node17qultmddx26 atxa-core:contains _:node17qultmddx27 .
+
+_:node17qultmddx27 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util$FileUtil> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx26 atxa-core:contains _:node17qultmddx28 .
+
+_:node17qultmddx28 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util$LanguageDetector> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx26 atxa-core:contains _:node17qultmddx29 .
+
+_:node17qultmddx29 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util$LoggingConsoleLayout> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx26 atxa-core:contains _:node17qultmddx30 .
+
+_:node17qultmddx30 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util$StringToWordVector> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx26 atxa-core:contains _:node17qultmddx31 .
+
+_:node17qultmddx31 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util$WekaFilters> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":2,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx25 atxa-core:contains _:node17qultmddx32 .
+
+_:node17qultmddx32 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.xml> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true:1,true,true,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.xml> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.xml$DCESInfoXML> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.xml$SearchMethodsInfoXML> .
+
+_:node17qultmddx32 atxa-core:contains _:node17qultmddx33 .
+
+_:node17qultmddx33 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.xml$DCESInfoXML> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx32 atxa-core:contains _:node17qultmddx34 .
+
+_:node17qultmddx34 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.xml$SearchMethodsInfoXML> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx25 atxa-core:contains _:node17qultmddx35 .
+
+_:node17qultmddx35 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.enumu> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true:1,true,true,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.enumu> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.enumu$FeaturesModelEnum> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.enumu$FeaturesParametersEnum> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.enumu$LanguageEnum> .
+
+_:node17qultmddx35 atxa-core:contains _:node17qultmddx36 .
+
+_:node17qultmddx36 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.enumu$FeaturesModelEnum> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx35 atxa-core:contains _:node17qultmddx37 .
+
+_:node17qultmddx37 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.enumu$FeaturesParametersEnum> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:2,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx35 atxa-core:contains _:node17qultmddx38 .
+
+_:node17qultmddx38 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.util.enumu$LanguageEnum> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx1 atxa-core:contains _:node17qultmddx39 .
+
+_:node17qultmddx39 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.core> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:1,false,false,true" ;
+	atxa-strata:layerIndex "1" ;
+	atxa-strata:indexWithinLayer "1" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.dces.core> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.dces.core$DECoreEngine> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.core$DEEvaluationLog> .
+
+_:node17qultmddx39 atxa-core:contains _:node17qultmddx40 .
+
+_:node17qultmddx40 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.core$DECoreEngine> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx39 atxa-core:contains _:node17qultmddx41 .
+
+_:node17qultmddx41 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.core$DEEvaluationLog> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx1 atxa-core:contains _:node17qultmddx42 .
+
+_:node17qultmddx42 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.test> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "1" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.dces.test> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.dces.test$DocumentFeatureSelectionFilterTest> , <http://www.architexa.com/rdf/jdt-wkspc#com.dces.test$FeatureSpaceBuilderTest> .
+
+_:node17qultmddx42 atxa-core:contains _:node17qultmddx43 .
+
+_:node17qultmddx43 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.test$DocumentFeatureSelectionFilterTest> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx42 atxa-core:contains _:node17qultmddx44 .
+
+_:node17qultmddx44 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.test$FeatureSpaceBuilderTest> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" .
+
+_:node17qultmddx1 atxa-core:contains _:node17qultmddx45 .
+
+_:node17qultmddx45 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.configuration> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:2,false,false,true" ;
+	atxa-strata:layerIndex "2" ;
+	atxa-strata:indexWithinLayer "1" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.dces.configuration> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.dces.configuration$Config> .
+
+_:node17qultmddx45 atxa-core:contains _:node17qultmddx46 .
+
+_:node17qultmddx46 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.dces.configuration$Config> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "0" .
+
+atxa-core:docRoot atxa-core:contains _:node17qultmddx47 .
+
+_:node17qultmddx47 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.websocket> ;
+	atxa-core:containerState "true" , "true" , "true" ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "1" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.websocket> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.websocket$WebSocketServerThread> , <http://www.architexa.com/rdf/jdt-wkspc#com.websocket$DCESWebSocket> .
+
+_:node17qultmddx47 atxa-core:contains _:node17qultmddx48 .
+
+_:node17qultmddx48 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.websocket$WebSocketServerThread> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "0" .
+
+_:node17qultmddx47 atxa-core:contains _:node17qultmddx49 .
+
+_:node17qultmddx49 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.websocket$DCESWebSocket> ;
+	atxa-core:containerState "false" , "false" , "false" ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:0,false,false,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "1" .
+
+@prefix atxa-strata: <http://www.architexa.com/rdf/strata#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#Layered.atxa> a atxa-core:strataFile ;
+	atxa-core:contains _:node17qultmddx3 , _:node17qultmddx4 , _:node17qultmddx2 , _:node17qultmddx7 , _:node17qultmddx8 , _:node17qultmddx9 , _:node17qultmddx10 , _:node17qultmddx11 , _:node17qultmddx12 , _:node17qultmddx13 , _:node17qultmddx14 , _:node17qultmddx6 , _:node17qultmddx16 , _:node17qultmddx15 , _:node17qultmddx18 , _:node17qultmddx19 , _:node17qultmddx20 , _:node17qultmddx17 , _:node17qultmddx22 , _:node17qultmddx23 , _:node17qultmddx24 , _:node17qultmddx21 , _:node17qultmddx5 , _:node17qultmddx27 , _:node17qultmddx28 , _:node17qultmddx29 , _:node17qultmddx30 , _:node17qultmddx31 , _:node17qultmddx26 , _:node17qultmddx33 , _:node17qultmddx34 , _:node17qultmddx32 , _:node17qultmddx36 , _:node17qultmddx37 , _:node17qultmddx38 , _:node17qultmddx35 , _:node17qultmddx25 , _:node17qultmddx40 , _:node17qultmddx41 , _:node17qultmddx39 , _:node17qultmddx43 , _:node17qultmddx44 , _:node17qultmddx42 , _:node17qultmddx46 , _:node17qultmddx45 , _:node17qultmddx1 , _:node17qultmddx48 , _:node17qultmddx49 , _:node17qultmddx47 , atxa-core:docRoot , _:node17qultmddx3 , _:node17qultmddx4 , _:node17qultmddx2 , _:node17qultmddx7 , _:node17qultmddx8 , _:node17qultmddx9 , _:node17qultmddx10 , _:node17qultmddx11 , _:node17qultmddx12 , _:node17qultmddx13 , _:node17qultmddx14 , _:node17qultmddx6 , _:node17qultmddx16 , _:node17qultmddx15 , _:node17qultmddx18 , _:node17qultmddx19 , _:node17qultmddx20 , _:node17qultmddx17 , _:node17qultmddx22 , _:node17qultmddx23 , _:node17qultmddx24 , _:node17qultmddx21 , _:node17qultmddx5 , _:node17qultmddx27 , _:node17qultmddx28 , _:node17qultmddx29 , _:node17qultmddx30 , _:node17qultmddx31 , _:node17qultmddx26 , _:node17qultmddx33 , _:node17qultmddx34 , _:node17qultmddx32 , _:node17qultmddx36 , _:node17qultmddx37 , _:node17qultmddx38 , _:node17qultmddx35 , _:node17qultmddx25 , _:node17qultmddx40 , _:node17qultmddx41 , _:node17qultmddx39 , _:node17qultmddx43 , _:node17qultmddx44 , _:node17qultmddx42 , _:node17qultmddx46 , _:node17qultmddx45 , _:node17qultmddx1 , _:node17qultmddx48 , _:node17qultmddx49 , _:node17qultmddx47 , atxa-core:docRoot .
+
