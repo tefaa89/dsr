@@ -3,7 +3,7 @@
 	<searchMethods>
 		<searchMethod id="bestfirst" classPath="weka.attributeSelection.BestFirst">
 			<parameters>
-				 <param option="D" description="Direction: Set the direction of the search.">
+				<param option="D" description="Direction: Set the direction of the search.">
 					<value>1</value>
 					<value use="false">1</value>
 					<value use="false">2</value>

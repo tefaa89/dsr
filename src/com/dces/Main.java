@@ -15,7 +15,7 @@ public class Main {
 	}
 
 	public static void evalTextData() {
-		logger.info("Initializing Core Engine:"); 
+		logger.info("Initializing Core Engine:");
 		dsrEngine = new DECoreEngine();
 		dsrEngine.setDataCorpusPath("test");
 		/*dsrEngine.evaluate();
