@@ -30,7 +30,6 @@ public class Main {
 		printInfo();*/
 	}
 
-
 	public static void printInfo() {
 		logger.debug("Evaluation Log: {}", dsrEngine.getEvaluationLog());
 		logger.info("Best Classifier Configutration: {}", dsrEngine.getEvaluationLog()

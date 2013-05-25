@@ -14,12 +14,13 @@ import com.dces.util.xml.DCESInfoXML;
 
 public class Config {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(Config.class);
-	private static final String FS_EVAL_FILENAME = "fs_evaluators_config.xml";
-	private static final String FS_SEARCH_FILENAME = "fs_search_methods_config.xml";
-	private static final String CLASSIFIERS_FILENAME = "classifiers_config.xml";
+	private static final String FS_EVAL_FILENAME = "fsConfig.xml";
+	private static final String FE_FILENAME = "feConfig.xml";
+	private static final String CLASSIFIERS_FILENAME = "classifiersConfig.xml";
 
 	private static Element fsEvaluatorsXmlRoot;
 	private static Element fsSearchMethodsXmlRoot;
+	private static Element feXmlRoot;
 	private static Element classifiersXMLRoot;
 
 	public static void initConfiguration() {
@@ -30,15 +31,16 @@ public class Config {
 			logger.trace("Reading {} file", FS_EVAL_FILENAME);
 			File file = new File("resources//configuration//" + FS_EVAL_FILENAME);
 			Document doc = builder.build(file);
-			fsEvaluatorsXmlRoot = doc.getRootElement();
+			fsEvaluatorsXmlRoot = doc.getRootElement().getFirstChildElement("selectors");
+			fsSearchMethodsXmlRoot = doc.getRootElement().getFirstChildElement("searchMethods");
 			logger.trace("{} file is successfuly read", FS_EVAL_FILENAME);
 
-			// Reading Feature Selection Search Methods Config File
-			logger.trace("Reading {} file", FS_SEARCH_FILENAME);
-			file = new File("resources//configuration//" + FS_SEARCH_FILENAME);
+			// Reading Feature Extraction Methods Config File
+			logger.trace("Reading {} file", FE_FILENAME);
+			file = new File("resources//configuration//" + FE_FILENAME);
 			doc = builder.build(file);
-			fsSearchMethodsXmlRoot = doc.getRootElement();
-			logger.trace("{} file is successfuly read", FS_SEARCH_FILENAME);
+			feXmlRoot = doc.getRootElement();
+			logger.trace("{} file is successfuly read", FE_FILENAME);
 
 			// Reading Classifiers Config File
 			logger.trace("Reading {} file", CLASSIFIERS_FILENAME);

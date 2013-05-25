@@ -2,20 +2,19 @@
 <project name="Ant-Test" default="main" basedir=".">
 	<!-- Sets variables which can later be used. -->
 	<!-- The value of a property is accessed via ${} -->
-	<property name="src.dir" location="src" />
+
 	<property name="build.dir" location="bin" />
-	<property name="dist.dir" location="dist" />
-	<property name="docs.dir" location="docs" />
 
 	<!--Creates the deployable jar file  -->
+
 	<target name="jar">
-		<jar destfile="${dist.dir}\dces.jar" basedir="${build.dir}">
+		<jar destfile="dces.jar" basedir="${build.dir}">
 			<manifest>
 				<attribute name="Main-Class" value="com.dces.Main" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Rsrc-Class-Path" value="." />
 			</manifest>
-
-			<zipgroupfileset dir="resources\lib\" includes="*.jar"/>
-			<zipgroupfileset dir="resources\lib\websocket\" includes="*.jar"/>
+			<fileset dir="resources/lib" includes="**/*.jar" />
 		</jar>
 	</target>
 
