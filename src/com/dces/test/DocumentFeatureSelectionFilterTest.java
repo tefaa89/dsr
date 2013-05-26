@@ -4,7 +4,7 @@ import com.dces.configuration.Config;
 import com.dces.evaluation.DEInstances;
 import com.dces.evaluation.LoadDirectoryInstances;
 import com.dces.evaluation.featureExtraction.FeatureSpaceGenerator;
-import com.dces.evaluation.featureSelection.DocumentFeatureSelectionFilter;
+import com.dces.evaluation.featureSelection.FeatureSelectionFilter;
 import com.dces.evaluation.featureSelection.FeatureSelectionFiltersBuilder;
 
 public class DocumentFeatureSelectionFilterTest {
@@ -24,7 +24,7 @@ public class DocumentFeatureSelectionFilterTest {
 			featuresDeInstances = fsGenerator.getNext();
 			try {
 				System.out.println(featuresDeInstances.getInstances());
-				DocumentFeatureSelectionFilter fsF = fsfb.getFeatureSelectionFilters().get(0);
+				FeatureSelectionFilter fsF = fsfb.getFeatureSelectionFilters().get(0);
 				/*fsF.setEvaluator("weka.attributeSelection.CfsSubsetEval");
 				fsF.setSearchMethod("weka.attributeSelection.BestFirst");
 				AttributeSelection filter = new AttributeSelection(); // package

@@ -8,6 +8,7 @@ import com.dces.evaluation.EvaluationThread;
 import com.dces.evaluation.LoadDirectoryInstances;
 import com.dces.evaluation.classifiers.ClassifiersBuilder;
 import com.dces.evaluation.classifiers.ClassifiersEvaluator;
+import com.dces.evaluation.featureExtraction.FeatureExtractorFiltersBuilder;
 import com.dces.evaluation.featureExtraction.FeatureSpaceGenerator;
 import com.dces.evaluation.featureSelection.FeatureSelectionEvaluator;
 import com.dces.evaluation.featureSelection.FeatureSelectionFiltersBuilder;
@@ -75,6 +76,11 @@ public class DECoreEngine {
 		loadDI.load();
 		logger.info("Corpus Data Loaded Successfuly");
 		evalLog = new DEEvaluationLog();
+
+		logger.info("Building Feature Extraction Object from XML");
+		FeatureExtractorFiltersBuilder featuresMethods = new FeatureExtractorFiltersBuilder();
+		featuresMethods.build(Config.getFEMethodsInfo());
+		logger.info("Feature Extraction Object Built Successfuly");
 
 		logger.info("Building Classifiers Object from XML");
 		ClassifiersBuilder classifiers = new ClassifiersBuilder();

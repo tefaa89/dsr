@@ -106,6 +106,24 @@ public class Config {
 	}
 
 	/**
+	 * Fetches all feature extraction methods from the XML
+	 * @return {@link ArrayList}
+	 */
+	public static ArrayList<DCESInfoXML> getFEMethodsInfo() {
+		logger.debug("Calling: getFEMethodsInfo():ArrayList<DCESInfoXML> method");
+		ArrayList<DCESInfoXML> feInfoList = new ArrayList<DCESInfoXML>();
+		Elements elements = feXmlRoot.getChildElements();
+		// Loop on feature extraction methods elements
+		for (int i = 0; i < elements.size(); i++) {
+			String id = elements.get(i).getAttributeValue("id");
+			DCESInfoXML infoXML = getDCESInfoByID(id, elements.get(i));
+			if (infoXML != null)
+				feInfoList.add(infoXML);
+		}
+		return feInfoList;
+	}
+
+	/**
 	 * Every element in an XML file is an DCESInfoXml object
 	 *
 	 * @param id
@@ -124,6 +142,7 @@ public class Config {
 			return null;
 		// At this point we are sure that there is an element with id "id"
 		String className = currentElement.getAttributeValue("classPath");
+		String selectionMethod = currentElement.getAttributeValue("selection");
 		Map<String, String[]> paramters = getParametersFromElement(currentElement);
 		ArrayList<String> searchMethodsIDList = getSearchMethodsIDList(currentElement);
 		ArrayList<String> cutPercentagesList = getAttributesScalingFactorList(currentElement);
@@ -131,6 +150,7 @@ public class Config {
 		dcesInfoXml.setID(id);
 		dcesInfoXml.setClassName(className);
 		dcesInfoXml.setParameters(paramters);
+		dcesInfoXml.setSelectionMethod(selectionMethod);
 		dcesInfoXml.setCutPercentagesList(cutPercentagesList);
 		dcesInfoXml.setEvaluatorSearchMethodsIDList(searchMethodsIDList);
 		return dcesInfoXml;

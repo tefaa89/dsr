@@ -10,7 +10,7 @@ public class Main {
 	public static DECoreEngine dsrEngine;
 
 	public static void main(String[] args) {
-		DCESWebSocket.wst.init();
+	//	DCESWebSocket.wst.init();
 		evalTextData();
 	}
 
@@ -18,8 +18,8 @@ public class Main {
 		logger.info("Initializing Core Engine:");
 		dsrEngine = new DECoreEngine();
 		dsrEngine.setDataCorpusPath("test");
-		/*dsrEngine.evaluate();
-		printInfo();*/
+		dsrEngine.evaluate();
+		printInfo();
 	}
 
 	public static void evalArffData() {

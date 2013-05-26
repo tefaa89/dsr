@@ -9,7 +9,7 @@ import com.dces.evaluation.DEInstances;
 import com.dces.evaluation.EvaluationInfo;
 import com.dces.evaluation.EvaluatorAbstract;
 import com.dces.evaluation.classifiers.ClassifiersEvaluator;
-import com.dces.evaluation.classifiers.DocumentClassifer;
+import com.dces.evaluation.classifiers.ClassificationAlgorithm;
 
 public class FeatureSelectionEvaluator extends EvaluatorAbstract {
 	private static Logger logger = (Logger) LoggerFactory
@@ -20,46 +20,46 @@ public class FeatureSelectionEvaluator extends EvaluatorAbstract {
 	 * and then stored in the evaluationInfoMap.
 	 */
 	private Map<String, ArrayList<EvaluationInfo>> evaluationInfoMap;
-	private ArrayList<DocumentFeatureSelectionFilter> featureSelectionFilterList;
-	private ArrayList<DocumentClassifer> classifierList;
+	private ArrayList<FeatureSelectionFilter> featureSelectionFilterList;
+	private ArrayList<ClassificationAlgorithm> classifierList;
 
 	public FeatureSelectionEvaluator() {
 		evaluationInfoMap = new HashMap<String, ArrayList<EvaluationInfo>>();
 	}
 
-	public ArrayList<DocumentFeatureSelectionFilter> getFeatureSelectionFilterList() {
+	public ArrayList<FeatureSelectionFilter> getFeatureSelectionFilterList() {
 		return featureSelectionFilterList;
 	}
 
-	public Map<String, DocumentFeatureSelectionFilter> getBestClassifiersFSMap() {
+	public Map<String, FeatureSelectionFilter> getBestClassifiersFSMap() {
 		// The evaluationInfoList in the parent class contains the best
 		// evaluations only
-		Map<String, DocumentFeatureSelectionFilter> map = new HashMap<String, DocumentFeatureSelectionFilter>();
+		Map<String, FeatureSelectionFilter> map = new HashMap<String, FeatureSelectionFilter>();
 		for (EvaluationInfo evalInfo : evaluationInfoResultList) {
 			String classifierClassPath = evalInfo.getEvalParameters().getClassifier()
 					.getClassPath();
-			DocumentFeatureSelectionFilter fsF = evalInfo.getEvalParameters().getFeatureSelection();
+			FeatureSelectionFilter fsF = evalInfo.getEvalParameters().getFeatureSelection();
 			map.put(classifierClassPath, fsF);
 		}
 		return map;
 	}
 
 	public void setFeatureSelectionFilterList(
-			ArrayList<DocumentFeatureSelectionFilter> featureSelectionFilterList) {
+			ArrayList<FeatureSelectionFilter> featureSelectionFilterList) {
 		this.featureSelectionFilterList = featureSelectionFilterList;
 	}
 
-	public void setClassifierList(ArrayList<DocumentClassifer> classifierList) {
+	public void setClassifierList(ArrayList<ClassificationAlgorithm> classifierList) {
 		logger.trace("Feature Selecton Evaluator Classifiers are {}", classifierList);
 		this.classifierList = classifierList;
 	}
 
-	private Map<String, ArrayList<DocumentClassifer>> getClassifiersMap() {
-		Map<String, ArrayList<DocumentClassifer>> classifiersMap = new HashMap<String, ArrayList<DocumentClassifer>>();
-		for (DocumentClassifer classifier : classifierList) {
+	private Map<String, ArrayList<ClassificationAlgorithm>> getClassifiersMap() {
+		Map<String, ArrayList<ClassificationAlgorithm>> classifiersMap = new HashMap<String, ArrayList<ClassificationAlgorithm>>();
+		for (ClassificationAlgorithm classifier : classifierList) {
 			String key = classifier.getClassPath();
 			if (!classifiersMap.containsKey(key))
-				classifiersMap.put(key, new ArrayList<DocumentClassifer>());
+				classifiersMap.put(key, new ArrayList<ClassificationAlgorithm>());
 			classifiersMap.get(key).add(classifier);
 		}
 		return classifiersMap;
@@ -101,8 +101,8 @@ public class FeatureSelectionEvaluator extends EvaluatorAbstract {
 	}
 
 	public void evaluate(DEInstances deInstances) {
-		Map<String, ArrayList<DocumentClassifer>> classifiersMap = getClassifiersMap();
-		for (DocumentFeatureSelectionFilter fsFilter : featureSelectionFilterList) {
+		Map<String, ArrayList<ClassificationAlgorithm>> classifiersMap = getClassifiersMap();
+		for (FeatureSelectionFilter fsFilter : featureSelectionFilterList) {
 			// Apply filter on deInstances and then evaluate the instance with
 			// all classifiers.
 			logger.debug("Filtering current feature vector with the following fillter : \n{}",

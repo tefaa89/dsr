@@ -1,13 +1,13 @@
 package com.dces.evaluation;
 
 import java.util.ArrayList;
-import com.dces.evaluation.classifiers.DocumentClassifer;
-import com.dces.evaluation.featureSelection.DocumentFeatureSelectionFilter;
+import com.dces.evaluation.classifiers.ClassificationAlgorithm;
+import com.dces.evaluation.featureSelection.FeatureSelectionFilter;
 import com.dces.util.enumu.FeaturesModelEnum;
 
 public class EvaluationParameters {
-	private transient DocumentClassifer classifier;
-	private transient DocumentFeatureSelectionFilter featureSelection;
+	private transient ClassificationAlgorithm classifier;
+	private transient FeatureSelectionFilter featureSelection;
 	private String classifierNameStr;
 	private String classifierParamStr;
 	private String fsEvaluatorNameStr;
@@ -47,11 +47,11 @@ public class EvaluationParameters {
 		return selectedAttributes;
 	}
 
-	public DocumentClassifer getClassifier() {
+	public ClassificationAlgorithm getClassifier() {
 		return classifier;
 	}
 
-	public void setClassifier(DocumentClassifer classifier) {
+	public void setClassifier(ClassificationAlgorithm classifier) {
 		this.classifier = classifier;
 		if (classifier != null) {
 			classifierNameStr = classifier.getClassPath();
@@ -59,11 +59,11 @@ public class EvaluationParameters {
 		}
 	}
 
-	public DocumentFeatureSelectionFilter getFeatureSelection() {
+	public FeatureSelectionFilter getFeatureSelection() {
 		return featureSelection;
 	}
 
-	public void setFeatureSelection(DocumentFeatureSelectionFilter featureSelection) {
+	public void setFeatureSelection(FeatureSelectionFilter featureSelection) {
 		this.featureSelection = featureSelection;
 		if (featureSelection != null) {
 			fsEvaluatorNameStr = featureSelection.getEvaluatorClassPath();

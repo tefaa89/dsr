@@ -6,13 +6,13 @@ import com.dces.evaluation.BuilderAbstract;
 import com.dces.util.xml.DCESInfoXML;
 
 public class FeatureSelectionFiltersBuilder extends BuilderAbstract {
-	private ArrayList<DocumentFeatureSelectionFilter> featureSelectionList;
+	private ArrayList<FeatureSelectionFilter> featureSelectionList;
 
 	public FeatureSelectionFiltersBuilder() {
-		featureSelectionList = new ArrayList<DocumentFeatureSelectionFilter>();
+		featureSelectionList = new ArrayList<FeatureSelectionFilter>();
 	}
 
-	public ArrayList<DocumentFeatureSelectionFilter> getFeatureSelectionFilters() {
+	public ArrayList<FeatureSelectionFilter> getFeatureSelectionFilters() {
 		return featureSelectionList;
 	}
 
@@ -41,7 +41,7 @@ public class FeatureSelectionFiltersBuilder extends BuilderAbstract {
 					// Loop on all current evaluator options
 					for (Map<String, String> currentfsEvalOptions : currentfsEvalOptionsList)
 						for (String scalingPerc : attributesScalingFactorList) {
-							DocumentFeatureSelectionFilter dsF = new DocumentFeatureSelectionFilter();
+							FeatureSelectionFilter dsF = new FeatureSelectionFilter();
 							double scalingFactor = Double.parseDouble(scalingPerc.replace("%", "")) / 100.0;
 							dsF.setAttibutesScalingFactor(scalingFactor);
 							dsF.setEvaluator(fsEvalXml.getClassName());

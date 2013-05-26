@@ -5,8 +5,12 @@ import java.util.Arrays;
 import java.util.Map;
 
 public class DCESInfoXML {
+	public static final String SELECTION_LINEAR = "linear";
+	public static final String SELECTION_NONLINEAR = "nonlinear";
+
 	private String iD;
 	private String className;
+	private String selectionMethod;
 	/**
 	 * Map<String, String[]>: First String is classifier option. Second String[]
 	 * contains the values for this option ex, ("k",[20,50,100]);
@@ -16,7 +20,6 @@ public class DCESInfoXML {
 	private ArrayList<String> evaluatorSearchMethodsIDList;
 
 	public DCESInfoXML() {
-
 	}
 
 	public String getID() {
@@ -33,6 +36,17 @@ public class DCESInfoXML {
 
 	public void setClassName(String className) {
 		this.className = className;
+	}
+
+	public String getSelectionMethod() {
+		return selectionMethod;
+	}
+
+	public void setSelectionMethod(String selectionMethod) {
+		if(selectionMethod == null)
+			this.selectionMethod = SELECTION_NONLINEAR;
+		else
+			this.selectionMethod = selectionMethod;
 	}
 
 	public Map<String, String[]> getParameters() {

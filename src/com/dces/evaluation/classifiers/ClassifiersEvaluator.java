@@ -12,7 +12,7 @@ import com.dces.evaluation.EvaluationInfo;
 import com.dces.evaluation.EvaluationParameters;
 import com.dces.evaluation.EvaluationResults;
 import com.dces.evaluation.EvaluatorAbstract;
-import com.dces.evaluation.featureSelection.DocumentFeatureSelectionFilter;
+import com.dces.evaluation.featureSelection.FeatureSelectionFilter;
 import com.websocket.DCESWebSocket;
 
 public class ClassifiersEvaluator extends EvaluatorAbstract {
@@ -21,19 +21,19 @@ public class ClassifiersEvaluator extends EvaluatorAbstract {
 	 * featureSelectionFilterMap holds the best document feature selection
 	 * filter for every classifier string path
 	 */
-	private Map<String, DocumentFeatureSelectionFilter> featureSelectionFilterMap;
-	private Map<String, ArrayList<DocumentClassifer>> classifiersMap;
+	private Map<String, FeatureSelectionFilter> featureSelectionFilterMap;
+	private Map<String, ArrayList<ClassificationAlgorithm>> classifiersMap;
 
 	public ClassifiersEvaluator() {
-		classifiersMap = new HashMap<String, ArrayList<DocumentClassifer>>();
-		featureSelectionFilterMap = new HashMap<String, DocumentFeatureSelectionFilter>();
+		classifiersMap = new HashMap<String, ArrayList<ClassificationAlgorithm>>();
+		featureSelectionFilterMap = new HashMap<String, FeatureSelectionFilter>();
 	}
 
-	public void setClassifiersMap(Map<String, ArrayList<DocumentClassifer>> classifiersMap) {
+	public void setClassifiersMap(Map<String, ArrayList<ClassificationAlgorithm>> classifiersMap) {
 		this.classifiersMap = classifiersMap;
 	}
 
-	public void setFeatureSelectionFilterMap(Map<String, DocumentFeatureSelectionFilter> fsMap) {
+	public void setFeatureSelectionFilterMap(Map<String, FeatureSelectionFilter> fsMap) {
 		this.featureSelectionFilterMap = fsMap;
 	}
 
@@ -41,20 +41,20 @@ public class ClassifiersEvaluator extends EvaluatorAbstract {
 	public void clear()
 	{
 		super.clear();
-		featureSelectionFilterMap = new HashMap<String, DocumentFeatureSelectionFilter>();
+		featureSelectionFilterMap = new HashMap<String, FeatureSelectionFilter>();
 	}
 
 	public void evaluate(DEInstances deInstances) {
-		DocumentFeatureSelectionFilter fsFilter = null;
+		FeatureSelectionFilter fsFilter = null;
 		for (String key : classifiersMap.keySet()) {
-			ArrayList<DocumentClassifer> currentClassifiersList = classifiersMap.get(key);
+			ArrayList<ClassificationAlgorithm> currentClassifiersList = classifiersMap.get(key);
 			if (featureSelectionFilterMap != null)
 				fsFilter = featureSelectionFilterMap.get(key);
 
 			System.out.println("###### NUMBER OF INSTANCES: " + Thread.currentThread().getName() + " "+ deInstances.getInstances().numInstances());
 			DEInstances filteredInstances = (fsFilter == null) ? deInstances : fsFilter
 					.useFilter(deInstances);
-			for (DocumentClassifer classifier : currentClassifiersList) {
+			for (ClassificationAlgorithm classifier : currentClassifiersList) {
 				try {
 					logger.info("Evaluating classifier :\n" + classifier);
 					Evaluation eval = new Evaluation(filteredInstances.getInstances());

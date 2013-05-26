@@ -1,21 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <featureExtractors>
-	<extractor classPath="weka.filters.unsupervised.attribute.StringToWordVector"
-		name="stringtoword">
+	<extractor id="stringToWord"
+		classPath="weka.filters.unsupervised.attribute.StringToWordVector"
+		name="stringtoword" selection="linear">
 		<parameters>
-			<param option="K" id="id"
-				description="Set the number of nearest neighbors to use in prediction (default 1)">
-				<value>1</value>
-			</param>
-			<param option="W" description="">
-				<value>0</value>
-			</param>
-			<param option="*" description="">
+			<param option="C" description="description">
 				<value />
-				<value>I</value>
+			</param>
+			<param option="T" description="">
+				<value />
+			</param>
+			<param option="I" description="">
+				<value />
 			</param>
 		</parameters>
 	</extractor>
-
-
 </featureExtractors>

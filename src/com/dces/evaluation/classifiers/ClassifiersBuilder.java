@@ -10,21 +10,21 @@ import com.dces.util.xml.DCESInfoXML;
 
 public class ClassifiersBuilder extends BuilderAbstract {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(ClassifiersBuilder.class);
-	private Map<String, ArrayList<DocumentClassifer>> classifiersMap;
+	private Map<String, ArrayList<ClassificationAlgorithm>> classifiersMap;
 
 	public ClassifiersBuilder() {
-		classifiersMap = new HashMap<String, ArrayList<DocumentClassifer>>();
+		classifiersMap = new HashMap<String, ArrayList<ClassificationAlgorithm>>();
 	}
 
-	public ArrayList<DocumentClassifer> getClassifiersWithDefaultSettings() {
-		ArrayList<DocumentClassifer> res = new ArrayList<DocumentClassifer>();
+	public ArrayList<ClassificationAlgorithm> getClassifiersWithDefaultSettings() {
+		ArrayList<ClassificationAlgorithm> res = new ArrayList<ClassificationAlgorithm>();
 		for (String key : classifiersMap.keySet())
 			res.add(classifiersMap.get(key).get(0));
 		return res;
 	}
 
-	public Map<String, ArrayList<DocumentClassifer>> getClassifiersExcludingDefaultSettings() {
-		Map<String, ArrayList<DocumentClassifer>> res = new HashMap<String, ArrayList<DocumentClassifer>>();
+	public Map<String, ArrayList<ClassificationAlgorithm>> getClassifiersExcludingDefaultSettings() {
+		Map<String, ArrayList<ClassificationAlgorithm>> res = new HashMap<String, ArrayList<ClassificationAlgorithm>>();
 		for (String key : classifiersMap.keySet()) {
 			if (classifiersMap.get(key).size() <= 1)
 				continue;
@@ -34,7 +34,7 @@ public class ClassifiersBuilder extends BuilderAbstract {
 		return res;
 	}
 
-	public Map<String, ArrayList<DocumentClassifer>> getClassifiersMap() {
+	public Map<String, ArrayList<ClassificationAlgorithm>> getClassifiersMap() {
 		return classifiersMap;
 	}
 
@@ -48,11 +48,11 @@ public class ClassifiersBuilder extends BuilderAbstract {
 			ArrayList<Map<String, String>> currentClassifierOptionsList = getOptions(classifierInfoXml);
 			for (Map<String, String> currentClassifierOption : currentClassifierOptionsList) {
 				String classifierClassPath = classifierInfoXml.getClassName();
-				DocumentClassifer docClassifier = new DocumentClassifer();
+				ClassificationAlgorithm docClassifier = new ClassificationAlgorithm();
 				docClassifier.setClassPath(classifierClassPath);
 				docClassifier.setOptions(currentClassifierOption);
 				if (!classifiersMap.containsKey(classifierClassPath))
-					classifiersMap.put(classifierClassPath, new ArrayList<DocumentClassifer>());
+					classifiersMap.put(classifierClassPath, new ArrayList<ClassificationAlgorithm>());
 				classifiersMap.get(classifierClassPath).add(docClassifier);
 			}
 		}
