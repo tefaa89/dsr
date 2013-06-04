@@ -4,14 +4,34 @@
 		classPath="weka.filters.unsupervised.attribute.StringToWordVector"
 		name="stringtoword" selection="linear">
 		<parameters>
-			<param option="C" description="description">
+			<param option="C" name="Word Counts"
+				description="Output word counts rather than boolean word presence.">
 				<value />
 			</param>
-			<param option="T" description="">
+			<param option="L"
+				description="Convert all tokens to lowercase before adding to the dictionary">
 				<value />
 			</param>
-			<param option="I" description="">
+			<param option="I" description="Transform each word frequency into TF*IDF">
 				<value />
+			</param>
+			<param option="T" description="Transform the word frequencies into log(1+fij)">
+				<value />
+			</param>
+			<param option="N" description="Whether to 0=not normalize/1=normalize all data">
+				<value>1</value>
+			</param>
+			<param option="S" description="Use the stopword list">
+				<value />
+				<value>*</value>
+			</param>
+			<param option="tokenizer" description="NGram Toknizers">
+				<value>weka.core.tokenizers.NGramTokenizer -min 1 -max 1</value>
+				<value>weka.core.tokenizers.NGramTokenizer -min 1 -max 2</value>
+				<value>weka.core.tokenizers.NGramTokenizer -min 1 -max 3</value>
+			</param>
+			<param option="stemmer" descroption="To Stem each Token">
+				<value>weka.core.stemmers.SnowballStemmer -S 'english'</value>
 			</param>
 		</parameters>
 	</extractor>

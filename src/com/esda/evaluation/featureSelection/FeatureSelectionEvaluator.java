@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.Logger;
-import com.esda.evaluation.DEInstances;
+import com.esda.evaluation.ESInstances;
 import com.esda.evaluation.EvaluationInfo;
 import com.esda.evaluation.EvaluatorAbstract;
 import com.esda.evaluation.classifiers.ClassificationAlgorithm;
@@ -100,14 +100,14 @@ public class FeatureSelectionEvaluator extends EvaluatorAbstract {
 		evaluationInfoMap = new HashMap<String, ArrayList<EvaluationInfo>>();
 	}
 
-	public void evaluate(DEInstances deInstances) {
+	public void evaluate(ESInstances deInstances) {
 		Map<String, ArrayList<ClassificationAlgorithm>> classifiersMap = getClassifiersMap();
 		for (FeatureSelectionFilter fsFilter : featureSelectionFilterList) {
 			// Apply filter on deInstances and then evaluate the instance with
 			// all classifiers.
 			logger.debug("Filtering current feature vector with the following fillter : \n{}",
 					fsFilter.toString());
-			DEInstances filteredInstances = fsFilter.useFilter(deInstances);
+			ESInstances filteredInstances = fsFilter.useFilter(deInstances);
 			logger.trace("Filtered Instances: \n{}", filteredInstances.getInstances());
 			ClassifiersEvaluator classifierEval = new ClassifiersEvaluator();
 			classifierEval.setClassifiersMap(classifiersMap);

@@ -7,7 +7,7 @@ import java.util.Random;
 import org.slf4j.LoggerFactory;
 import weka.classifiers.Evaluation;
 import ch.qos.logback.classic.Logger;
-import com.esda.evaluation.DEInstances;
+import com.esda.evaluation.ESInstances;
 import com.esda.evaluation.EvaluationInfo;
 import com.esda.evaluation.EvaluationParameters;
 import com.esda.evaluation.EvaluationResults;
@@ -44,7 +44,7 @@ public class ClassifiersEvaluator extends EvaluatorAbstract {
 		featureSelectionFilterMap = new HashMap<String, FeatureSelectionFilter>();
 	}
 
-	public void evaluate(DEInstances deInstances) {
+	public void evaluate(ESInstances deInstances) {
 		FeatureSelectionFilter fsFilter = null;
 		for (String key : classifiersMap.keySet()) {
 			ArrayList<ClassificationAlgorithm> currentClassifiersList = classifiersMap.get(key);
@@ -52,7 +52,7 @@ public class ClassifiersEvaluator extends EvaluatorAbstract {
 				fsFilter = featureSelectionFilterMap.get(key);
 
 			System.out.println("###### NUMBER OF INSTANCES: " + Thread.currentThread().getName() + " "+ deInstances.getInstances().numInstances());
-			DEInstances filteredInstances = (fsFilter == null) ? deInstances : fsFilter
+			ESInstances filteredInstances = (fsFilter == null) ? deInstances : fsFilter
 					.useFilter(deInstances);
 			for (ClassificationAlgorithm classifier : currentClassifiersList) {
 				try {

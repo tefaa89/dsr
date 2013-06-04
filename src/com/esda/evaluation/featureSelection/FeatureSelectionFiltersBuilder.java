@@ -39,7 +39,16 @@ public class FeatureSelectionFiltersBuilder extends BuilderAbstract {
 				// Loop on all current search methods options
 				for (Map<String, String> currentSeachMethodOptions : currentSeachMethodOptionsList) {
 					// Loop on all current evaluator options
-					for (Map<String, String> currentfsEvalOptions : currentfsEvalOptionsList)
+					for (Map<String, String> currentfsEvalOptions : currentfsEvalOptionsList){
+						if(attributesScalingFactorList.size() == 0)
+						{
+							FeatureSelectionFilter dsF = new FeatureSelectionFilter();
+							dsF.setEvaluator(fsEvalXml.getClassName());
+							dsF.setEvaluatorOptions(currentfsEvalOptions);
+							dsF.setSearchMethod(currentSearchMethodXML.getClassName());
+							dsF.setSearchMethodOptions(currentSeachMethodOptions);
+							featureSelectionList.add(dsF);
+						}
 						for (String scalingPerc : attributesScalingFactorList) {
 							FeatureSelectionFilter dsF = new FeatureSelectionFilter();
 							double scalingFactor = Double.parseDouble(scalingPerc.replace("%", "")) / 100.0;
@@ -50,6 +59,7 @@ public class FeatureSelectionFiltersBuilder extends BuilderAbstract {
 							dsF.setSearchMethodOptions(currentSeachMethodOptions);
 							featureSelectionList.add(dsF);
 						}
+					}
 
 				}
 			}

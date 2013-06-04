@@ -2,26 +2,25 @@ package com.esda.evaluation;
 
 import java.util.ArrayList;
 import com.esda.evaluation.classifiers.ClassificationAlgorithm;
+import com.esda.evaluation.featureExtraction.FeatureExtractorFilter;
 import com.esda.evaluation.featureSelection.FeatureSelectionFilter;
-import com.esda.util.enumu.FeaturesModelEnum;
 
 public class EvaluationParameters {
 	private transient ClassificationAlgorithm classifier;
-	private transient FeatureSelectionFilter featureSelection;
+	private transient FeatureSelectionFilter featureSelector;
+	private transient FeatureExtractorFilter featureExtractor;
 	private String classifierNameStr;
 	private String classifierParamStr;
 	private String fsEvaluatorNameStr;
 	private String fsEvaluatorParamStr;
+	private String feNameStr;
+	private String feParamStr;
+
 	private String fsSearchMethodNameStr;
 	private String fsSearchMethodParamStr;
 	private String numOfAttributesStr;
 
-	private FeaturesModelEnum featureModelEnum;
 	private transient ArrayList<String> selectedAttributes;
-	private boolean tfBool;
-	private boolean idfBool;
-	private boolean useStopList;
-	private boolean useStemming;
 
 	public EvaluationParameters() {
 	}
@@ -30,98 +29,11 @@ public class EvaluationParameters {
 		setClassifier(evalParams.getClassifier());
 		setSelectedAttributes(evalParams.getSelectedAttributes());
 		setFeatureSelection(evalParams.getFeatureSelection());
-		setFeatureModelEnum(featureModelEnum = evalParams.getFeatureModelEnum());
-		this.tfBool = evalParams.isTfBool();
-		this.idfBool = evalParams.isIdfBool();
-		this.useStemming = evalParams.isUseStemming();
-		this.useStopList = evalParams.isUseStopList();
-	}
-
-	public void setSelectedAttributes(ArrayList<String> selectedAttributes) {
-		this.selectedAttributes = selectedAttributes;
-		if(selectedAttributes != null)
-			numOfAttributesStr = selectedAttributes.size() + "";
-	}
-
-	public ArrayList<String> getSelectedAttributes() {
-		return selectedAttributes;
+		setFeatureExtractor(evalParams.getFeatureExtractor());
 	}
 
 	public ClassificationAlgorithm getClassifier() {
 		return classifier;
-	}
-
-	public void setClassifier(ClassificationAlgorithm classifier) {
-		this.classifier = classifier;
-		if (classifier != null) {
-			classifierNameStr = classifier.getClassPath();
-			classifierParamStr = classifier.getOptionsStr();
-		}
-	}
-
-	public FeatureSelectionFilter getFeatureSelection() {
-		return featureSelection;
-	}
-
-	public void setFeatureSelection(FeatureSelectionFilter featureSelection) {
-		this.featureSelection = featureSelection;
-		if (featureSelection != null) {
-			fsEvaluatorNameStr = featureSelection.getEvaluatorClassPath();
-			fsEvaluatorParamStr = featureSelection.getEvaluatorParamStr();
-			fsSearchMethodNameStr = featureSelection.getSearchMethodClassPath();
-			fsSearchMethodParamStr = featureSelection.getSearchMethodParamStr();
-		}
-	}
-
-	public FeaturesModelEnum getFeatureModelEnum() {
-		return featureModelEnum;
-	}
-
-	public void setFeatureModelEnum(FeaturesModelEnum featureModelEnum) {
-		this.featureModelEnum = featureModelEnum;
-	}
-
-	public boolean isTfBool() {
-		return tfBool;
-	}
-
-	public void setTfBool(boolean tfBool) {
-		this.tfBool = tfBool;
-	}
-
-	public boolean isIdfBool() {
-		return idfBool;
-	}
-
-	public void setIdfBool(boolean idfBool) {
-		this.idfBool = idfBool;
-	}
-
-	public boolean isUseStopList() {
-		return useStopList;
-	}
-
-	public void setUseStopList(boolean useStopList) {
-		this.useStopList = useStopList;
-	}
-
-	public boolean isUseStemming() {
-		return useStemming;
-	}
-
-	public void setUseStemming(boolean useStemming) {
-		this.useStemming = useStemming;
-	}
-
-	private String selectedAttributesStr() {
-		String res = "{";
-		for (String att : selectedAttributes) {
-			if (!att.toLowerCase().equals("class"))
-				res += att + ", ";
-		}
-		res = res.substring(0, res.length() - 2);
-		res += "}";
-		return res;
 	}
 
 	public String getClassifierNameStr() {
@@ -130,6 +42,22 @@ public class EvaluationParameters {
 
 	public String getClassifierParamStr() {
 		return classifierParamStr;
+	}
+
+	public FeatureExtractorFilter getFeatureExtractor() {
+		return featureExtractor;
+	}
+
+	public FeatureSelectionFilter getFeatureSelection() {
+		return featureSelector;
+	}
+
+	public String getFExtractionNameStr() {
+		return feNameStr;
+	}
+
+	public String getFExtractionParamStr() {
+		return feParamStr;
 	}
 
 	public String getFsEvaluatorNameStr() {
@@ -152,6 +80,60 @@ public class EvaluationParameters {
 		return numOfAttributesStr;
 	}
 
+	public ArrayList<String> getSelectedAttributes() {
+		return selectedAttributes;
+	}
+
+	private String selectedAttributesStr() {
+		String res = "{";
+		for (String att : selectedAttributes) {
+			if (!att.toLowerCase().equals("class"))
+				res += att + ", ";
+		}
+		res = res.substring(0, res.length() - 2);
+		res += "}";
+		return res;
+	}
+
+	public void setClassifier(ClassificationAlgorithm classifier) {
+		this.classifier = classifier;
+		if (classifier != null) {
+			classifierNameStr = classifier.getClassPath();
+			classifierParamStr = classifier.getOptionsStr();
+		}
+	}
+
+	public void setFeatureExtractor(FeatureExtractorFilter feFilter) {
+		this.featureExtractor = feFilter;
+		if (featureExtractor != null) {
+
+		}
+	}
+
+	public void setFeatureSelection(FeatureSelectionFilter featureSelection) {
+		this.featureSelector = featureSelection;
+		if (featureSelection != null) {
+			fsEvaluatorNameStr = featureSelection.getEvaluatorClassPath();
+			fsEvaluatorParamStr = featureSelection.getEvaluatorParamStr();
+			fsSearchMethodNameStr = featureSelection.getSearchMethodClassPath();
+			fsSearchMethodParamStr = featureSelection.getSearchMethodParamStr();
+		}
+	}
+
+	public void setFExtractionNameStr(String feNameStr) {
+		this.feNameStr = feNameStr;
+	}
+
+	public void setFExtractionParamStr(String feParamStr) {
+		this.feParamStr = feParamStr;
+	}
+
+	public void setSelectedAttributes(ArrayList<String> selectedAttributes) {
+		this.selectedAttributes = selectedAttributes;
+		if (selectedAttributes != null)
+			numOfAttributesStr = selectedAttributes.size() + "";
+	}
+
 	@Override
 	public String toString() {
 		String res = "# Evaluation Parameters:\n\t";
@@ -159,24 +141,21 @@ public class EvaluationParameters {
 		res += "\n\t";
 		res += "Classifier Parameters: " + classifier.getOptionsStr();
 		res += "\n\t";
-		res += "Feature Space Model: "
-				+ (featureModelEnum == null ? "None" : featureModelEnum.toString());
+		res += "FS Evaluator Class: " + featureSelector.getEvaluatorClassPath();
 		res += "\n\t";
-		res += "FS Evaluator Class: " + featureSelection.getEvaluatorClassPath();
+		res += "FS Evaluator Parameters: " + featureSelector.getEvaluatorParamStr();
 		res += "\n\t";
-		res += "FS Evaluator Parameters: " + featureSelection.getEvaluatorParamStr();
+		res += "FS SearchMethod Class: " + featureSelector.getSearchMethodClassPath();
 		res += "\n\t";
-		res += "FS SearchMethod Class: " + featureSelection.getSearchMethodClassPath();
-		res += "\n\t";
-		res += "FS SearchMethod Parameters: " + featureSelection.getSearchMethodParamStr();
+		res += "FS SearchMethod Parameters: " + featureSelector.getSearchMethodParamStr();
 		res += "\n\t";
 		res += "Num. of Selected Attributes: " + selectedAttributes.size();
 		res += "\n\t";
 		res += "Selected Attributes: " + selectedAttributesStr();
 		res += "\n\t";
-		res += "Stemming: " + useStemming;
+		res += "Feature Extractor Class: " + featureExtractor.getClassPath();
 		res += "\n\t";
-		res += "StopList: " + useStopList;
+		res += "Feature Extractor Parameters: " + featureExtractor.getOptionsStr();
 		return res;
 	}
 }

@@ -1,9 +1,9 @@
 package com.esda.evaluation.featureExtraction;
 
 import weka.core.OptionHandler;
-import weka.filters.Filter;
+import weka.filters.SimpleBatchFilter;
 
-public abstract class FeatureExtractorFilterAbstract extends Filter implements OptionHandler{
+public abstract class FeatureExtractorFilterAbstract extends SimpleBatchFilter implements OptionHandler{
 
 	/**
 	 *

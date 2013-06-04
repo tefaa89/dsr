@@ -14,7 +14,7 @@ public class EvaluationThread implements Runnable {
 	private FeatureSelectionFiltersBuilder fsfb;
 	private ClassifiersBuilder classifiers;
 	private ESEvaluationLog evalLog;
-	private DEInstances instancesToEval;
+	private ESInstances instancesToEval;
 	private Thread thread;
 
 	public EvaluationThread() {
@@ -25,7 +25,7 @@ public class EvaluationThread implements Runnable {
 		thread.start();
 	}
 
-	public void setTrainingInstances(DEInstances instancesToEval) {
+	public void setTrainingInstances(ESInstances instancesToEval) {
 		this.instancesToEval = instancesToEval;
 	}
 

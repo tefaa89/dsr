@@ -4,6 +4,7 @@ import java.util.Map;
 import org.slf4j.LoggerFactory;
 import weka.classifiers.AbstractClassifier;
 import ch.qos.logback.classic.Logger;
+import com.esda.evaluation.ESOptionsAbstract;
 
 /**
  * Since we are not going to build the AbstractClassifier, this object will ONLY
@@ -12,7 +13,7 @@ import ch.qos.logback.classic.Logger;
  * @author TeFa
  *
  */
-public class ClassificationAlgorithm {
+public class ClassificationAlgorithm extends ESOptionsAbstract {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(ClassificationAlgorithm.class);
 	private AbstractClassifier classifier;
 
@@ -37,46 +38,24 @@ public class ClassificationAlgorithm {
 		}
 	}
 
-	public String setOptions(Map<String, String> options) {
-		String optionsStr = "";
-		for (String option : options.keySet()) {
-			String value = options.get(option);
-			if (value.equals("") && option.equals("*"))
-				continue;
-			if (option.equals("*")) {
-				optionsStr += "-" + options.get(option) + " ";
-			} else
-				optionsStr += "-" + option + " " + options.get(option) + " ";
-		}
-		try {
-			if(optionsStr.trim() != "")
-				classifier.setOptions(weka.core.Utils.splitOptions(optionsStr));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return optionsStr;
-	}
-
-	public String[] getOptions() {
-		return classifier.getOptions();
-	}
-
-	public String getOptionsStr() {
-		StringBuffer str = new StringBuffer();
-		for (String option : getOptions()) {
-			str.append(option);
-			str.append(" ");
-		}
-		return str.toString().trim();
-	}
-
 	public AbstractClassifier getClassifier() {
 		return classifier;
 	}
 
 	public void setClassifier(AbstractClassifier classifier) {
 		this.classifier = classifier;
+	}
+
+	public String setOptions(Map<String, String> options) {
+		return setOptions(options, classifier);
+	}
+
+	public String[] getOptionsArr() {
+		return getOptionsArr(classifier);
+	}
+
+	public String getOptionsStr() {
+		return getOptionsStr(classifier);
 	}
 
 	@Override
@@ -87,7 +66,7 @@ public class ClassificationAlgorithm {
 		if (!getClass().equals(docClassifier.getClassPath()))
 			return false;
 		String[] optionsArr1 = classifier.getOptions();
-		String[] optionsArr2 = docClassifier.getOptions();
+		String[] optionsArr2 = docClassifier.getOptionsArr();
 		if (optionsArr1.length != optionsArr2.length)
 			return false;
 		for (int i = 0; i < optionsArr1.length; i++)

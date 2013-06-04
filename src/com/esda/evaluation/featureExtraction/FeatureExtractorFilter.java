@@ -2,16 +2,18 @@ package com.esda.evaluation.featureExtraction;
 
 import java.util.Map;
 import org.slf4j.LoggerFactory;
+import weka.core.Instances;
 import weka.core.OptionHandler;
 import weka.filters.Filter;
 import ch.qos.logback.classic.Logger;
+import com.esda.evaluation.ESInstances;
+import com.esda.evaluation.ESOptionsAbstract;
 
-public class FeatureExtractorFilter {
+public class FeatureExtractorFilter extends ESOptionsAbstract {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(FeatureExtractorFilter.class);
 	private Filter filter;
 
 	public FeatureExtractorFilter() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public void setClassPath(String classPath) {
@@ -24,23 +26,37 @@ public class FeatureExtractorFilter {
 		}
 	}
 
-	public String setOptions(Map<String, String> options) {
-		String optionsStr = "";
-		for (String option : options.keySet()) {
-			String value = options.get(option);
-			if (value.equals("") && option.equals("*"))
-				continue;
-			if (option.equals("*")) {
-				optionsStr += "-" + options.get(option) + " ";
-			} else
-				optionsStr += "-" + option + " " + options.get(option) + " ";
-		}
+	public String getClassPath() {
+		return filter.getClass().getName();
+	}
+
+	public ESInstances useFilter(ESInstances instances) {
+		ESInstances filteredInstances = new ESInstances();
+		if (filter == null)
+			return instances;
 		try {
-			if (optionsStr.trim() != "")
-				((OptionHandler) filter).setOptions(weka.core.Utils.splitOptions(optionsStr));
+			Filter copyFilter = Filter.makeCopy(filter);
+			Instances unFilteredInstances = instances.getInstances();
+			copyFilter.setInputFormat(unFilteredInstances);
+			Instances filteredInstancesWeka = Filter.useFilter(unFilteredInstances, copyFilter);
+			filteredInstances.setInstances(filteredInstancesWeka);
+			filteredInstances.setParameters(instances.getEvaluationParameters());
+			//filteredInstances.getEvaluationParameters().setFeatureSelection(this);
 		} catch (Exception e) {
-			logger.error("Faild to set Options.\n{}", e.toString());
+			logger.error("Applying filter on instances: {}", e.toString());
 		}
-		return optionsStr;
+		return filteredInstances;
+	}
+
+	public String setOptions(Map<String, String> options) {
+		return setOptions(options, (OptionHandler)filter);
+	}
+
+	public String[] getOptionsArr() {
+		return getOptionsArr((OptionHandler)filter);
+	}
+
+	public String getOptionsStr() {
+		return  getOptionsStr((OptionHandler)filter);
 	}
 }

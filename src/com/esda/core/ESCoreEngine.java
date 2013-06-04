@@ -3,7 +3,7 @@ package com.esda.core;
 import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.Logger;
 import com.esda.configuration.Config;
-import com.esda.evaluation.DEInstances;
+import com.esda.evaluation.ESInstances;
 import com.esda.evaluation.EvaluationThread;
 import com.esda.evaluation.LoadDirectoryInstances;
 import com.esda.evaluation.classifiers.ClassifiersBuilder;
@@ -37,7 +37,7 @@ public class ESCoreEngine {
 		loadDI.load();
 		logger.info("Corpus Data Loaded Successfuly");
 
-		DEInstances instances = new DEInstances(loadDI.getRowDataInstances());
+		ESInstances instances = new ESInstances(loadDI.getRowDataInstances());
 		WekaFilters.standardizeFilter(instances);
 
 		evalLog = new ESEvaluationLog();
@@ -77,25 +77,29 @@ public class ESCoreEngine {
 		logger.info("Corpus Data Loaded Successfuly");
 		evalLog = new ESEvaluationLog();
 
-		logger.info("Building Feature Extraction Object from XML");
-		FeatureExtractorFiltersBuilder featuresMethods = new FeatureExtractorFiltersBuilder();
-		featuresMethods.build(Config.getFEMethodsInfo());
-		logger.info("Feature Extraction Object Built Successfuly");
-
-		logger.info("Building Classifiers Object from XML");
-		ClassifiersBuilder classifiers = new ClassifiersBuilder();
-		classifiers.build(Config.getClassifiersInfo());
-		logger.info("Classifiers Object Built Successfuly");
+		logger.info("Building Feature Extraction Filters from XML");
+		FeatureExtractorFiltersBuilder fefb = new FeatureExtractorFiltersBuilder();
+		fefb.build(Config.getFEMethodsInfo());
+		logger.info("Feature Extraction Filters Built Successfuly");
 
 		logger.info("Building Feature Selection Filters from XML");
 		FeatureSelectionFiltersBuilder fsfb = new FeatureSelectionFiltersBuilder();
 		fsfb.build(Config.getFSEvaluatorsInfo(), Config.getFSSeachMethodInfo());
 		logger.info("Feature Selection Filters Built Successfuly");
 
-		logger.info("Initializing Feature Space Generator");
-		FeatureSpaceGenerator fsGenerator = new FeatureSpaceGenerator(loadDI.getRowDataInstances());
+		logger.info("Building Classifiers Object from XML");
+		ClassifiersBuilder classifiers = new ClassifiersBuilder();
+		classifiers.build(Config.getClassifiersInfo());
+		logger.info("Classifiers Object Built Successfuly");
 
-		DEInstances featuresDeInstances;
+		logger.info("Initializing Feature Space Generator");
+		FeatureSpaceGenerator fsGenerator = new FeatureSpaceGenerator();
+		fsGenerator.setRawInstances(loadDI.getRowDataInstances());
+		fsGenerator.setExtractionFiltersList(fefb.getExtractionFiltersList());
+
+		fefb.getExtractionFiltersList();
+
+		ESInstances featuresDeInstances;
 		int featureCounter = 0;
 		int classifiersCounter = 0;
 

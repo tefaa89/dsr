@@ -12,7 +12,6 @@ public abstract class BuilderAbstract {
 		String selectionType = infoXML.getSelectionMethod();
 		int numOfParamters = parametersMap.size();
 		if (selectionType.equals(ESInfoXML.SELECTION_LINEAR)) {
-
 			String[] firstParamArr = (String[]) parametersMap.values().toArray()[0];
 			int numValuesinEachParam = firstParamArr.length;
 			for (int i = 0; i < numValuesinEachParam; i++) {

@@ -1,7 +1,7 @@
 package com.esda.test;
 
 import com.esda.configuration.Config;
-import com.esda.evaluation.DEInstances;
+import com.esda.evaluation.ESInstances;
 import com.esda.evaluation.LoadDirectoryInstances;
 import com.esda.evaluation.featureExtraction.FeatureSpaceGenerator;
 import com.esda.evaluation.featureSelection.FeatureSelectionFilter;
@@ -16,9 +16,10 @@ public class DocumentFeatureSelectionFilterTest {
 		FeatureSelectionFiltersBuilder fsfb = new FeatureSelectionFiltersBuilder();
 		fsfb.build(Config.getFSEvaluatorsInfo(), Config.getFSSeachMethodInfo());
 
-		FeatureSpaceGenerator fsGenerator = new FeatureSpaceGenerator(loadDI.getRowDataInstances());
-
-		DEInstances featuresDeInstances;
+		FeatureSpaceGenerator fsGenerator = new FeatureSpaceGenerator();
+		fsGenerator.setRawInstances(loadDI.getRowDataInstances());
+		
+		ESInstances featuresDeInstances;
 
 		while (fsGenerator.hasNext()) {
 			featuresDeInstances = fsGenerator.getNext();
@@ -37,7 +38,7 @@ public class DocumentFeatureSelectionFilterTest {
 				filter.setInputFormat(featuresDeInstances.getInstances());
 				// generate new data
 				Instances newData = Filter.useFilter(featuresDeInstances.getInstances(), filter);*/
-				DEInstances data = fsF.useFilter(featuresDeInstances);
+				ESInstances data = fsF.useFilter(featuresDeInstances);
 				System.out.println(data.getInstances());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

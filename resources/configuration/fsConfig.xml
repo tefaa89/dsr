@@ -2,7 +2,7 @@
 <featureSelectors>
 	<searchMethods>
 		<searchMethod id="bestfirst" classPath="weka.attributeSelection.BestFirst"
-			name="Best First" selection="lineaer">
+			name="Best First" selection="nonlinear">
 			<parameters>
 				<param option="D" description="Direction: Set the direction of the search.">
 					<value>1</value>
@@ -42,9 +42,9 @@
 
 	<!--=========================================== Evaluators =========================================== -->
 
-	<selectors>
-		<selector id="CfsSubset" classPath="weka.attributeSelection.CfsSubsetEval"
-			name="CfsSubset" selection="lineaer">
+	<evaluators>
+		<evaluator id="CfsSubset" classPath="weka.attributeSelection.CfsSubsetEval"
+			name="CfsSubset" selection="nonlinear">
 			<searchReferences>
 				<searchRef refID="bestfirst" />
 			</searchReferences>
@@ -60,13 +60,13 @@
 					<value use="false">M</value> <!-- true -->
 				</param>
 			</parameters>
-		</selector>
+		</evaluator>
 
-		<selector id="InfoGainAttributeEval" classPath="weka.attributeSelection.InfoGainAttributeEval"
+		<evaluator id="InfoGainAttributeEval" classPath="weka.attributeSelection.InfoGainAttributeEval"
 			name="InfoGainAttributeEval" selection="lineaer">
-			<searchMethods>
-				<searchMethod refID="ranker" />
-			</searchMethods>
+			<searchReferences>
+				<searchRef refID="ranker" />
+			</searchReferences>
 			<parameters>
 				<param option="*">
 					<value></value>
@@ -87,6 +87,6 @@
 				<value>50%</value>
 				<value>70%</value>
 			</selected_attributes>
-		</selector>
-	</selectors>
+		</evaluator>
+	</evaluators>
 </featureSelectors>

@@ -9,11 +9,11 @@ import weka.core.OptionHandler;
 import weka.filters.Filter;
 import weka.filters.supervised.attribute.AttributeSelection;
 import ch.qos.logback.classic.Logger;
-import com.esda.evaluation.DEInstances;
+import com.esda.evaluation.ESInstances;
+import com.esda.evaluation.ESOptionsAbstract;
 
-public class FeatureSelectionFilter {
-	private static Logger logger = (Logger) LoggerFactory
-			.getLogger(FeatureSelectionFilter.class);
+public class FeatureSelectionFilter extends ESOptionsAbstract {
+	private static Logger logger = (Logger) LoggerFactory.getLogger(FeatureSelectionFilter.class);
 	private AttributeSelection attFilter;
 	private double attributesScalingFactor;
 
@@ -61,25 +61,6 @@ public class FeatureSelectionFilter {
 		}
 	}
 
-	private void setOptions(Map<String, String> options, OptionHandler handler) {
-		String optionsStr = "";
-		for (String option : options.keySet()) {
-			String value = options.get(option);
-			if (value.equals("") && option.equals("*"))
-				continue;
-			if (option.equals("*")) {
-				optionsStr += "-" + options.get(option) + " ";
-			} else
-				optionsStr += "-" + option + " " + options.get(option) + " ";
-		}
-		try {
-			if (optionsStr.trim() != "")
-				handler.setOptions(weka.core.Utils.splitOptions(optionsStr));
-		} catch (Exception e) {
-			logger.error("Settings Options for Feature Evaluator: {}", e.toString());
-		}
-	}
-
 	public void setEvaluatorOptions(Map<String, String> options) {
 		setOptions(options, (OptionHandler) attFilter.getEvaluator());
 	}
@@ -117,7 +98,9 @@ public class FeatureSelectionFilter {
 		String res = "";
 		for (String str : optionsArr)
 			res += str + " ";
-		return res.trim();
+		res = res.trim() + " -CutFactor " + attributesScalingFactor;
+
+		return res;
 	}
 
 	public String getSearchMethodParamStr() {
@@ -128,8 +111,8 @@ public class FeatureSelectionFilter {
 		return res.trim();
 	}
 
-	public DEInstances useFilter(DEInstances instances) {
-		DEInstances filteredInstances = new DEInstances();
+	public ESInstances useFilter(ESInstances instances) {
+		ESInstances filteredInstances = new ESInstances();
 		if (attFilter.getEvaluator() == null)
 			return instances;
 		try {

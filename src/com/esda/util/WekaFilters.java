@@ -3,10 +3,10 @@ package com.esda.util;
 import weka.core.Instances;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Standardize;
-import com.esda.evaluation.DEInstances;
+import com.esda.evaluation.ESInstances;
 
 public class WekaFilters {
-	public static DEInstances standardizeFilter(DEInstances instances)
+	public static ESInstances standardizeFilter(ESInstances instances)
 	{
 		try {
 			Standardize filter = new Standardize();

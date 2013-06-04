@@ -31,7 +31,7 @@ public class Config {
 			logger.trace("Reading {} file", FS_EVAL_FILENAME);
 			File file = new File("resources//configuration//" + FS_EVAL_FILENAME);
 			Document doc = builder.build(file);
-			fsEvaluatorsXmlRoot = doc.getRootElement().getFirstChildElement("selectors");
+			fsEvaluatorsXmlRoot = doc.getRootElement().getFirstChildElement("evaluators");
 			fsSearchMethodsXmlRoot = doc.getRootElement().getFirstChildElement("searchMethods");
 			logger.trace("{} file is successfuly read", FS_EVAL_FILENAME);
 
@@ -197,7 +197,7 @@ public class Config {
 
 	private static ArrayList<String> getSearchMethodsIDList(Element element) {
 		ArrayList<String> searchMethodsIDList = new ArrayList<String>();
-		element = element.getFirstChildElement("searchMethods");
+		element = element.getFirstChildElement("searchReferences");
 		if (element != null) {
 			Elements searchElements = element.getChildElements();
 			for (int i = 0; i < searchElements.size(); i++) {
