@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<timestamp key="bySecond" datePattern="yyyy-MM-dd # HH-mmss" />
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+			<!-- <pattern> %-5level [%logger{0}] - %msg%n </pattern> -->
+			<layout class="com.esda.util.LoggingConsoleLayout" />
+		</encoder>
+	</appender>
+	<appender name="LogbackClassic" class="ch.qos.logback.classic.net.SocketAppender">
+		<RemoteHost>localhost</RemoteHost>
+		<Port>4560</Port>
+		<ReconnectionDelay>170</ReconnectionDelay>
+		<IncludeCallerData>true</IncludeCallerData>
+	</appender>
+	<appender name="LilithCloud" class="ch.qos.logback.classic.net.SocketAppender">
+		<RemoteHost>193.170.133.8</RemoteHost>
+		<Port>4445</Port>
+		<ReconnectionDelay>170</ReconnectionDelay>
+		<IncludeCallerData>true</IncludeCallerData>
+	</appender>
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- use the previously created timestamp to create a uniquely named log
+			file -->
+		<file>log/${bySecond}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>log/%d{yyyy-MM-dd}.log</fileNamePattern>
+
+			<!-- keep 6 days' worth of history -->
+			<maxHistory>6</maxHistory>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+			<layout class="com.esda.util.LoggingConsoleLayout" />
+		</encoder>
+	</appender>
+	<root level="debug">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="LogbackClassic" />
+		<appender-ref ref="FILE" />
+		<appender-ref ref="LilithCloud" />
+	</root>
+</configuration>
