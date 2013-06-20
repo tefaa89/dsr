@@ -11,15 +11,15 @@ public class Main {
 
 	public static void main(String[] args) {
 		ESWebSocket.wst.init();
-		evalTextData();
+	//	evalTextData();
 	}
 
 	public static void evalTextData() {
 		logger.info("Initializing Core Engine:");
 		dsrEngine = new ESCoreEngine();
 		dsrEngine.setDataCorpusPath("test");
-		//dsrEngine.evaluate();
-		//printInfo();
+		dsrEngine.evaluate();
+		printInfo();
 	}
 
 	public static void evalArffData() {

@@ -19,7 +19,7 @@ public class WebSocketServerThread implements WebSocketServerTokenListener {
 
 	public void init() {
 		try {
-			JWebSocketFactory.printCopyrightToConsole();
+		//	JWebSocketFactory.printCopyrightToConsole();
 			JWebSocketConfig.initForConsoleApp(null);
 			JWebSocketFactory.start();
 			tokenServer = (TokenServer) JWebSocketFactory.getServer("ts0");
@@ -47,12 +47,6 @@ public class WebSocketServerThread implements WebSocketServerTokenListener {
 	@Override
 	public void processPacket(WebSocketServerEvent arg0, WebSocketPacket arg1) {
 		System.out.println("Packet Received: " + arg1.getString());
-		try {
-			System.out.println(arg1.isComplete());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	@Override
@@ -63,7 +57,7 @@ public class WebSocketServerThread implements WebSocketServerTokenListener {
 		if (messageType.equals("evaluate")) {
 			Main.dsrEngine.evaluate();
 		} else if (messageType.equals("dataset")) {
-			
+
 		}
 	}
 
