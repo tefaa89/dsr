@@ -41,6 +41,10 @@ public class EvaluationThread implements Runnable {
 		this.evalLog = evalLog;
 	}
 
+	public Thread getThread() {
+		return thread;
+	}
+
 	@Override
 	public void run() {
 		logger.info("Initializing Feature Selection Evaluator");

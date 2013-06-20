@@ -58,11 +58,12 @@ public class WebSocketServerThread implements WebSocketServerTokenListener {
 	@Override
 	public void processToken(WebSocketServerTokenEvent arg0, Token arg1) {
 		// TODO Auto-generated method stub
-		System.out.println("#################  " + arg1.getString("type"));
 		String messageType = arg1.getString("type");
-		if(messageType.equals("evaluate"))
-		{
+		System.out.println("=============> Message received with type: " + messageType);
+		if (messageType.equals("evaluate")) {
 			Main.dsrEngine.evaluate();
+		} else if (messageType.equals("dataset")) {
+			
 		}
 	}
 

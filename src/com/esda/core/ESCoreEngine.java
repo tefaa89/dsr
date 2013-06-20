@@ -1,5 +1,6 @@
 package com.esda.core;
 
+import java.util.ArrayList;
 import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.Logger;
 import com.esda.configuration.Config;
@@ -12,6 +13,7 @@ import com.esda.evaluation.featureExtraction.FeatureExtractorFiltersBuilder;
 import com.esda.evaluation.featureExtraction.FeatureSpaceGenerator;
 import com.esda.evaluation.featureSelection.FeatureSelectionEvaluator;
 import com.esda.evaluation.featureSelection.FeatureSelectionFiltersBuilder;
+import com.esda.util.FileUtil;
 import com.esda.util.WekaFilters;
 
 public class ESCoreEngine {
@@ -103,6 +105,7 @@ public class ESCoreEngine {
 		int featureCounter = 0;
 		int classifiersCounter = 0;
 
+		ArrayList<Thread> threads = new ArrayList<>();
 		while (fsGenerator.hasNext()) {
 			featureCounter++;
 			logger.info("Generating Feature Space ({})", featureCounter);
@@ -110,15 +113,31 @@ public class ESCoreEngine {
 			logger.trace("Generated Feature Vector :\n{} ", featuresDeInstances.getInstances());
 
 			EvaluationThread evalThread = new EvaluationThread();
+			threads.add(evalThread.getThread());
 			evalThread.setTrainingInstances(featuresDeInstances);
 			evalThread.setClassifierBuilder(classifiers);
 			evalThread.setFSBuilder(fsfb);
 			evalThread.setEvalLog(evalLog);
-			logger.debug("Starting Evaluation Thread " );
+			logger.debug("Starting Evaluation Thread ");
 			evalThread.start();
 		}
-
+		waitForEvaluationThreads(threads);
+		serializeLogInfo();
 		logger.debug("Num of Features Evaluated: {}", featureCounter);
 		logger.debug("Num of Classifiers Evaluated: {}", classifiersCounter);
+		logger.info("Evaluation Finished Successfully ...");
+	}
+
+	private void serializeLogInfo() {
+		FileUtil.writeObjectToFile(evalLog, "resources/obj/evaluationLog.obj");
+	}
+
+	private void waitForEvaluationThreads(ArrayList<Thread> threads) {
+		for (Thread thread : threads)
+			try {
+				thread.join();
+			} catch (InterruptedException e) {
+				logger.error("Thread Interruption Error");
+			}
 	}
 }

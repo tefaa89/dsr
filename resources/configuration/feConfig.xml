@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <featureExtractors>
 	<extractor id="stringToWord"
-		classPath="weka.filters.unsupervised.attribute.StringToWordVector"
-		name="stringtoword" selection="linear">
+		classPath="com.esda.util.StringToWordVector"
+		name="stringtoword" selection="nonlinear">
 		<parameters>
 			<param option="C" name="Word Counts"
 				description="Output word counts rather than boolean word presence.">
@@ -19,11 +19,10 @@
 				<value />
 			</param>
 			<param option="N" description="Whether to 0=not normalize/1=normalize all data">
-				<value>1</value>
+				<value>0</value>
 			</param>
 			<param option="S" description="Use the stopword list">
 				<value />
-				<value>*</value>
 			</param>
 			<param option="tokenizer" description="NGram Toknizers">
 				<value>weka.core.tokenizers.NGramTokenizer -min 1 -max 1</value>
@@ -31,7 +30,7 @@
 				<value>weka.core.tokenizers.NGramTokenizer -min 1 -max 3</value>
 			</param>
 			<param option="stemmer" descroption="To Stem each Token">
-				<value>weka.core.stemmers.SnowballStemmer -S 'english'</value>
+				<value>weka.core.stemmers.SnowballStemmer -S english</value>
 			</param>
 		</parameters>
 	</extractor>

@@ -26,6 +26,10 @@ public class FeatureExtractorFilter extends ESOptionsAbstract {
 		}
 	}
 
+	public void setFilter(Filter filter) {
+		this.filter = filter;
+	}
+
 	public String getClassPath() {
 		return filter.getClass().getName();
 	}
@@ -43,20 +47,21 @@ public class FeatureExtractorFilter extends ESOptionsAbstract {
 			filteredInstances.setParameters(instances.getEvaluationParameters());
 			//filteredInstances.getEvaluationParameters().setFeatureSelection(this);
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error("Applying filter on instances: {}", e.toString());
 		}
 		return filteredInstances;
 	}
 
 	public String setOptions(Map<String, String> options) {
-		return setOptions(options, (OptionHandler)filter);
+		return setOptions(options, (OptionHandler) filter);
 	}
 
 	public String[] getOptionsArr() {
-		return getOptionsArr((OptionHandler)filter);
+		return getOptionsArr((OptionHandler) filter);
 	}
 
 	public String getOptionsStr() {
-		return  getOptionsStr((OptionHandler)filter);
+		return getOptionsStr((OptionHandler) filter);
 	}
 }

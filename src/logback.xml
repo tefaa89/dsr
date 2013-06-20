@@ -13,8 +13,8 @@
 		<ReconnectionDelay>170</ReconnectionDelay>
 		<IncludeCallerData>true</IncludeCallerData>
 	</appender>
-	<appender name="otros" class="ch.qos.logback.classic.net.SocketAppender">
-		<RemoteHost>localhost</RemoteHost>
+	<appender name="LilithCloud" class="ch.qos.logback.classic.net.SocketAppender">
+		<RemoteHost>193.170.133.8</RemoteHost>
 		<Port>4445</Port>
 		<ReconnectionDelay>170</ReconnectionDelay>
 		<IncludeCallerData>true</IncludeCallerData>
@@ -39,6 +39,6 @@
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="LogbackClassic" />
 		<appender-ref ref="FILE" />
-		<appender-ref ref="otros" />
+		<appender-ref ref="LilithCloud" />
 	</root>
 </configuration>
