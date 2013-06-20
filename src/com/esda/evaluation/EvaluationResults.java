@@ -1,8 +1,13 @@
 package com.esda.evaluation;
 
+import java.io.Serializable;
 import weka.classifiers.Evaluation;
 
-public class EvaluationResults {
+public class EvaluationResults implements Serializable{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -8235397677191449520L;
 	private transient Evaluation evaluation;
 	private String cMatrixStr;
 	private String numOfCorrectClassInstancesStr;
@@ -15,7 +20,7 @@ public class EvaluationResults {
 	}
 
 	public EvaluationResults(EvaluationResults evalRes) {
-		this.evaluation = evalRes.getEvaluation();
+		setEvaluation(evalRes.getEvaluation());
 	}
 
 	public double getAccuracy() {
@@ -64,6 +69,6 @@ public class EvaluationResults {
 	@Override
 	public String toString() {
 		return "# Evaluation Results: \n\t Summary: \n" + cMatrixStr.replaceAll("\n", "\n\t\t")
-				+ "\n\t" + evaluation.toSummaryString().replaceAll("\n", "\n\t\t");
+				+ "\n\t" + evaluationStr.replaceAll("\n", "\n\t\t");
 	}
 }

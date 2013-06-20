@@ -18,7 +18,7 @@ public class Main {
 		logger.info("Initializing Core Engine:");
 		dsrEngine = new ESCoreEngine();
 		dsrEngine.setDataCorpusPath("test");
-		dsrEngine.evaluate();
+		//dsrEngine.evaluate();
 		//printInfo();
 	}
 

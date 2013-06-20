@@ -1,15 +1,21 @@
 package com.esda.core;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Calendar;
 import com.esda.evaluation.EvaluationInfo;
 
-public class ESEvaluationLog {
-	private int id;
+public class ESEvaluationLog implements Serializable {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+	private String id;
 	private ArrayList<EvaluationInfo> evalInfoList;
 
 	public ESEvaluationLog() {
-		id = randomID();
+		id = generateID();
 		evalInfoList = new ArrayList<EvaluationInfo>();
 	}
 
@@ -19,10 +25,10 @@ public class ESEvaluationLog {
 		evalInfoList.add(evalInfo);
 	}
 
-	public int randomID() {
-		Random rand = new Random();
-		int randomNum = rand.nextInt(999999) + 1;
-		return randomNum;
+	public String generateID() {
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("MMddHHmmss");
+		return sdf.format(cal.getTime());
 	}
 
 	public EvaluationInfo getBestEvaluationInfo() {

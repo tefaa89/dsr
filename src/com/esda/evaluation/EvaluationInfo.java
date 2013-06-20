@@ -1,6 +1,12 @@
 package com.esda.evaluation;
 
-public class EvaluationInfo {
+import java.io.Serializable;
+
+public class EvaluationInfo implements Serializable{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 7302706078496831486L;
 	private transient static int currentID = -1;
 	private int id;
 	private EvaluationParameters evalParameters;

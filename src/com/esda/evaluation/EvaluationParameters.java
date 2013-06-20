@@ -20,7 +20,7 @@ public class EvaluationParameters {
 	private String fsSearchMethodParamStr;
 	private String numOfAttributesStr;
 
-	private transient ArrayList<String> selectedAttributes;
+	private ArrayList<String> selectedAttributes;
 
 	public EvaluationParameters() {
 	}
@@ -137,25 +137,25 @@ public class EvaluationParameters {
 	@Override
 	public String toString() {
 		String res = "# Evaluation Parameters:\n\t";
-		res += "Classifier Class: " + classifier.getClassPath();
+		res += "Classifier Class: " + classifierNameStr;
 		res += "\n\t";
-		res += "Classifier Parameters: " + classifier.getOptionsStr();
+		res += "Classifier Parameters: " + classifierParamStr;
 		res += "\n\t";
-		res += "FS Evaluator Class: " + featureSelector.getEvaluatorClassPath();
+		res += "FS Evaluator Class: " + fsEvaluatorNameStr;
 		res += "\n\t";
-		res += "FS Evaluator Parameters: " + featureSelector.getEvaluatorParamStr();
+		res += "FS Evaluator Parameters: " + fsEvaluatorParamStr;
 		res += "\n\t";
-		res += "FS SearchMethod Class: " + featureSelector.getSearchMethodClassPath();
+		res += "FS SearchMethod Class: " + fsSearchMethodNameStr;
 		res += "\n\t";
-		res += "FS SearchMethod Parameters: " + featureSelector.getSearchMethodParamStr();
+		res += "FS SearchMethod Parameters: " + fsSearchMethodParamStr;
 		res += "\n\t";
 		res += "Num. of Selected Attributes: " + selectedAttributes.size();
 		res += "\n\t";
 		res += "Selected Attributes: " + selectedAttributesStr();
 		res += "\n\t";
-		res += "Feature Extractor Class: " + featureExtractor.getClassPath();
+		res += "Feature Extractor Class: " + feNameStr;
 		res += "\n\t";
-		res += "Feature Extractor Parameters: " + featureExtractor.getOptionsStr();
+		res += "Feature Extractor Parameters: " + feParamStr;
 		return res;
 	}
 }

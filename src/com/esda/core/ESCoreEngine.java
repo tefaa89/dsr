@@ -123,6 +123,7 @@ public class ESCoreEngine {
 		}
 		waitForEvaluationThreads(threads);
 		serializeLogInfo();
+		printInfo();
 		logger.debug("Num of Features Evaluated: {}", featureCounter);
 		logger.debug("Num of Classifiers Evaluated: {}", classifiersCounter);
 		logger.info("Evaluation Finished Successfully ...");
@@ -139,5 +140,11 @@ public class ESCoreEngine {
 			} catch (InterruptedException e) {
 				logger.error("Thread Interruption Error");
 			}
+	}
+
+	public void printInfo() {
+		logger.debug("Evaluation Log: {}", getEvaluationLog());
+		logger.info("Best Classifier Configutration: {}", getEvaluationLog()
+				.getBestNEvalInfo(3));
 	}
 }
