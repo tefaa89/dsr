@@ -8,18 +8,142 @@
                 <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
                 <attribute name="Rsrc-Main-Class" value="com.esda.Main"/>
                 <attribute name="Class-Path" value="."/>
-                <attribute name="Rsrc-Class-Path" value="./ snowball-2012.jar weka.jar logback-core-1.0.9.jar gson-2.2.2.jar xom-1.2.8.jar logback-classic-1.0.9.jar slf4j-api-1.7.2.jar jWebSocketServer-Bundle-1.0.jar"/>
+                <attribute name="Rsrc-Class-Path" value="./ mysql-connector-java-5.1.21-bin.jar gson-2.2.2.jar xom-1.2.8.jar lucene-core-3.6.1.jar jsonic-1.3.0.jar langdetect.jar logback-classic-1.0.9.jar logback-core-1.0.9.jar slf4j-api-1.7.2.jar jansi-1.9.jar weka.jar snowball-2012.jar activemq-core-5.5.0.jar commons-beanutils-1.8.3.jar commons-beanutils-core-1.8.3.jar commons-codec-1.5.jar commons-collections-3.2.1.jar commons-dbcp-1.4.jar commons-digester-2.1.jar commons-email-1.2.jar commons-io-2.1.jar commons-lang-2.5.jar commons-logging-1.1.1.jar commons-pool-1.5.6.jar ehcache-core-2.4.4.jar geronimo-j2ee-management_1.1_spec-1.0.1.jar geronimo-jms_1.1_spec-1.1.1.jar grizzly-core-2.2.5.jar grizzly-framework-2.2.5.jar grizzly-websockets-2.2.5.jar grizzly-websockets-server-2.2.5.jar groovy-all-1.8.0.jar httpclient-4.1.3.jar httpcore-4.1.3.jar httpmime-4.1.3.jar itext-2.1.7.jar jackson-core-asl-1.9.3.jar jackson-mapper-asl-1.9.3.jar jasperreports-4.5.0.jar jasperreports-fonts-4.0.0.jar javax.servlet-3.1.1.jar javolution-5.5.1.jar jcl-core-2.2.2.jar jdom-1.1.jar jetty-client-8.1.0.RC5.jar jetty-http-8.1.0.RC5.jar jetty-io-8.1.0.RC5.jar jetty-security-8.1.0.RC5.jar jetty-server-8.1.0.RC5.jar jetty-servlet-8.1.0.RC5.jar jetty-servlets-8.1.0.RC5.jar jetty-util-8.1.0.RC5.jar jetty-websocket-8.1.0.RC5.jar json-2-RELEASE65.jar slf4j-api-1.5.11.jar slf4j-log4j12-1.5.11.jar log4j-1.2.16.jar jWebSocketCommon-1.0.jar spring-core-3.1.0.RELEASE.jar spring-asm-3.1.0.RELEASE.jar spring-context-3.1.0.RELEASE.jar spring-aop-3.1.0.RELEASE.jar spring-beans-3.1.0.RELEASE.jar spring-expression-3.1.0.RELEASE.jar spring-tx-3.1.0.RELEASE.jar spring-security-core-3.1.0.RELEASE.jar spring-security-crypto-3.1.0.RELEASE.jar spring-security-ldap-3.1.0.RELEASE.jar spring-ldap-core-1.3.1.RELEASE.jar spring-security-config-3.1.0.RELEASE.jar spring-jdbc-3.1.0.RELEASE.jar kahadb-5.5.0.jar spring-jms-3.1.0.RELEASE.jar xbean-spring-v2c-2.8.jar xbean-spring-v2-2.8.jar xbean-spring-common-2.8.jar jWebSocketServerAPI-1.0.jar netty-3.2.4.Final.jar tomcat-embed-core-7.0.27.jar tomcat-embed-logging-juli-7.0.27.jar tomcat-embed-logging-log4j-7.0.27.jar tomcat-embed-jasper-7.0.27.jar mysql-connector-java-5.1.16.jar twitter4j-core-2.2.5.jar twitter4j-async-2.2.5.jar twitter4j-stream-2.2.5.jar twitter4j-httpclient-support-2.2.5.jar smackx-3.1.0.jar smack-3.1.0.jar jWebSocketProxy-1.0.jar spring-web-3.1.0.RELEASE.jar spring-security-web-3.1.0.RELEASE.jar memcached-2.5.jar mongo-java-driver-2.7.3.jar poi-3.7.jar jWebSocketServer-1.0.jar jWebSocketAdminPlugIn-1.0.jar jWebSocketJMSPlugIn-1.0.jar jWebSocketAMQStockTicker-1.0.jar jWebSocketAPIPlugIn-1.0.jar jWebSocketArduinoPlugIn-1.0.jar jWebSocketBenchmarkPlugIn-1.0.jar jWebSocketChannelPlugIn-1.0.jar jWebSocketChatPlugIn-1.0.jar jWebSocketClientAPI-1.0.jar jWebSocketClusterPlugIn-1.0.jar jWebSocketEventsPlugIn-1.0.jar jWebSocketFileSystemPlugIn-1.0.jar jWebSocketJavaSEClient-1.0.jar jWebSocketJCaptchaPlugIn-1.0.jar jWebSocketJDBCPlugIn-1.0.jar jWebSocketJMXPlugIn-1.0.jar jWebSocketJQueryPlugIn-1.0.jar jWebSocketLoggingPlugIn-1.0.jar jWebSocketMailPlugIn-1.0.jar jWebSocketMonitoringPlugIn-1.0.jar jWebSocketPingPongGame-1.0.jar jWebSocketProxyPlugIn-1.0.jar jWebSocketReportingPlugIn-1.0.jar jWebSocketRPCPlugIn-1.0.jar jWebSocketSamples-1.0.jar jWebSocketSenchaPlugIn-1.0.jar jWebSocketSharedCanvasPlugIn-1.0.jar jWebSocketSharedObjectsPlugIn-1.0.jar jWebSocketSMSPlugIn-1.0.jar jWebSocketStatisticsPlugIn-1.0.jar jWebSocketStreamingPlugIn-1.0.jar jWebSocketSwingGUI-1.0.jar jWebSocketTestPlugIn-1.0.jar jWebSocketTwitterPlugIn-1.0.jar jWebSocketXMPPPlugIn-1.0.jar"/>
             </manifest>
             <zipfileset src="jar-in-jar-loader.zip"/>
             <fileset dir="bin"/>
-            <zipfileset dir="resources/lib" includes="snowball-2012.jar"/>
-            <zipfileset dir="resources/lib" includes="weka.jar"/>
-            <zipfileset dir="resources/lib" includes="logback-core-1.0.9.jar"/>
+            <zipfileset dir="resources/lib" includes="mysql-connector-java-5.1.21-bin.jar"/>
             <zipfileset dir="resources/lib" includes="gson-2.2.2.jar"/>
             <zipfileset dir="resources/lib" includes="xom-1.2.8.jar"/>
+            <zipfileset dir="resources/lib" includes="lucene-core-3.6.1.jar"/>
+            <zipfileset dir="resources/lib" includes="jsonic-1.3.0.jar"/>
+            <fileset dir="resources/lib"/>
+            <zipfileset dir="resources/lib" includes="langdetect.jar"/>
             <zipfileset dir="resources/lib" includes="logback-classic-1.0.9.jar"/>
+            <zipfileset dir="resources/lib" includes="logback-core-1.0.9.jar"/>
             <zipfileset dir="resources/lib" includes="slf4j-api-1.7.2.jar"/>
-            <zipfileset dir="resources/lib" includes="jWebSocketServer-Bundle-1.0.jar"/>
+            <zipfileset dir="resources/lib" includes="jansi-1.9.jar"/>
+            <zipfileset dir="resources/lib" includes="weka.jar"/>
+            <zipfileset dir="resources/lib" includes="snowball-2012.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="activemq-core-5.5.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="commons-beanutils-1.8.3.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="commons-beanutils-core-1.8.3.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="commons-codec-1.5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="commons-collections-3.2.1.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="commons-dbcp-1.4.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="commons-digester-2.1.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="commons-email-1.2.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="commons-io-2.1.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="commons-lang-2.5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="commons-logging-1.1.1.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="commons-pool-1.5.6.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="ehcache-core-2.4.4.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="geronimo-j2ee-management_1.1_spec-1.0.1.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="geronimo-jms_1.1_spec-1.1.1.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="grizzly-core-2.2.5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="grizzly-framework-2.2.5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="grizzly-websockets-2.2.5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="grizzly-websockets-server-2.2.5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="groovy-all-1.8.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="httpclient-4.1.3.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="httpcore-4.1.3.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="httpmime-4.1.3.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="itext-2.1.7.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jackson-core-asl-1.9.3.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jackson-mapper-asl-1.9.3.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jasperreports-4.5.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jasperreports-fonts-4.0.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="javax.servlet-3.1.1.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="javolution-5.5.1.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jcl-core-2.2.2.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jdom-1.1.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jetty-client-8.1.0.RC5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jetty-http-8.1.0.RC5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jetty-io-8.1.0.RC5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jetty-security-8.1.0.RC5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jetty-server-8.1.0.RC5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jetty-servlet-8.1.0.RC5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jetty-servlets-8.1.0.RC5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jetty-util-8.1.0.RC5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jetty-websocket-8.1.0.RC5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="json-2-RELEASE65.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="slf4j-api-1.5.11.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="slf4j-log4j12-1.5.11.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="log4j-1.2.16.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketCommon-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-core-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-asm-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-context-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-aop-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-beans-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-expression-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-tx-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-security-core-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-security-crypto-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-security-ldap-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-ldap-core-1.3.1.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-security-config-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-jdbc-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="kahadb-5.5.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-jms-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="xbean-spring-v2c-2.8.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="xbean-spring-v2-2.8.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="xbean-spring-common-2.8.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketServerAPI-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="netty-3.2.4.Final.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="tomcat-embed-core-7.0.27.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="tomcat-embed-logging-juli-7.0.27.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="tomcat-embed-logging-log4j-7.0.27.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="tomcat-embed-jasper-7.0.27.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="mysql-connector-java-5.1.16.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="twitter4j-core-2.2.5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="twitter4j-async-2.2.5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="twitter4j-stream-2.2.5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="twitter4j-httpclient-support-2.2.5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="smackx-3.1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="smack-3.1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketProxy-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-web-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="spring-security-web-3.1.0.RELEASE.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="memcached-2.5.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="mongo-java-driver-2.7.3.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="poi-3.7.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketServer-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketAdminPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketJMSPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketAMQStockTicker-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketAPIPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketArduinoPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketBenchmarkPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketChannelPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketChatPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketClientAPI-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketClusterPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketEventsPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketFileSystemPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketJavaSEClient-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketJCaptchaPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketJDBCPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketJMXPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketJQueryPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketLoggingPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketMailPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketMonitoringPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketPingPongGame-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketProxyPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketReportingPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketRPCPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketSamples-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketSenchaPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketSharedCanvasPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketSharedObjectsPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketSMSPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketStatisticsPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketStreamingPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketSwingGUI-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketTestPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketTwitterPlugIn-1.0.jar"/>
+            <zipfileset dir="resources/lib/websocket" includes="jWebSocketXMPPPlugIn-1.0.jar"/>
         </jar>
     </target>
 </project>
