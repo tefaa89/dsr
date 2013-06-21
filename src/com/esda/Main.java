@@ -11,7 +11,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		ESWebSocket.wst.init();
-		evalTextData();
+	//	evalTextData();
 	}
 
 	public static void evalTextData() {
