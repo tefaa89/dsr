@@ -1,20 +1,10 @@
 package com.esda.test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import weka.core.stemmers.SnowballStemmer;
-import weka.core.tokenizers.NGramTokenizer;
-import com.esda.configuration.Config;
-import com.esda.evaluation.ESInstances;
-import com.esda.evaluation.LoadDirectoryInstances;
-import com.esda.evaluation.featureExtraction.FeatureExtractorFilter;
-import com.esda.util.StringToWordVector;
-import com.esda.util.xml.ESInfoXML;
 
 public class StemmerTest {
 	public static void main(String[] args) {
-		Config.initConfiguration();
+		/*Config.initConfiguration();
 		LoadDirectoryInstances loadDI = new LoadDirectoryInstances("test", false);
 		loadDI.load();
 
@@ -56,10 +46,12 @@ public class StemmerTest {
 
 		ESInstances instances = new ESInstances();
 		instances.setInstances(loadDI.getRowDataInstances());
-		instances = feFilter.useFilter(instances);
+		instances = feFilter.useFilter(instances);*/
+		SnowballStemmer stemmer = new SnowballStemmer();
+		stemmer.setStemmer("english");
 	}
 
-	public static ArrayList<Map<String, String>> getOptions(ESInfoXML infoXML) {
+/*	public static ArrayList<Map<String, String>> getOptions(ESInfoXML infoXML) {
 		ArrayList<Map<String, String>> optionsList = new ArrayList<Map<String, String>>();
 		Map<String, String[]> parametersMap = infoXML.getParameters();
 		String selectionType = infoXML.getSelectionMethod();
@@ -95,5 +87,5 @@ public class StemmerTest {
 			}
 		}
 		return optionsList;
-	}
+	}*/
 }
