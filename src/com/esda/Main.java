@@ -10,7 +10,7 @@ public class Main {
 	public static ESCoreEngine dsrEngine;
 
 	public static void main(String[] args) {
-	//	ESWebSocket.wst.init();
+		ESWebSocket.wst.init();
 		evalTextData();
 	}
 
@@ -18,8 +18,7 @@ public class Main {
 		logger.info("Initializing Core Engine:");
 		dsrEngine = new ESCoreEngine();
 		dsrEngine.setDataCorpusPath("test");
-		dsrEngine.evaluate();
-		printInfo();
+	//	dsrEngine.evaluate();
 	}
 
 	public static void evalArffData() {

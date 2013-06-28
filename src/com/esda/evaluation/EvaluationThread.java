@@ -62,7 +62,7 @@ public class EvaluationThread implements Runnable {
 		cEval.clear();
 		cEval.setFeatureSelectionFilterMap(fsEval.getBestClassifiersFSMap());
 		logger.info("Evaluating Feature Space on All Classifiers ...");
-		cEval.evaluate(instancesToEval);
-		cEval.updateEvaluationLog(evalLog);
+	//	cEval.evaluate(instancesToEval);
+	//	cEval.updateEvaluationLog(evalLog);
 	}
 }

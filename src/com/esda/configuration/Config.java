@@ -11,6 +11,7 @@ import nu.xom.Elements;
 import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.Logger;
 import com.esda.util.xml.ESInfoXML;
+import com.esda.util.xml.ESInfoXmlParam;
 
 public class Config {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(Config.class);
@@ -143,7 +144,7 @@ public class Config {
 		// At this point we are sure that there is an element with id "id"
 		String className = currentElement.getAttributeValue("classPath");
 		String selectionMethod = currentElement.getAttributeValue("selection");
-		Map<String, String[]> paramters = getParametersFromElement(currentElement);
+		Map<String, ESInfoXmlParam[]> paramters = getParametersFromElement(currentElement);
 		ArrayList<String> searchMethodsIDList = getSearchMethodsIDList(currentElement);
 		ArrayList<String> cutPercentagesList = getAttributesScalingFactorList(currentElement);
 
@@ -174,23 +175,37 @@ public class Config {
 		return currentElement;
 	}
 
-	private static Map<String, String[]> getParametersFromElement(Element element) {
-		Map<String, String[]> paramters = new HashMap<String, String[]>();
+	private static Map<String, ESInfoXmlParam[]> getParametersFromElement(Element element) {
+		Map<String, ESInfoXmlParam[]> paramters = new HashMap<String, ESInfoXmlParam[]>();
 		element = element.getFirstChildElement("parameters");
 		Elements paramElements = element.getChildElements();
 		// Loop on parameters elements
 		for (int j = 0; j < paramElements.size(); j++) {
 			Elements valuesElements = paramElements.get(j).getChildElements();
-			String paramOption = paramElements.get(j).getAttributeValue("option");
-			ArrayList<String> values = new ArrayList<String>();
+			ArrayList<ESInfoXmlParam> paramList = new ArrayList<ESInfoXmlParam>();
+
+			String option = paramElements.get(j).getAttributeValue("option");
+			String name = paramElements.get(j).getAttributeValue("name");
+			String description = paramElements.get(j).getAttributeValue("description");
+
 			// Loop on values elements
 			for (int k = 0; k < valuesElements.size(); k++) {
 				String useAttributeValue = valuesElements.get(k).getAttributeValue("use");
 				if (useAttributeValue != null && useAttributeValue.equals("false"))
 					continue;
-				values.add(valuesElements.get(k).getValue());
+				ESInfoXmlParam esXMLParam = new ESInfoXmlParam();
+				String value = valuesElements.get(k).getValue();
+				String valueStr = valuesElements.get(k).getAttributeValue("valueStr");
+
+				esXMLParam.setDescription(description);
+				esXMLParam.setName(name);
+				esXMLParam.setOption(option);
+				esXMLParam.setValue(value);
+				esXMLParam.setValueStr(valueStr);
+
+				paramList.add(esXMLParam);
 			}
-			paramters.put(paramOption, values.toArray(new String[0]));
+			paramters.put(option, paramList.toArray(new ESInfoXmlParam[0]));
 		}
 		return paramters;
 	}

@@ -8,12 +8,15 @@ import weka.filters.Filter;
 import ch.qos.logback.classic.Logger;
 import com.esda.evaluation.ESInstances;
 import com.esda.evaluation.ESOptionsAbstract;
+import com.esda.util.xml.ESInfoXmlParam;
 
 public class FeatureExtractorFilter extends ESOptionsAbstract {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(FeatureExtractorFilter.class);
 	private Filter filter;
+	private Map<String,ESInfoXmlParam> paramInfoMap;
 
 	public FeatureExtractorFilter() {
+
 	}
 
 	public void setClassPath(String classPath) {
@@ -28,6 +31,14 @@ public class FeatureExtractorFilter extends ESOptionsAbstract {
 
 	public void setFilter(Filter filter) {
 		this.filter = filter;
+	}
+
+	public void setParamInfoMap(Map<String,ESInfoXmlParam> paramInfoMap) {
+		this.paramInfoMap = paramInfoMap;
+	}
+
+	public Map<String,ESInfoXmlParam> getParamInfoMap() {
+		return paramInfoMap;
 	}
 
 	public String getClassPath() {
@@ -45,7 +56,7 @@ public class FeatureExtractorFilter extends ESOptionsAbstract {
 			Instances filteredInstancesWeka = Filter.useFilter(unFilteredInstances, copyFilter);
 			filteredInstances.setInstances(filteredInstancesWeka);
 			filteredInstances.setParameters(instances.getEvaluationParameters());
-			//filteredInstances.getEvaluationParameters().setFeatureSelection(this);
+			filteredInstances.getEvaluationParameters().setFeatureExtractor(this);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error("Applying filter on instances: {}", e.toString());
@@ -53,7 +64,7 @@ public class FeatureExtractorFilter extends ESOptionsAbstract {
 		return filteredInstances;
 	}
 
-	public String setOptions(Map<String, String> options) {
+	public String setOptions(Map<String, ESInfoXmlParam> options) {
 		return setOptions(options, (OptionHandler) filter);
 	}
 

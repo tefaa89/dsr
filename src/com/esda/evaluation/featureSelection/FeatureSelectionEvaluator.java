@@ -89,8 +89,9 @@ public class FeatureSelectionEvaluator extends EvaluatorAbstract {
 	 */
 	private void updateEvaluationList() {
 		for (String key : evaluationInfoMap.keySet()) {
-			EvaluationInfo evalInfo = getBestEvaluation(evaluationInfoMap.get(key));
-			updateEvaluationInfo(evalInfo);
+			//EvaluationInfo evalInfo = getBestEvaluation(evaluationInfoMap.get(key));
+			for(EvaluationInfo evalInfo: evaluationInfoMap.get(key))
+				updateEvaluationInfo(evalInfo);
 		}
 	}
 
@@ -109,10 +110,13 @@ public class FeatureSelectionEvaluator extends EvaluatorAbstract {
 					fsFilter.toString());
 			ESInstances filteredInstances = fsFilter.useFilter(deInstances);
 			logger.trace("Filtered Instances: \n{}", filteredInstances.getInstances());
+
+			//Initialize classifier evaluator to evaluate the filtered instances
 			ClassifiersEvaluator classifierEval = new ClassifiersEvaluator();
 			classifierEval.setClassifiersMap(classifiersMap);
 			classifierEval.setFeatureSelectionFilterMap(null);
 			classifierEval.evaluate(filteredInstances);
+			//Get the results of evaluating the filtered classifier on all classifiers
 			ArrayList<EvaluationInfo> currentFSEvalResults = classifierEval
 					.getEvaluationInfoResultList();
 			for (EvaluationInfo evalInfo : currentFSEvalResults) {

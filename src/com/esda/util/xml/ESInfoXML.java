@@ -15,7 +15,7 @@ public class ESInfoXML {
 	 * Map<String, String[]>: First String is classifier option. Second String[]
 	 * contains the values for this option ex, ("k",[20,50,100]);
 	 */
-	private Map<String, String[]> parameters;
+	private Map<String, ESInfoXmlParam[]> parameters;
 	private ArrayList<String> cutPercentagesList;
 	private ArrayList<String> evaluatorSearchMethodsIDList;
 
@@ -49,11 +49,11 @@ public class ESInfoXML {
 			this.selectionMethod = selectionMethod;
 	}
 
-	public Map<String, String[]> getParameters() {
+	public Map<String, ESInfoXmlParam[]> getParameters() {
 		return parameters;
 	}
 
-	public void setParameters(Map<String, String[]> parameters) {
+	public void setParameters(Map<String, ESInfoXmlParam[]> parameters) {
 		this.parameters = parameters;
 	}
 

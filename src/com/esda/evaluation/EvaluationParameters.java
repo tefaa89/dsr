@@ -1,20 +1,31 @@
 package com.esda.evaluation;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Map;
 import com.esda.evaluation.classifiers.ClassificationAlgorithm;
 import com.esda.evaluation.featureExtraction.FeatureExtractorFilter;
 import com.esda.evaluation.featureSelection.FeatureSelectionFilter;
+import com.esda.util.xml.ESInfoXmlParam;
 
-public class EvaluationParameters {
+public class EvaluationParameters implements Serializable {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 7679979159683473109L;
 	private transient ClassificationAlgorithm classifier;
 	private transient FeatureSelectionFilter featureSelector;
 	private transient FeatureExtractorFilter featureExtractor;
 	private String classifierNameStr;
 	private String classifierParamStr;
+	private String classifierParamInfoStr;
+
 	private String fsEvaluatorNameStr;
 	private String fsEvaluatorParamStr;
+
 	private String feNameStr;
 	private String feParamStr;
+	private String feParamInfoStr;
 
 	private String fsSearchMethodNameStr;
 	private String fsSearchMethodParamStr;
@@ -106,7 +117,9 @@ public class EvaluationParameters {
 	public void setFeatureExtractor(FeatureExtractorFilter feFilter) {
 		this.featureExtractor = feFilter;
 		if (featureExtractor != null) {
-
+			feNameStr = featureExtractor.getClassPath();
+			feParamStr = featureExtractor.getOptionsStr();
+			feParamInfoStr = getParamInformationStr(featureExtractor.getParamInfoMap());
 		}
 	}
 
@@ -118,6 +131,22 @@ public class EvaluationParameters {
 			fsSearchMethodNameStr = featureSelection.getSearchMethodClassPath();
 			fsSearchMethodParamStr = featureSelection.getSearchMethodParamStr();
 		}
+	}
+
+	public String getParamInformationStr(Map<String, ESInfoXmlParam> paramInfoMap) {
+		String res = "";
+		for (String key : paramInfoMap.keySet()) {
+			ESInfoXmlParam currentInfoParam = paramInfoMap.get(key);
+			String paramName = currentInfoParam.getName();
+			String paramValue = currentInfoParam.getValueStr();
+			if (paramName != null && paramValue != null)
+				res += paramName + ": " + paramValue + "\n";
+			else if (paramValue != null)
+				res += key + ": " + paramValue + "\n";
+			else if(paramValue == null && paramName != null)
+				res += paramName + ": " + currentInfoParam.getValue() + "\n";
+		}
+		return res;
 	}
 
 	public void setFExtractionNameStr(String feNameStr) {
@@ -156,6 +185,11 @@ public class EvaluationParameters {
 		res += "Feature Extractor Class: " + feNameStr;
 		res += "\n\t";
 		res += "Feature Extractor Parameters: " + feParamStr;
+		if (feParamInfoStr != "") {
+			res += "\n\t";
+			res += "Feature Extractor Parameters Information:\n\t\t"
+					+ feParamInfoStr.replace("\n", "\n\t\t");
+		}
 		return res;
 	}
 }

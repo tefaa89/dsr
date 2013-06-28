@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.Logger;
 import com.esda.evaluation.BuilderAbstract;
 import com.esda.util.xml.ESInfoXML;
+import com.esda.util.xml.ESInfoXmlParam;
 
 public class ClassifiersBuilder extends BuilderAbstract {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(ClassifiersBuilder.class);
@@ -45,8 +46,8 @@ public class ClassifiersBuilder extends BuilderAbstract {
 		for (ESInfoXML classifierInfoXml : classifierInfoXMLList) {
 			logger.trace("Wrapping:\n{}", classifierInfoXml);
 
-			ArrayList<Map<String, String>> currentClassifierOptionsList = getOptions(classifierInfoXml);
-			for (Map<String, String> currentClassifierOption : currentClassifierOptionsList) {
+			ArrayList<Map<String, ESInfoXmlParam>> currentClassifierOptionsList = getOptions(classifierInfoXml);
+			for (Map<String, ESInfoXmlParam> currentClassifierOption : currentClassifierOptionsList) {
 				String classifierClassPath = classifierInfoXml.getClassName();
 				ClassificationAlgorithm docClassifier = new ClassificationAlgorithm();
 				docClassifier.setClassPath(classifierClassPath);

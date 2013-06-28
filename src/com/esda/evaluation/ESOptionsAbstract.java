@@ -3,16 +3,17 @@ package com.esda.evaluation;
 import java.util.ArrayList;
 import java.util.Map;
 import org.slf4j.LoggerFactory;
+import com.esda.util.xml.ESInfoXmlParam;
 import weka.core.OptionHandler;
 import ch.qos.logback.classic.Logger;
 
 public abstract class ESOptionsAbstract {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(ESOptionsAbstract.class);
 
-	protected String setOptions(Map<String, String> options, OptionHandler optionHandler) {
+	protected String setOptions(Map<String, ESInfoXmlParam> options, OptionHandler optionHandler) {
 		ArrayList<String> optionsList = new ArrayList<>();
 		for (String option : options.keySet()) {
-			String value = options.get(option).trim();
+			String value = options.get(option).getValue().trim();
 			if ((value.equals("") && option.equals("*")) || value.equals("*"))
 				continue;
 			if (option.equals("*")) {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import com.esda.evaluation.BuilderAbstract;
 import com.esda.util.xml.ESInfoXML;
+import com.esda.util.xml.ESInfoXmlParam;
 
 public class FeatureSelectionFiltersBuilder extends BuilderAbstract {
 	private ArrayList<FeatureSelectionFilter> featureSelectionList;
@@ -28,18 +29,18 @@ public class FeatureSelectionFiltersBuilder extends BuilderAbstract {
 			ArrayList<ESInfoXML> fsSearchMethodsXmlList) {
 		// Loop on all feature selection evaluators
 		for (ESInfoXML fsEvalXml : fsEvalXmlList) {
-			ArrayList<Map<String, String>> currentfsEvalOptionsList = getOptions(fsEvalXml);
+			ArrayList<Map<String, ESInfoXmlParam>> currentfsEvalOptionsList = getOptions(fsEvalXml);
 			ArrayList<String> seachMethodsList = fsEvalXml.getEvaluatorSearchMethodsIDList();
 			ArrayList<String> attributesScalingFactorList = fsEvalXml.getCutPercentagesList();
 			// Loop on all searching methods
 			for (String searchMethod : seachMethodsList) {
 				ESInfoXML currentSearchMethodXML = getSeachMethodbyID(searchMethod,
 						fsSearchMethodsXmlList);
-				ArrayList<Map<String, String>> currentSeachMethodOptionsList = getOptions(currentSearchMethodXML);
+				ArrayList<Map<String, ESInfoXmlParam>> currentSeachMethodOptionsList = getOptions(currentSearchMethodXML);
 				// Loop on all current search methods options
-				for (Map<String, String> currentSeachMethodOptions : currentSeachMethodOptionsList) {
+				for (Map<String, ESInfoXmlParam> currentSeachMethodOptions : currentSeachMethodOptionsList) {
 					// Loop on all current evaluator options
-					for (Map<String, String> currentfsEvalOptions : currentfsEvalOptionsList){
+					for (Map<String, ESInfoXmlParam> currentfsEvalOptions : currentfsEvalOptionsList){
 						if(attributesScalingFactorList.size() == 0)
 						{
 							FeatureSelectionFilter dsF = new FeatureSelectionFilter();

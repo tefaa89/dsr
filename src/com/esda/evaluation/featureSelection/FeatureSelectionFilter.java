@@ -11,6 +11,7 @@ import weka.filters.supervised.attribute.AttributeSelection;
 import ch.qos.logback.classic.Logger;
 import com.esda.evaluation.ESInstances;
 import com.esda.evaluation.ESOptionsAbstract;
+import com.esda.util.xml.ESInfoXmlParam;
 
 public class FeatureSelectionFilter extends ESOptionsAbstract {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(FeatureSelectionFilter.class);
@@ -61,11 +62,11 @@ public class FeatureSelectionFilter extends ESOptionsAbstract {
 		}
 	}
 
-	public void setEvaluatorOptions(Map<String, String> options) {
+	public void setEvaluatorOptions(Map<String, ESInfoXmlParam> options) {
 		setOptions(options, (OptionHandler) attFilter.getEvaluator());
 	}
 
-	public void setSearchMethodOptions(Map<String, String> options) {
+	public void setSearchMethodOptions(Map<String, ESInfoXmlParam> options) {
 		setOptions(options, (OptionHandler) attFilter.getSearch());
 	}
 

@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import weka.classifiers.AbstractClassifier;
 import ch.qos.logback.classic.Logger;
 import com.esda.evaluation.ESOptionsAbstract;
+import com.esda.util.xml.ESInfoXmlParam;
 
 /**
  * Since we are not going to build the AbstractClassifier, this object will ONLY
@@ -46,7 +47,7 @@ public class ClassificationAlgorithm extends ESOptionsAbstract {
 		this.classifier = classifier;
 	}
 
-	public String setOptions(Map<String, String> options) {
+	public String setOptions(Map<String, ESInfoXmlParam> options) {
 		return setOptions(options, classifier);
 	}
 

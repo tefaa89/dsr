@@ -68,7 +68,7 @@ public class EvaluationResults implements Serializable{
 
 	@Override
 	public String toString() {
-		return "# Evaluation Results: \n\t Summary: \n" + cMatrixStr.replaceAll("\n", "\n\t\t")
+		return "# Evaluation Results: \n\t Summary: \n\t\t" + cMatrixStr.replaceAll("\n", "\n\t\t")
 				+ "\n\t" + evaluationStr.replaceAll("\n", "\n\t\t");
 	}
 }
