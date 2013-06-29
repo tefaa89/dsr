@@ -18,10 +18,11 @@
 			</param>
 		</parameters>
 	</classifier>
-	
-	<classifier id="SMO" classPath="weka.classifiers.lazy.IBk">
+
+	<classifier id="SMO" classPath="weka.classifiers.functions.SMO">
 		<parameters>
-			<param>
+			<param option="*" description="">
+				<value />
 			</param>
 		</parameters>
 	</classifier>
