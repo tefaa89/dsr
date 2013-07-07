@@ -6,32 +6,12 @@
 			<parameters>
 				<param option="D" description="Direction: Set the direction of the search.">
 					<value>1</value>
-					<value use="false">1</value>
-					<value use="false">2</value>
-				</param>
-				<param option="N"
-					description="searchTermination -- Set the amount of backtracking.">
-					<value>5</value>
-				</param>
-				<param option="*"
-					description="startSet -- Set the start point for the search. This is specified as a comma seperated list off attribute indexes starting at 1. It can include ranges. Eg. 1,2,5-9,17.">
-					<value></value>
-					<value use="false">P 1,2,3</value>
 				</param>
 			</parameters>
 		</searchMethod>
 
 		<searchMethod id="ranker" classPath="weka.attributeSelection.Ranker">
 			<parameters>
-				<param option="N"
-					description="numToSelect -- Specify the number of attributes to retain. The default value (-1) indicates that all attributes are to be retained. Use either this option or a threshold to reduce the attribute set.">
-					<value>-1</value>
-				</param>
-				<param option="*"
-					description="startSet -- Set the start point for the search. This is specified as a comma seperated list off attribute indexes starting at 1. It can include ranges. Eg. 1,2,5-9,17.">
-					<value></value>
-					<value use="false">P 1,2,3</value>
-				</param>
 				<param option="T"
 					description="threshold -- Set threshold by which attributes can be discarded. Default value results in no attributes being discarded. Use either this option or numToSelect to reduce the attribute set.">
 					<value>-1.7976931348623157E308</value>
@@ -49,21 +29,15 @@
 				<searchRef refID="bestfirst" />
 			</searchReferences>
 			<parameters>
-				<param option="*"
-					description="locallyPredictive -- Identify locally predictive attributes. Iteratively adds attributes with the highest correlation with the class as long as there is not already an attribute in the subset that has a higher correlation with the attribute in question">
-					<value></value> <!-- true -->
-					<value use="false">L</value> <!-- false -->
-				</param>
-				<param option="*"
-					description="missingSeparate -- Treat missing as a separate value. Otherwise, counts for missing values are distributed across other values in proportion to their frequency.">
-					<value></value> <!-- false -->
-					<value use="false">M</value> <!-- true -->
+				<param option="*">
+					<value></value>
 				</param>
 			</parameters>
 		</evaluator>
 
-		<evaluator id="InfoGainAttributeEval" classPath="weka.attributeSelection.InfoGainAttributeEval"
-			name="InfoGainAttributeEval" selection="lineaer">
+		<evaluator id="InfoGainAttributeEval"
+			classPath="weka.attributeSelection.InfoGainAttributeEval" name="InfoGainAttributeEval"
+			selection="nonlineaer">
 			<searchReferences>
 				<searchRef refID="ranker" />
 			</searchReferences>
@@ -74,18 +48,10 @@
 			</parameters>
 			<selected_attributes>
 				<value>1%</value>
-				<value>2%</value>
 				<value>3%</value>
-				<value>4%</value>
 				<value>5%</value>
-				<value>6%</value>
-				<value>7%</value>
-				<value>8%</value>
-				<value>9%</value>
 				<value>10%</value>
-				<value>30%</value>
-				<value>50%</value>
-				<value>70%</value>
+				<value>40%</value>
 			</selected_attributes>
 		</evaluator>
 	</evaluators>

@@ -59,93 +59,93 @@ import weka.filters.UnsupervisedFilter;
  * determined by the first batch filtered (typically training data).
  * <p/>
  * <!-- globalinfo-end -->
- * 
+ *
  * <!-- options-start --> Valid options are:
  * <p/>
- * 
+ *
  * <pre>
  * -C
  *  Output word counts rather than boolean word presence.
  * </pre>
- * 
+ *
  * <pre>
  * -R &lt;index1,index2-index4,...&gt;
  *  Specify list of string attributes to convert to words (as weka Range).
  *  (default: select all string attributes)
  * </pre>
- * 
+ *
  * <pre>
  * -V
  *  Invert matching sense of column indexes.
  * </pre>
- * 
+ *
  * <pre>
  * -P &lt;attribute name prefix&gt;
  *  Specify a prefix for the created attribute names.
  *  (default: "")
  * </pre>
- * 
+ *
  * <pre>
  * -W &lt;number of words to keep&gt;
  *  Specify approximate number of word fields to create.
  *  Surplus words will be discarded..
  *  (default: 1000)
  * </pre>
- * 
+ *
  * <pre>
  * -prune-rate &lt;rate as a percentage of dataset&gt;
  *  Specify the rate (e.g., every 10% of the input dataset) at which to periodically prune the dictionary.
  *  -W prunes after creating a full dictionary. You may not have enough memory for this approach.
  *  (default: no periodic pruning)
  * </pre>
- * 
+ *
  * <pre>
  * -T
  *  Transform the word frequencies into log(1+fij)
  *  where fij is the frequency of word i in jth document(instance).
  * </pre>
- * 
+ *
  * <pre>
  * -I
  *  Transform each word frequency into:
  *  fij*log(num of Documents/num of documents containing word i)
  *    where fij if frequency of word i in jth document(instance)
  * </pre>
- * 
+ *
  * <pre>
  * -N
  *  Whether to 0=not normalize/1=normalize all data/2=normalize test data only
  *  to average length of training documents (default 0=don't normalize).
  * </pre>
- * 
+ *
  * <pre>
  * -L
  *  Convert all tokens to lowercase before adding to the dictionary.
  * </pre>
- * 
+ *
  * <pre>
  * -S
  *  Ignore words that are in the stoplist.
  * </pre>
- * 
+ *
  * <pre>
  * -stemmer &lt;spec&gt;
  *  The stemmering algorihtm (classname plus parameters) to use.
  * </pre>
- * 
+ *
  * <pre>
  * -M &lt;int&gt;
  *  The minimum term frequency (default = 1).
  * </pre>
- * 
+ *
  * <pre>
  * -O
- *  If this is set, the maximum number of words and the 
- *  minimum term frequency is not enforced on a per-class 
- *  basis but based on the documents in all the classes 
+ *  If this is set, the maximum number of words and the
+ *  minimum term frequency is not enforced on a per-class
+ *  basis but based on the documents in all the classes
  *  (even if a class attribute is set).
  * </pre>
- * 
+ *
  * <pre>
  * -stopwords &lt;file&gt;
  *  A file containing stopwords to override the default ones.
@@ -154,15 +154,15 @@ import weka.filters.UnsupervisedFilter;
  *  Format: one stopword per line, lines starting with '#'
  *  are interpreted as comments and ignored.
  * </pre>
- * 
+ *
  * <pre>
  * -tokenizer &lt;spec&gt;
  *  The tokenizing algorihtm (classname plus parameters) to use.
  *  (default: weka.core.tokenizers.WordTokenizer)
  * </pre>
- * 
+ *
  * <!-- options-end -->
- * 
+ *
  * @author Len Trigg (len@reeltwo.com)
  * @author Stuart Inglis (stuart@reeltwo.com)
  * @author Gordon Paynter (gordon.paynter@ucr.edu)
@@ -285,7 +285,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns an enumeration describing the available options.
-	 * 
+	 *
 	 * @return an enumeration of all the available options
 	 */
 	public Enumeration listOptions() {
@@ -362,93 +362,93 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Parses a given list of options.
 	 * <p/>
-	 * 
+	 *
 	 * <!-- options-start --> Valid options are:
 	 * <p/>
-	 * 
+	 *
 	 * <pre>
 	 * -C
 	 *  Output word counts rather than boolean word presence.
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -R &lt;index1,index2-index4,...&gt;
 	 *  Specify list of string attributes to convert to words (as weka Range).
 	 *  (default: select all string attributes)
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -V
 	 *  Invert matching sense of column indexes.
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -P &lt;attribute name prefix&gt;
 	 *  Specify a prefix for the created attribute names.
 	 *  (default: "")
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -W &lt;number of words to keep&gt;
 	 *  Specify approximate number of word fields to create.
 	 *  Surplus words will be discarded..
 	 *  (default: 1000)
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -prune-rate &lt;rate as a percentage of dataset&gt;
 	 *  Specify the rate (e.g., every 10% of the input dataset) at which to periodically prune the dictionary.
 	 *  -W prunes after creating a full dictionary. You may not have enough memory for this approach.
 	 *  (default: no periodic pruning)
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -T
 	 *  Transform the word frequencies into log(1+fij)
 	 *  where fij is the frequency of word i in jth document(instance).
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -I
 	 *  Transform each word frequency into:
 	 *  fij*log(num of Documents/num of documents containing word i)
 	 *    where fij if frequency of word i in jth document(instance)
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -N
 	 *  Whether to 0=not normalize/1=normalize all data/2=normalize test data only
 	 *  to average length of training documents (default 0=don't normalize).
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -L
 	 *  Convert all tokens to lowercase before adding to the dictionary.
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -S
 	 *  Ignore words that are in the stoplist.
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -stemmer &lt;spec&gt;
 	 *  The stemmering algorihtm (classname plus parameters) to use.
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -M &lt;int&gt;
 	 *  The minimum term frequency (default = 1).
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -O
-	 *  If this is set, the maximum number of words and the 
-	 *  minimum term frequency is not enforced on a per-class 
-	 *  basis but based on the documents in all the classes 
+	 *  If this is set, the maximum number of words and the
+	 *  minimum term frequency is not enforced on a per-class
+	 *  basis but based on the documents in all the classes
 	 *  (even if a class attribute is set).
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -stopwords &lt;file&gt;
 	 *  A file containing stopwords to override the default ones.
@@ -457,15 +457,15 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	 *  Format: one stopword per line, lines starting with '#'
 	 *  are interpreted as comments and ignored.
 	 * </pre>
-	 * 
+	 *
 	 * <pre>
 	 * -tokenizer &lt;spec&gt;
 	 *  The tokenizing algorihtm (classname plus parameters) to use.
 	 *  (default: weka.core.tokenizers.WordTokenizer)
 	 * </pre>
-	 * 
+	 *
 	 * <!-- options-end -->
-	 * 
+	 *
 	 * @param options
 	 *            the list of options as an array of strings
 	 * @throws Exception
@@ -563,7 +563,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Gets the current settings of the filter.
-	 * 
+	 *
 	 * @return an array of strings suitable for passing to setOptions
 	 */
 	public String[] getOptions() {
@@ -637,7 +637,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Constructor that allows specification of the target number of words in
 	 * the output.
-	 * 
+	 *
 	 * @param wordsToKeep
 	 *            the number of words in the output vector (per class if
 	 *            assigned).
@@ -659,7 +659,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 		/**
 		 * the constructor.
-		 * 
+		 *
 		 * @param c
 		 *            the count
 		 */
@@ -669,7 +669,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 		/**
 		 * Returns the revision string.
-		 * 
+		 *
 		 * @return the revision
 		 */
 		public String getRevision() {
@@ -679,7 +679,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the Capabilities of this filter.
-	 * 
+	 *
 	 * @return the capabilities of this object
 	 * @see Capabilities
 	 */
@@ -701,7 +701,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Sets the format of the input instances.
-	 * 
+	 *
 	 * @param instanceInfo
 	 *            an Instances object containing the input instance structure
 	 *            (any instances contained in the object are ignored - only the
@@ -722,7 +722,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Input an instance for filtering. Filter requires all training instances
 	 * be read before producing output.
-	 * 
+	 *
 	 * @param instance
 	 *            the input instance.
 	 * @return true if the filtered instance may now be collected with output().
@@ -757,7 +757,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	 * Signify that this batch of input to the filter is finished. If the filter
 	 * requires all instances prior to filtering, output() may now be called to
 	 * retrieve the filtered instances.
-	 * 
+	 *
 	 * @return true if there are instances pending output.
 	 * @throws IllegalStateException
 	 *             if no input structure has been defined.
@@ -822,7 +822,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns a string describing this filter.
-	 * 
+	 *
 	 * @return a description of the filter suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -836,7 +836,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Gets whether output instances contain 0 or 1 indicating word presence, or
 	 * word counts.
-	 * 
+	 *
 	 * @return true if word counts should be output.
 	 */
 	public boolean getOutputWordCounts() {
@@ -846,7 +846,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Sets whether output instances contain 0 or 1 indicating word presence, or
 	 * word counts.
-	 * 
+	 *
 	 * @param outputWordCounts
 	 *            true if word counts should be output.
 	 */
@@ -856,7 +856,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -867,7 +867,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Get the value of m_SelectedRange.
-	 * 
+	 *
 	 * @return Value of m_SelectedRange.
 	 */
 	public Range getSelectedRange() {
@@ -876,7 +876,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Set the value of m_SelectedRange.
-	 * 
+	 *
 	 * @param newSelectedRange
 	 *            Value to assign to m_SelectedRange.
 	 */
@@ -886,7 +886,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -899,7 +899,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Gets the current range selection.
-	 * 
+	 *
 	 * @return a string containing a comma separated list of ranges
 	 */
 	public String getAttributeIndices() {
@@ -908,7 +908,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Sets which attributes are to be worked on.
-	 * 
+	 *
 	 * @param rangeList
 	 *            a string representing the list of attributes. Since the string
 	 *            will typically come from a user, attributes are indexed from
@@ -923,7 +923,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Sets which attributes are to be processed.
-	 * 
+	 *
 	 * @param attributes
 	 *            an array containing indexes of attributes to process. Since
 	 *            the array will typically come from a program, attributes are
@@ -937,7 +937,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -949,7 +949,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Gets whether the supplied columns are to be processed or skipped.
-	 * 
+	 *
 	 * @return true if the supplied columns will be kept
 	 */
 	public boolean getInvertSelection() {
@@ -958,7 +958,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Sets whether selected columns should be processed or skipped.
-	 * 
+	 *
 	 * @param invert
 	 *            the new invert setting
 	 */
@@ -968,7 +968,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Get the attribute name prefix.
-	 * 
+	 *
 	 * @return The current attribute name prefix.
 	 */
 	public String getAttributeNamePrefix() {
@@ -977,7 +977,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Set the attribute name prefix.
-	 * 
+	 *
 	 * @param newPrefix
 	 *            String to use as the attribute name prefix.
 	 */
@@ -987,7 +987,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -998,7 +998,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Gets the number of words (per class if there is a class attribute
 	 * assigned) to attempt to keep.
-	 * 
+	 *
 	 * @return the target number of words in the output vector (per class if
 	 *         assigned).
 	 */
@@ -1009,7 +1009,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Sets the number of words (per class if there is a class attribute
 	 * assigned) to attempt to keep.
-	 * 
+	 *
 	 * @param newWordsToKeep
 	 *            the target number of words in the output vector (per class if
 	 *            assigned).
@@ -1020,7 +1020,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -1032,7 +1032,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Gets the rate at which the dictionary is periodically pruned, as a
 	 * percentage of the dataset size.
-	 * 
+	 *
 	 * @return the rate at which the dictionary is periodically pruned
 	 */
 	public double getPeriodicPruning() {
@@ -1042,7 +1042,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Sets the rate at which the dictionary is periodically pruned, as a
 	 * percentage of the dataset size.
-	 * 
+	 *
 	 * @param newPeriodicPruning
 	 *            the rate at which the dictionary is periodically pruned
 	 */
@@ -1052,7 +1052,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -1065,7 +1065,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Gets whether if the word frequencies should be transformed into
 	 * log(1+fij) where fij is the frequency of word i in document(instance) j.
-	 * 
+	 *
 	 * @return true if word frequencies are to be transformed.
 	 */
 	public boolean getTFTransform() {
@@ -1075,7 +1075,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Sets whether if the word frequencies should be transformed into
 	 * log(1+fij) where fij is the frequency of word i in document(instance) j.
-	 * 
+	 *
 	 * @param TFTransform
 	 *            true if word frequencies are to be transformed.
 	 */
@@ -1085,7 +1085,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -1100,7 +1100,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	 * into: <br>
 	 * fij*log(num of Docs/num of Docs with word i) <br>
 	 * where fij is the frequency of word i in document(instance) j.
-	 * 
+	 *
 	 * @return true if the word frequencies are to be transformed.
 	 */
 	public boolean getIDFTransform() {
@@ -1112,7 +1112,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	 * into: <br>
 	 * fij*log(num of Docs/num of Docs with word i) <br>
 	 * where fij is the frequency of word i in document(instance) j.
-	 * 
+	 *
 	 * @param IDFTransform
 	 *            true if the word frequecies are to be transformed
 	 */
@@ -1122,7 +1122,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -1135,7 +1135,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Gets whether if the word frequencies for a document (instance) should be
 	 * normalized or not.
-	 * 
+	 *
 	 * @return true if word frequencies are to be normalized.
 	 */
 	public SelectedTag getNormalizeDocLength() {
@@ -1146,7 +1146,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Sets whether if the word frequencies for a document (instance) should be
 	 * normalized or not.
-	 * 
+	 *
 	 * @param newType
 	 *            the new type.
 	 */
@@ -1159,7 +1159,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -1170,7 +1170,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Gets whether if the tokens are to be downcased or not.
-	 * 
+	 *
 	 * @return true if the tokens are to be downcased.
 	 */
 	public boolean getLowerCaseTokens() {
@@ -1180,7 +1180,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Sets whether if the tokens are to be downcased or not. (Doesn't affect
 	 * non-alphabetic characters in tokens).
-	 * 
+	 *
 	 * @param downCaseTokens
 	 *            should be true if only lower case tokens are to be formed.
 	 */
@@ -1190,7 +1190,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -1203,7 +1203,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Get the DoNotOperateOnPerClassBasis value.
-	 * 
+	 *
 	 * @return the DoNotOperateOnPerClassBasis value.
 	 */
 	public boolean getDoNotOperateOnPerClassBasis() {
@@ -1212,7 +1212,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Set the DoNotOperateOnPerClassBasis value.
-	 * 
+	 *
 	 * @param newDoNotOperateOnPerClassBasis
 	 *            The new DoNotOperateOnPerClassBasis value.
 	 */
@@ -1222,7 +1222,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -1232,7 +1232,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Get the MinTermFreq value.
-	 * 
+	 *
 	 * @return the MinTermFreq value.
 	 */
 	public int getMinTermFreq() {
@@ -1241,7 +1241,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Set the MinTermFreq value.
-	 * 
+	 *
 	 * @param newMinTermFreq
 	 *            The new MinTermFreq value.
 	 */
@@ -1251,7 +1251,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -1263,7 +1263,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Gets whether if the words on the stoplist are to be ignored (The stoplist
 	 * is in weka.core.StopWords).
-	 * 
+	 *
 	 * @return true if the words on the stoplist are to be ignored.
 	 */
 	public boolean getUseStoplist() {
@@ -1273,7 +1273,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Sets whether if the words that are on a stoplist are to be ignored (The
 	 * stop list is in weka.core.StopWords).
-	 * 
+	 *
 	 * @param useStoplist
 	 *            true if the tokens that are on a stoplist are to be ignored.
 	 */
@@ -1283,7 +1283,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -1294,7 +1294,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * the stemming algorithm to use, null means no stemming at all (i.e., the
 	 * NullStemmer is used).
-	 * 
+	 *
 	 * @param value
 	 *            the configured stemming algorithm, or null
 	 * @see NullStemmer
@@ -1308,7 +1308,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the current stemming algorithm, null if none is used.
-	 * 
+	 *
 	 * @return the current stemming algorithm, null if none set
 	 */
 	public Stemmer getStemmer() {
@@ -1317,7 +1317,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -1329,7 +1329,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	 * sets the file containing the stopwords, null or a directory unset the
 	 * stopwords. If the file exists, it automatically turns on the flag to use
 	 * the stoplist.
-	 * 
+	 *
 	 * @param value
 	 *            the file containing the stopwords
 	 */
@@ -1345,7 +1345,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * returns the file used for obtaining the stopwords, if the file represents
 	 * a directory then the default ones are used.
-	 * 
+	 *
 	 * @return the file containing the stopwords
 	 */
 	public File getStopwords() {
@@ -1354,7 +1354,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -1364,7 +1364,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * the tokenizer algorithm to use.
-	 * 
+	 *
 	 * @param value
 	 *            the configured tokenizing algorithm
 	 */
@@ -1374,7 +1374,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the current tokenizer algorithm.
-	 * 
+	 *
 	 * @return the current tokenizer algorithm
 	 */
 	public Tokenizer getTokenizer() {
@@ -1383,7 +1383,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the tip text for this property.
-	 * 
+	 *
 	 * @return tip text for this property suitable for displaying in the
 	 *         explorer/experimenter gui
 	 */
@@ -1393,7 +1393,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * sorts an array.
-	 * 
+	 *
 	 * @param array
 	 *            the array to sort
 	 */
@@ -1508,29 +1508,21 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 							word = word.toLowerCase();
 
 						String[] wordsArr = word.split(" ");
-						String stemmedStr = "";
-						for (String wordStr : wordsArr)
-							stemmedStr += m_Stemmer.stem(wordStr) + " ";
+						StringBuilder stemmedStr = new StringBuilder();
+						for (String wordStr : wordsArr){
+							if (!this.m_useStoplist || !stopwords.is(wordStr)){
+								stemmedStr.append(m_Stemmer.stem(wordStr));
+								stemmedStr.append(" ");
+							}
+						}
 						/*for (int icounter = 0; icounter < wordsArr.length; icounter++) {
 							stemmedStr += m_Stemmer.stem(wordsArr[icounter]);
 							if (icounter + 1 < wordsArr.length)
 								stemmedStr += " ";
 						}*/
-						
-						word = stemmedStr.trim();
-						
-						if (this.m_useStoplist == true) {
-							stemmedStr = "";
-							wordsArr = word.split(" ");
-							for (String wordStr : wordsArr) {
-								if (stopwords.is(wordStr))
-									continue;
-								stemmedStr += wordStr + " ";
-							}
-							word = stemmedStr.trim();
-							if (word.equals("") || stopwords.is(word))
-								continue;
-						}
+
+						word = stemmedStr.toString().trim();
+
 						if (!(h.containsKey(word)))
 							h.put(word, new Integer(0));
 
@@ -1668,7 +1660,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Converts the instance w/o normalization.
-	 * 
+	 *
 	 * @oaram instance the instance to convert
 	 * @param v
 	 * @return the conerted instance
@@ -1802,7 +1794,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 	/**
 	 * Normalizes given instance to average doc length (only the newly
 	 * constructed attributes).
-	 * 
+	 *
 	 * @param inst
 	 *            the instance to normalize
 	 * @param firstCopy
@@ -1840,7 +1832,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Returns the revision string.
-	 * 
+	 *
 	 * @return the revision
 	 */
 	public String getRevision() {
@@ -1849,7 +1841,7 @@ public class StringToWordVector extends Filter implements UnsupervisedFilter, Op
 
 	/**
 	 * Main method for testing this class.
-	 * 
+	 *
 	 * @param argv
 	 *            should contain arguments to the filter: use -h for help
 	 */

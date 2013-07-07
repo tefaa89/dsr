@@ -35,6 +35,14 @@ public class ESEvaluationLog implements Serializable {
 		return getBestEvaluationInfo(evalInfoList);
 	}
 
+	public ArrayList<String> accuracyList()
+	{
+		ArrayList<String> res = new ArrayList<>();
+		for(EvaluationInfo evalInfo: evalInfoList)
+			res.add(evalInfo.getEvalResults().getAccuracyStr());
+		return res;
+	}
+
 	private EvaluationInfo getBestEvaluationInfo(ArrayList<EvaluationInfo> evalInfoList) {
 		ArrayList<EvaluationInfo> evalInfoCopyList = new ArrayList<>(evalInfoList);
 		EvaluationInfo res = evalInfoCopyList.remove(0);

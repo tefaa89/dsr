@@ -24,7 +24,7 @@ public class EvaluationResults implements Serializable{
 	}
 
 	public double getAccuracy() {
-		return evaluation.correct();
+		return Double.parseDouble(accuracyStr);
 	}
 
 	public Evaluation getEvaluation() {
@@ -47,7 +47,6 @@ public class EvaluationResults implements Serializable{
 	public String getcMatrixStr() {
 		return cMatrixStr;
 	}
-
 
 	public String getAccuracyStr() {
 		return accuracyStr;

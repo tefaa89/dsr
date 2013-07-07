@@ -2,24 +2,29 @@
 <classifiers>
 	<classifier id="ibk" classPath="weka.classifiers.lazy.IBk">
 		<parameters>
-			<param option="K" name="Nearst Neighbors"
-				description="Set the number of nearest neighbors to use in prediction (default 1)">
-				<value>1</value>
-				<value>2</value>
-				<value>3</value>
-			</param>
-			<param option="W"
-				description="Set a fixed window size for incremental train/testing. As new training instances are added, oldest instances are removed to maintain the number of training instances at this size. (default no window)">
-				<value>0</value>
-			</param>
 			<param option="*" description="">
 				<value />
-				<value>I</value>
+			</param>
+		</parameters>
+	</classifier>
+
+	<classifier id="NaiveBayes" classPath="weka.classifiers.bayes.NaiveBayes">
+		<parameters>
+			<param option="*" description="">
+				<value />
 			</param>
 		</parameters>
 	</classifier>
 
 	<classifier id="SMO" classPath="weka.classifiers.functions.SMO">
+		<parameters>
+			<param option="*" description="">
+				<value />
+			</param>
+		</parameters>
+	</classifier>
+
+	<classifier id="RandomForst" classPath="weka.classifiers.trees.RandomForest">
 		<parameters>
 			<param option="*" description="">
 				<value />
