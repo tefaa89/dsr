@@ -110,6 +110,7 @@ public class ESCoreEngine {
 			featureCounter++;
 			logger.info("Generating Feature Space ({})", featureCounter);
 			featuresDeInstances = fsGenerator.getNext();
+			System.out.println("\n\n#$#$#$#$# " + featuresDeInstances.getInstances().numAttributes() + "\n");
 			logger.trace("Generated Feature Vector :\n{} ", featuresDeInstances.getInstances());
 
 			EvaluationThread evalThread = new EvaluationThread();
