@@ -26,11 +26,11 @@
 			</param>
 			<param option="tokenizer" Name="Toknizer" description="NGram Toknizers">
 				<value valueStr="Each token consist of 1 word only">weka.core.tokenizers.NGramTokenizer -min 1 -max 1</value>
-				<value valueStr="Each token consist of 2 words">weka.core.tokenizers.NGramTokenizer -min 2 -max 2</value>
-				<value valueStr="Each token consist of 3 words">weka.core.tokenizers.NGramTokenizer -min 3 -max 3</value>
+			<!-- 	<value valueStr="Each token consist of 2 words">weka.core.tokenizers.NGramTokenizer -min 1 -max 2</value> -->
+			<!-- 	<value valueStr="Each token consist of 3 words">weka.core.tokenizers.NGramTokenizer -min 1 -max 3</value> -->
 			</param>
 			<param option="stemmer" name="Stemming" descroption="To Stem each Token">
-				<value valueStr="Snowball English">weka.core.stemmers.SnowballStemmer -S english</value>
+			<!--	<value valueStr="Snowball English">weka.core.stemmers.SnowballStemmer -S english</value> -->
 				<value valueStr="None">*</value>
 			</param>
 		</parameters>

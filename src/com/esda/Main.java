@@ -17,8 +17,8 @@ public class Main {
 	public static void evalTextData() {
 		logger.info("Initializing Core Engine:");
 		dsrEngine = new ESCoreEngine();
-		dsrEngine.setDataCorpusPath("20news-18828");
-		dsrEngine.evaluate();
+		dsrEngine.setDataCorpusPath("test");
+	//	dsrEngine.evaluate();
 	}
 
 	public static void evalArffData() {
